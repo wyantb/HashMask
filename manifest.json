@@ -1,0 +1,12 @@
+{
+	"name": "Hash Mask",
+	"version": "1.0",
+	"description": "Secure password visualization for Chrome.",
+	"browser_action": {
+		"default_icon": "icon.png",
+		"popup": "popup.html"
+	},
+	"permissions": [
+		"http://example.com"
+	]
+}
