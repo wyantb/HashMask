@@ -1,0 +1,142 @@
+a {
+	color: #234a7e;
+	text-decoration: none;
+}
+
+sup {
+	font-size: smaller;
+	vertical-align: super;
+}
+
+input[readonly] {
+	color: #808080;
+}
+
+.hidden {
+	display: none;
+}
+
+.new {
+	color: red;
+}
+
+.float-right {
+	float: right;
+}
+
+.overlay {
+	background: #000000;
+	bottom: 0;
+	color: white;
+	left: 0;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 1;
+}
+
+.header h1 {
+	background: url(icons/icon-32.png) no-repeat 0;
+	font-family: georiga, times, linux libertine, serif;
+	font-weight: normal;
+	margin: 2px 0 -30px 0;
+	padding-left: 36px;
+}
+
+.header h1 a {
+	color: black;
+	text-decoration: none;
+}
+
+.footer .nav {
+	text-align: right;
+}
+
+.footer .credits {
+	float: left;
+	margin-right: 1em;
+}
+
+.eye-catcher {
+	background: #ffcccc;
+	border: solid 1px #ff8888;
+	-webkit-border-radius: 6px;
+}
+
+.overlay h1, .overlay h2, .overlay h3, .overlay a {
+	color: red;
+}
+
+.overlay .custom-content,
+.overlay .backup-form,
+.overlay .blacklist-form {
+	margin: auto;
+	text-align: left;
+	width: 80%;
+}
+
+.overlay .custom-content .custom-label {
+	width: 100%;
+}
+
+.overlay .custom-content .custom-script,
+.overlay .backup-form .backup-ta,
+.overlay .blacklist-ta {
+	width: 100%;
+	font-family: monospace;
+	height: 25em;
+}
+
+.overlay .new-stroke {
+	color: yellow;
+}
+
+.note {
+	border-left: solid 2px #ff9999;
+	padding-left: .5em;
+	margin: 0;
+}
+
+.title {
+	background: #ebeff9;
+	border-top: solid 1px #b5c7de;
+	margin: 1em 0;
+	padding: .2em;
+	cursor: pointer;
+}
+
+.title .share-custom-stroke,
+.footer .donation {
+	color: #770000;
+	font-weight: bold;
+}
+
+.label, .field {
+	margin-bottom: .2em;
+}
+
+.stroke-field {
+	width: 9em;
+}
+
+.submit {
+	text-align: right;
+}
+
+.trail-demo {
+	-webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+	float: left;
+	margin: .5em .5em 0 0;
+	width: 2em;
+}
+
+.trail-style {
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	background: white;
+	border: solid 2px #b5c7de;
+	padding: .5em 2em;
+	position: absolute;
+	z-index:1;
+}
+
