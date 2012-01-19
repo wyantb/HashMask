@@ -1,1 +1,5 @@
-//$("body").css("background-color","#000")
+$("input[type=password]").css("position","relative")
+$("input[type=password]").append("<div id='derp'>herp</div>")
+$("#derp").css("position","absolute")
+$("#derp").css("right","0px")
+$("#derp").css("top","0px")

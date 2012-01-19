@@ -10,7 +10,6 @@
 	"content_scripts": [
 		{
 		"matches": ["http://*/*", "https://*/*"],
-		"css": ["inject.css"],
 		"js": ["lib/jquery-1.7.1.js", "inject.js"],
 		"all_frames": true
 		}
