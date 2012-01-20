@@ -1,4 +1,4 @@
-var test_element = '<img src="awesome.png" class="test" height="18px">'
+var test_element = '<img src="chrome-extension://mbomcppphdldjpnoekfomlhcdiegncjc/awesome.png" class="test" height="18px">'
 $("input[type=password]").parent().append(test_element)
 $(".test").css("position","relative")
 $(".test").css("top","3px")
