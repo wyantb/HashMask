@@ -20,10 +20,11 @@ console.log(intWidth);
 console.log(intHeight);
 console.log(newleft);
 //make test elements
-var test_element = '<img src="chrome-extension://__MSG_@@extension_id__/awesome.png" class="test" height="'+ height + '" left=' + newleft + '">';
+var test_element = '<img src="awesome.png" class="test" height="'+ height + '" left=' + newleft + '">';
 
 //set position
-$(".test").css("position","relative");
+$(".test").css("z-index",$(".test").css("z-index") + 1);
+$(".test").css("position","absolute");
 $("body").append(test_element);
 $(".test").css("left",newleft + "px");
 $(".test").css("top",position.top + "px");
