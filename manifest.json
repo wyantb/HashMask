@@ -6,6 +6,7 @@
 		"default_icon": "icon.png",
 		"popup": "popup.html"
 	},
+  "background_page": "bg.html",
 	"options_page": "options.html",
 	"content_scripts": [
 		{
