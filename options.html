@@ -10,9 +10,15 @@
 <body>
 	<h1>Hash Mask Settings</h1>
 	
-	<h2>Header 1</h2>
-	Text Field: <input type="text">
+	<h2>Saved Value</h2>
+	Text field value: <input id="text-value" type="text"><br>
+  Button: <button id="save-btn" type="button" onclick="save()">Save</button>
+
+  <h2>Show Saved Value</h2>
+  Button: <button id="show-btn" type="button" onclick="show()">Show</button>
 	
+  <h1>More Examples</h1>
+
 	<h2>Header 2</h2>
 	Checkbox: <input type="checkbox">
 	
@@ -20,3 +26,15 @@
 	Username: <input type="text"><br>
 	Password: <input type="password">
 <script src="inject.js"></script></body>
+<script>
+
+function save(){
+  alert("Saving: " + $('#text-value').val());
+  localStorage.setItem("text", $('#text-value').val());
+}
+
+function show(){
+  alert("Stored value: " + localStorage.getItem("text"));
+}
+
+</script>

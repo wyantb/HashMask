@@ -10,6 +10,10 @@ var position = pars.offset();
 var intHeight = parseInt(height);
 var intWidth = parseInt(width);
 
+chrome.extension.sendRequest({eventName : "getText"}, function(response){
+  alert(response.value);
+});
+
 var newleft = position.left + intWidth - intHeight;
 console.log(position.left);
 console.log(intWidth);
