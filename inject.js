@@ -15,10 +15,6 @@ var intWidth = parseInt(width);
 });*/
 
 var newleft = position.left + intWidth - 40;
-console.log(position.left);
-console.log(intWidth);
-console.log(intHeight);
-console.log(newleft);
 
 var parent_div = document.createElement("div");
 $(parent_div).css("position", "absolute");
@@ -31,12 +27,6 @@ $(parent_div).css("height", height);
 var test_element = '<img src="awesome.png" height="'+ height + '">';
 $(self.parent_div).append(test_element);
 $("body").append($(self.parent_div));
-
-//set position
-var pos = $(".test").offset();
-console.log("-----------------")
-console.log(pos.left);
-console.log(pos.top);
 
 //Note that 5px is the border + padding of the input that the test element was binded to (assuming that our test element has the same margin size). We must create a for loop in JavaScript in the future to programmatically grab the margin, border, and padding of each password input field as the test element is binded to it.
 console.log("test element added to page");
