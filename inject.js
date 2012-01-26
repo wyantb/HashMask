@@ -14,21 +14,25 @@ var intWidth = parseInt(width);
   alert(response.value);
 });*/
 
-var newleft = position.left + intWidth - intHeight;
+var newleft = position.left + intWidth - 40;
 console.log(position.left);
 console.log(intWidth);
 console.log(intHeight);
 console.log(newleft);
+
+var parent_div = document.createElement("div");
+$(parent_div).css("position", "absolute");
+$(parent_div).css("top", position.top - 20);
+$(parent_div).css("left", newleft);
+$(parent_div).css("width", width);
+$(parent_div).css("height", height);
+    
 //make test elements
-var test_element = '<img src="awesome.png" class="test" height="'+ height + '" left=' + newleft + '">';
+var test_element = '<img src="awesome.png" height="'+ height + '">';
+$(self.parent_div).append(test_element);
+$("body").append($(self.parent_div));
 
 //set position
-$(".test").css("z-index",$(".test").css("z-index") + 1);
-$(".test").css("position","absolute");
-$("body").append(test_element);
-$(".test").css("left",newleft + "px");
-$(".test").css("top",position.top + "px");
-
 var pos = $(".test").offset();
 console.log("-----------------")
 console.log(pos.left);
