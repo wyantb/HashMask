@@ -1,32 +1,32 @@
 $("body").css("position","relative");
 
 //get vars
-var pars = $("input[type=password]");
+var pars = $("input[type=password]").hashmask();
 
-var height = pars.css("height");
-var width = pars.css("width");
-var position = pars.offset();
-
-var intHeight = parseInt(height);
-var intWidth = parseInt(width);
-
-/*chrome.extension.sendRequest({eventName : "getText"}, function(response){
-  alert(response.value);
-});*/
-
-var newleft = position.left + intWidth - 40;
-
-var parent_div = document.createElement("div");
-$(parent_div).css("position", "absolute");
-$(parent_div).css("top", position.top - 20);
-$(parent_div).css("left", newleft);
-$(parent_div).css("width", width);
-$(parent_div).css("height", height);
-    
-//make test elements
-var test_element = '<img src="awesome.png" height="'+ height + '">';
-$(self.parent_div).append(test_element);
-$("body").append($(self.parent_div));
-
-//Note that 5px is the border + padding of the input that the test element was binded to (assuming that our test element has the same margin size). We must create a for loop in JavaScript in the future to programmatically grab the margin, border, and padding of each password input field as the test element is binded to it.
-console.log("test element added to page");
+//var height = pars.css("height");
+//var width = pars.css("width");
+//var position = pars.offset();
+//
+//var intHeight = parseInt(height);
+//var intWidth = parseInt(width);
+//
+///*chrome.extension.sendRequest({eventName : "getText"}, function(response){
+//  alert(response.value);
+//});*/
+//
+//var newleft = position.left + intWidth - 40;
+//
+//var parent_div = document.createElement("div");
+//$(parent_div).css("position", "absolute");
+//$(parent_div).css("top", position.top - 20);
+//$(parent_div).css("left", newleft);
+//$(parent_div).css("width", width);
+//$(parent_div).css("height", height);
+//    
+////make test elements
+//var test_element = '<img src="awesome.png" height="'+ height + '">';
+//$(self.parent_div).append(test_element);
+//$("body").append($(self.parent_div));
+//
+////Note that 5px is the border + padding of the input that the test element was binded to (assuming that our test element has the same margin size). We must create a for loop in JavaScript in the future to programmatically grab the margin, border, and padding of each password input field as the test element is binded to it.
+//console.log("test element added to page");
