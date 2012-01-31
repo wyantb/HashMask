@@ -1,5 +1,5 @@
 
-alert("PIE!");
-
-var pars = $("input[type=password]").hashmask();
+$(document).ready(function(){
+  var pars = $("input[type=password]").hashmask();
+});
 
