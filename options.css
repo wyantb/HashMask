@@ -1,0 +1,44 @@
+
+{
+  margin: 0;
+  padding: 0;
+}
+
+html {
+}
+
+body {
+  margin: 100px;
+  border: -100px;
+  width: 980;
+  /*
+  min-width:
+  max-height:
+  min-height:
+  */
+}
+
+#demo {
+  border: 1px solid;
+  border-radius: 5px;
+  width : 30%;
+  text-align: center;
+}
+
+#demo_header {
+  margin: 20px;
+  text-align: left;
+  font-size: 32px;
+}
+
+#password_header {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#password_text {
+  font-size: 2em;
+}
+
+.center {
+}
