@@ -1,5 +1,3 @@
-
-
 /**
  * *
  * * Secure Hash Algorithm (SHA1)

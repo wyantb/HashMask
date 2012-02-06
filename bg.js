@@ -1,4 +1,3 @@
-
 function getText(){
   return localStorage.getItem("text");
 }
