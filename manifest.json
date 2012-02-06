@@ -2,7 +2,7 @@
 	"name": "Hash Mask",
 	"version": "1.0",
 	"description": "Secure password visualization for Chrome.",
-  "background_page": "bg.html",
+	"background_page": "bg.html",
 	"options_page": "options.html",
 	"content_scripts": [
 		{
