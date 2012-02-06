@@ -7,7 +7,7 @@ WHAT TO LEARN FIRST (from most important to less important)
 THE THREE CORE LANGUAGES OF WEB DEVELOPMENT
 	HTML: structure (making a document to work with)
 	CSS: styling (making things pretty)
-	JavaScript: scripting (making thigns interactive)
+	JavaScript: scripting (making things interactive)
 
 ------------------------------
 
