@@ -21,6 +21,7 @@
 
   <h2>Other</h2>
   <h3>Saved Value</h3>
+	Salt Value: <input id="salt-value" type="text"><br>
   Text field value: <input id="text-value" type="text"><br>
   Button: <button id="save-btn" type="button" onclick="save()">Save</button>
 
@@ -30,8 +31,8 @@
 <script>
 
 function save(){
-  alert("Saving: " + $('#text-value').val());
-  localStorage.setItem("text", $('#text-value').val());
+  alert("Saving: " + $('#salt-value').val());
+  localStorage.setItem("salt", $('#salt-value').val());
 }
 
 function show(){
