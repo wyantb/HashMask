@@ -40,3 +40,14 @@ rotate_left(B,30);B=A;A=temp;}for(i=40;i<=59;i++){temp=(rotate_left(A,5)+
 &0x0ffffffff;H1=(H1+B)&0x0ffffffff;H2=(H2+C)&0x0ffffffff;H3=(H3+D)&0x0ffffffff;
 H4=(H4+E)&0x0ffffffff;}temp=cvt_hex(H0)+cvt_hex(H1)+cvt_hex(H2)+cvt_hex(
 H3)+cvt_hex(H4);return temp.toLowerCase();}
+
+String.prototype.hashCode = function(){
+	var hash = 0;
+	if (this.length == 0) return hash;
+		for (i = 0; i < this.length; i++) {
+			char = this.charCodeAt(i);
+			hash = ((hash<<5)-hash)+char;
+			hash = hash & hash; // Convert to 32bit integer
+		}
+	return hash;
+}
