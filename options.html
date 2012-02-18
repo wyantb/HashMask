@@ -31,8 +31,8 @@
 <script>
 
 function save(){
-  alert("Saving: " + $('#salt-value').val());
-  localStorage.setItem("salt", $('#salt-value').val());
+  localStorage.salt = $('#salt-value').val();
+	localStorage.setItem("salt", $('#salt-value').val());
 }
 
 function show(){
