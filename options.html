@@ -12,31 +12,49 @@
 </head>
 
 <body>
-  <h1>Hash Mask Settings</h1>
-  <div id="demo">
-    <div id="demo_header">Demo</div>
-    <div id="password_header">Password</div>
-    <input id="password_test" type="password">
+  <div id="container">
+    <h1>Hash Mask Settings</h1>
+    <div id="demo">
+      <div id="demo_header">Current Settings:</div>
+      <div id="password_header">Password</div>
+      <input id="password_text" type="password">
+    </div>
+
+    <h2>Other</h2>
+    <h3>Saved Value</h3>
+    Current Salt: <input id="salt-value" type="text"><br>
+    <button id="save-btn" type="button" onclick="save()">Save</button>
+    <button id="reload-btn" type="button" onclick="reload()">Reload</button>
+
+    <h3>Show Saved Value</h3>
+    Button: <button id="show-btn" type="button" onclick="show()">Show</button>
   </div>
-
-  <h2>Other</h2>
-  <h3>Saved Value</h3>
-	Salt Value: <input id="salt-value" type="text"><br>
-  Text field value: <input id="text-value" type="text"><br>
-  Button: <button id="save-btn" type="button" onclick="save()">Save</button>
-
-  <h3>Show Saved Value</h3>
-  Button: <button id="show-btn" type="button" onclick="show()">Show</button>
 </body>
 <script>
 
-function save(){
+// Place initial salt value into salt input field once DOM is ready
+$(function () {
+  reload();
+});
+
+// Save the user's salt
+function save () {
   localStorage.salt = $('#salt-value').val();
-	localStorage.setItem("salt", $('#salt-value').val());
 }
 
-function show(){
-  alert("Stored value: " + localStorage.getItem("text"));
+// Load the user's current salt into the salt input field
+function reload () {
+  $('#salt-value').val(localStorage.salt);
+}
+
+// Anytime the user changes it, update salt (bad idea by default)
+//$('#salt-value').keyup(function (e) {
+//  localStorage.salt = $(this).val();
+//});
+
+// Show the user's current salt
+function show () {
+  alert("Stored value: " + localStorage.salt);
 }
 
 </script>

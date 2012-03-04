@@ -1,0 +1,4 @@
+
+glob:**.rej
+glob:**.swp
+glob:**~
