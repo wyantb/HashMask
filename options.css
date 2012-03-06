@@ -46,5 +46,13 @@ body {
   margin-bottom: 15px;
 }
 
+.hash {
+  display: inline;
+}
+
+.hash input {
+  display: inline;
+}
+
 .center {
 }
