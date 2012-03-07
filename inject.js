@@ -19,6 +19,7 @@ chrome.extension.sendRequest({eventName: "settings"}, function (result) {
     $(ev.target).focusin(function (ev) {
       if (ev.target.hashdiv != undefined) {
         $(ev.target.hashdiv).css("visibility", "visible");
+        ev.target.hashdiv.updatePos();
       }
     });
   });
