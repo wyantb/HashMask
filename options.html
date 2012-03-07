@@ -14,13 +14,12 @@
 </head>
 
 <body>
-  <div id="container">
+  <section>
     <h1>Hash Mask Settings</h1>
 
     <div id="demo">
-      <div id="demo_header">Current Settings:</div>
-      <div id="password_header">Password</div>
-      <input id="password_text" type="password" autofocus="autofocus">
+      <div>Password Field Preview:</div>
+      <input type="password" autofocus="autofocus">
     </div>
 
     <h2>Security Settings</h2>
@@ -40,19 +39,17 @@
       <label for="ripemd160">RIPEMD-160</label>
     </div>
     -->
-    <div class="hash">
+    <span>
       <input type="radio" id="sha1" name="hash" value="sha1"/>
       <label for="sha1">SHA-1</label>
-    </div>
-    <div class="hash">
+    </span><span>
       <input type="radio" id="sha256" name="hash" value="sha256"/>
       <label for="sha256">SHA-256</label>
-    </div>
-    <div class="hash">
+    </span><span>
       <input type="radio" id="whirlpool" name="hash" value="whirlpool"/>
       <label for="whirlpool">Whirlpool</label>
-    </div>
-  </div>
+    </span>
+  </section>
 
   <script>
     // Place initial salt value into salt input field once DOM is ready

@@ -1,9 +1,3 @@
-
-{
-  margin: 0;
-  padding: 0;
-}
-
 html {
   width: 100%;
   height: 100%;
@@ -13,46 +7,39 @@ html {
 body {
   width: 100%;
   margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-#container {
+section {
   width: 60%;
   margin: 0 auto;
 }
 
-#demo {
-  margin: 0 auto;
-  border: 1px solid;
-  border-radius: 5px;
-  width : 80%;
-  text-align: center;
-  margin: 10px;
+h1 {
+  background-color: #eee;
 }
 
-#demo_header {
-  margin: 20px;
-  text-align: left;
+h2 {
+  background-color: #eee;
+}
+
+h3 {
+  background-color: #eee;
+}
+
+#demo {
+  background-color: #eee;
+  width : 80%;
+  text-align: center;
+}
+
+#demo div {
+  text-align: center;
   font-size: 32px;
 }
 
-#password_header {
-  text-align: center;
-  font-size: 1.2em;
-}
-
-#password_text {
+#demo input[type=password] {
   width: 95%;
   font-size: 2em;
   margin-bottom: 15px;
-}
-
-.hash {
-  display: inline;
-}
-
-.hash input {
-  display: inline;
-}
-
-.center {
 }
