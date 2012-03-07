@@ -16,6 +16,7 @@
 <body>
   <div id="container">
     <h1>Hash Mask Settings</h1>
+
     <div id="demo">
       <div id="demo_header">Current Settings:</div>
       <div id="password_header">Password</div>
@@ -53,54 +54,51 @@
     </div>
   </div>
 
-<script>
+  <script>
+    // Place initial salt value into salt input field once DOM is ready
+    $(function () {
+      reload_salt();
+      reload_hash();
 
-// Place initial salt value into salt input field once DOM is ready
-$(function () {
-  reload_salt();
-  reload_hash();
+      $(".hash input").click(function (e) {
+        var hash = localStorage.hash = e.target.value;
 
-  $(".hash input").click(function (e) {
-    var hash = localStorage.hash = e.target.value;
+        // Update hash algorithm about to be used by hashmask
+        $.hashmask.settings.hashUsed = hash;
+        $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[hash];
 
-    // Update hash algorithm about to be used by hashmask
-    $.hashmask.settings.hashUsed = hash;
-    $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[hash];
+        // Refresh the hashmask on the page
+        $(".hashmask-sparkline").remove();
+        $("input[type=password]").hashmask();
+      });
+    });
 
-    // Refresh the hashmask on the page
-    $(".hashmask-sparkline").remove();
-    $("input[type=password]").hashmask();
-  });
-});
+    // Save the user's salt
+    function save () {
+      localStorage.salt = $('#salt-value').val();
+    }
 
-// Save the user's salt
-function save () {
-  localStorage.salt = $('#salt-value').val();
-}
+    // Load the user's current salt into the salt input field
+    function reload_salt () {
+      $('#salt-value').val(localStorage.salt);
+    }
 
-// Load the user's current salt into the salt input field
-function reload_salt () {
-  $('#salt-value').val(localStorage.salt);
-}
+    // Load the user's current hash into a hash radio button
+    function reload_hash () {
+      var hash = localStorage.hash;
 
-// Load the user's current hash into a hash radio button
-function reload_hash () {
-  var hash = localStorage.hash;
+      $("#" + hash).click();
+    };
 
-  $("#" + hash).click();
-};
+    // Anytime the user changes it, update salt (bad idea by default)
+    //$('#salt-value').keyup(function (e) {
+    //  localStorage.salt = $(this).val();
+    //});
 
-// Anytime the user changes it, update salt (bad idea by default)
-//$('#salt-value').keyup(function (e) {
-//  localStorage.salt = $(this).val();
-//});
-
-// Show the user's current salt
-function show () {
-  alert("Stored value: " + localStorage.salt);
-}
-
-</script>
-
+    // Show the user's current salt
+    function show () {
+      alert("Stored value: " + localStorage.salt);
+    }
+  </script>
 </body>
 </html>
