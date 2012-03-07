@@ -10,10 +10,16 @@ chrome.extension.sendRequest({eventName: "settings"}, function (result) {
   $(document).create("input[type=password]", function (ev) {
     var hashmask = $(ev.target).hashmask();
 
-    // Get rid of the hashmask if the target gets destroyed - though, when does this happen?
-    $(ev.target).destroy( function (ev) {
-      console.log("Password field getting destroyed - removing hashmask.");
-      $(hashmask).remove();
+    // Base visibility of the hashmask on whether or not the PW field is focused.
+    $(ev.target).focusout(function (ev) {
+      if (ev.target.hashdiv != undefined) {
+        $(ev.target.hashdiv).css("visibility", "hidden");
+      }
+    });
+    $(ev.target).focusin(function (ev) {
+      if (ev.target.hashdiv != undefined) {
+        $(ev.target.hashdiv).css("visibility", "visible");
+      }
     });
   });
 
