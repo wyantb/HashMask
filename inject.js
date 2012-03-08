@@ -1,4 +1,3 @@
-
 // Send a request to our BG page for all settings before injecting hashmask
 chrome.extension.sendRequest({eventName: "settings"}, function (result) {
 
