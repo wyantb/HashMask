@@ -14,44 +14,48 @@
 </head>
 
 <body>
-  <section>
+  <div class="cont1">
     <h1>Hash Mask Settings</h1>
 
-    <div id="demo">
-      <div>Password Field Preview:</div>
+    <div class="cont2" id="demo">
+      <h2>Hash Mask Preview</h2>
       <input type="password" autofocus="autofocus">
     </div>
+    
+    <div class="cont2">
+      <h2>Security Settings</h2>
+      <!-- Put a nice description of all the implications of these in at some point. -->
 
-    <h2>Security Settings</h2>
-    <!-- Put a nice description of all the implications of these in at some point. -->
+      <div class="cont3">
+        <h3>Current Salt Value</h3>
+        Current Salt: <input id="salt-value" type="text"><br>
+        <button id="save-btn" type="button" onclick="save()">Save</button>
+        <button id="reload-btn" type="button" onclick="reload_salt()">Reload</button>
+        <button id="show-btn" type="button" onclick="show()">Show Salt</button>
+      </div>
 
-    <h3>Current Salt Value</h3>
-    Current Salt: <input id="salt-value" type="text"><br>
-    <button id="save-btn" type="button" onclick="save()">Save</button>
-    <button id="reload-btn" type="button" onclick="reload_salt()">Reload</button>
-    <button id="show-btn" type="button" onclick="show()">Show Salt</button>
-
-    <h3>Hash Algorithm</h3>
-    <!-- Broken, requires investigation! -->
-    <!--
-    <span class="hash">
-      <input type="radio" id="ripemd160" name="hash" value="ripemd160"/>
-      <label for="ripemd160">RIPEMD-160</label>
-    </span>
-    -->
-    <span class="hash">
-      <input type="radio" id="sha1" name="hash" value="sha1"/>
-      <label for="sha1">SHA-1</label>
-    </span>
-    <span class="hash">
-      <input type="radio" id="sha256" name="hash" value="sha256"/>
-      <label for="sha256">SHA-256</label>
-    </span>
-    <span class="hash">
-      <input type="radio" id="whirlpool" name="hash" value="whirlpool"/>
-      <label for="whirlpool">Whirlpool</label>
-    </span>
-  </section>
+      <div class="cont3">
+        <h3>Hash Algorithm</h3>
+        <!-- Broken, requires investigation! -->
+        <!--
+        <span class="hash">
+          <input type="radio" id="ripemd160" name="hash" value="ripemd160">
+          <label for="ripemd160">RIPEMD-160</label>
+        </span>
+        -->
+        <span class="hash">
+          <input type="radio" id="sha1" name="hash" value="sha1">
+          <label for="sha1">SHA-1</label>
+        </span><span class="hash">
+          <input type="radio" id="sha256" name="hash" value="sha256">
+          <label for="sha256">SHA-256</label>
+        </span><span class="hash">
+          <input type="radio" id="whirlpool" name="hash" value="whirlpool">
+          <label for="whirlpool">Whirlpool</label>
+        </span>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Place initial salt value into salt input field once DOM is ready
