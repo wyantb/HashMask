@@ -11,6 +11,9 @@ body {
   color: #000;
   background-color: #eee;
 }
+input[type=text] {
+  width: 200px;
+}
 
 /* containers */
 .cont1,.cont2,.cont3 {
@@ -21,7 +24,7 @@ body {
 .cont1 {
   width: 500px;
   background-color: #ddd;
-  margin: 0px auto;
+  margin: 15px auto;
 }
 .cont2 {
   width: 460px;
@@ -41,6 +44,7 @@ h1,h2,h3 {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   text-align: left;
+  font-weight: bold;
 }
 h1 {
   font-size: 2em;
@@ -62,4 +66,5 @@ h3 {
 }
 #demo input[type=password] {
   font-size: 22px;
+  width: 250px;
 }
