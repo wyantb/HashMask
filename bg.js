@@ -1,4 +1,3 @@
-
 // Enter the defaults for salt and hash, if none exist
 if (localStorage.salt == undefined) localStorage.salt = "#e" + Math.random();
 if (localStorage.hash == undefined) localStorage.hash = "sha256";
@@ -15,4 +14,3 @@ function onReceiveEvent(data, sender, callback){
 
   }
 }
-
