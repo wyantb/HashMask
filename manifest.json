@@ -2,6 +2,9 @@
 	"name": "Hash Mask",
 	"version": "1.0",
 	"description": "Secure password visualization for Chrome.",
+	"icons": { "16": "icons/16.png",
+	           "48": "icons/48.png",
+	           "128": "icons/128.png" },
 	"background_page": "bg.html",
 	"options_page": "options.html",
 	"content_scripts": [
