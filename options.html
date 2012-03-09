@@ -4,8 +4,9 @@
   <title>Hash Mask - Options</title>
   <meta charset="utf-8">
   <link rel="shortcut icon" href="icons/16.png">
-  <link rel="stylesheet" href="reset.css" type="text/css">
-  <link rel="stylesheet" href="options.css" type="text/css">
+  <!--<link rel="stylesheet" href="reset.css" type="text/css">
+  <link rel="stylesheet" href="options.css" type="text/css">-->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
   <script type="text/javascript" src="util.js"></script>
   <script type="text/javascript" src="lib/jquery-1.7.1.js"></script>
   <script type="text/javascript" src="lib/jquery.sparkline.min.js"></script>
@@ -15,27 +16,42 @@
 </head>
 
 <body>
-  <div class="cont1">
-    <h1>Hash Mask Settings</h1>
+  <nav class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <!-- Should be a link to public src page or something. -->
+        <a class="brand" href="#">HashMask</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><a href="http://www.google.com">Home</a></li>
+            <li><a href="http://www.google.com">About</a></li>
+            <li><a href="http://www.google.com">Contact</a><li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    <div class="cont2" id="demo">
-      <h2>Hash Mask Preview</h2>
-      <input type="password" autofocus="autofocus">
+  <div class="container">
+
+    <div class="hero-unit" id="demo">
+      <h2>Your own password visualizer - that's HashMask!</h2>
+      <p>This password field here is a little demo of what you'll see on any password field on any website on the internet.  Don't worry - it's secure!  Try it out now:</p>
+      <p><input type="password" autofocus="autofocus"></p>
+      <p>But we understand if you're still worried.  Please check the settings below and tweak to your personal satisfaction.</p>
     </div>
     
-    <div class="cont2">
-      <h2>Security Settings</h2>
-      <!-- Put a nice description of all the implications of these in at some point. -->
-
-      <div class="cont3">
-        <h3>Current Salt Value</h3>
-        Current Salt: <input id="salt-value" type="text"><br>
-        <button id="save-btn" type="button" onclick="save()">Save</button>
-        <button id="reload-btn" type="button" onclick="reload_salt()">Reload</button>
-        <button id="show-btn" type="button" onclick="show()">Show Stored Salt</button>
+    <div class="row">
+      <div class="span4">
+        <h3>Password Salt</h3>
+        <p><a href="#">What does a salt do?</a></p>
+        <p><input id="salt-value" type="text"></p>
+        <p><button id="save-btn" type="button" onclick="save()">Save &raquo;</button> <a href="#">Where does this get saved?</a></p>
+        <p><button id="reload-btn" type="button" onclick="reload_salt()">Reload Stored Salt&raquo;</button> <a href="#">What does this do?</a></p>
+        <p><button id="show-btn" type="button" onclick="show()">Show Stored Salt &raquo;</button> <a href="#">What does this do?</a></p>
       </div>
 
-      <div class="cont3">
+      <div class="span4">
         <h3>Hash Algorithm</h3>
         <span class="hash">
           <input type="radio" id="ripemd160" name="hash" value="ripemd160">
