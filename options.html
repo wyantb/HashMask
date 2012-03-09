@@ -12,6 +12,7 @@
   <script type="text/javascript" src="lib/jquery.sparkline.min.js"></script>
   <script type="text/javascript" src="lib/jquery.hashmask.js"></script>
   <script type="text/javascript" src="lib/jcade.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
   <script type="text/javascript" src="inject.js"></script>
 </head>
 
@@ -20,7 +21,7 @@
     <div class="navbar-inner">
       <div class="container-fluid">
         <!-- Should be a link to public src page or something. -->
-        <a class="brand" href="#">HashMask</a>
+        <h3><a class="brand" href="#">HashMask</a></h3>
         <div class="nav-collapse">
           <ul class="nav">
             <li><a href="http://www.google.com">Home</a></li>
@@ -38,7 +39,7 @@
     <div class="hero-unit" id="demo">
       <h2>Your own password visualizer - that's HashMask!</h2>
       <p>This password field here is a little demo of what you'll now see on any password field on any website on the internet.  Don't worry - it's secure!  Try it out now:</p>
-      <p><input type="password" autofocus="autofocus"></p>
+      <p><input type="password" autofocus="autofocus" placeholder="password"></p>
       <p>But we understand if you're still worried.  Please check the settings below and tweak to your personal satisfaction.</p>
     </div>
     
@@ -46,12 +47,21 @@
       <div class="span6">
         <h3>Password Salt</h3>
         <p><a href="#">What does a salt do?</a></p>
-        <p><input id="salt-value" type="text"></p>
-        <p><button id="save-btn" type="button" onclick="save()">Save &raquo;</button> <a href="#">Where does this get saved?</a></p>
-        <p><button id="reload-btn" type="button" onclick="reload_salt()">Reload Stored &raquo;</button> <a href="#">What does this do?</a></p>
-        <p><button id="show-btn" type="button" onclick="show()">Show Stored &raquo;</button> <a href="#">What does this do?</a></p>
+        <p><textarea id="salt-value" ></textarea></p>
+        <div class="btn-group">
+          <a class="btn btn-primary">Save</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a id="save-btn" onclick="save()">Save</a></li>
+            <li><a id="reload-btn" onclick="reload_salt()">Reload Stored</a></li>
+            <li><a id="show-btn" onclick="show()">Show Stored</a></li>
+            <li><div class="divider"></li>
+            <li><a id="salt-action-help">What do these buttons do?</a></li>
+          </ul>
+        </div>
       </div>
-
       <div class="span6">
         <h3>Hash Algorithm</h3>
         <p><a href="#">What is a hash algorithm?</a>
@@ -79,6 +89,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <script>

@@ -8,3 +8,6 @@
 .right {
   right: 0px;
 }
+.center {
+  margin: 0 auto;
+}
