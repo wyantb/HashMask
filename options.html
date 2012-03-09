@@ -4,9 +4,9 @@
   <title>Hash Mask - Options</title>
   <meta charset="utf-8">
   <link rel="shortcut icon" href="icons/16.png">
-  <!--<link rel="stylesheet" href="reset.css" type="text/css">
-  <link rel="stylesheet" href="options.css" type="text/css">-->
+  <!--<link rel="stylesheet" href="reset.css" type="text/css">-->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" href="options.css" type="text/css">
   <script type="text/javascript" src="util.js"></script>
   <script type="text/javascript" src="lib/jquery-1.7.1.js"></script>
   <script type="text/javascript" src="lib/jquery.sparkline.min.js"></script>
@@ -26,6 +26,7 @@
             <li><a href="http://www.google.com">Home</a></li>
             <li><a href="http://www.google.com">About</a></li>
             <li><a href="http://www.google.com">Contact</a><li>
+            <li><a href="http://www.google.com">Original HashMask Demo</a><li>
           </ul>
         </div>
       </div>
@@ -36,37 +37,46 @@
 
     <div class="hero-unit" id="demo">
       <h2>Your own password visualizer - that's HashMask!</h2>
-      <p>This password field here is a little demo of what you'll see on any password field on any website on the internet.  Don't worry - it's secure!  Try it out now:</p>
+      <p>This password field here is a little demo of what you'll now see on any password field on any website on the internet.  Don't worry - it's secure!  Try it out now:</p>
       <p><input type="password" autofocus="autofocus"></p>
       <p>But we understand if you're still worried.  Please check the settings below and tweak to your personal satisfaction.</p>
     </div>
     
     <div class="row">
-      <div class="span4">
+      <div class="span6">
         <h3>Password Salt</h3>
         <p><a href="#">What does a salt do?</a></p>
         <p><input id="salt-value" type="text"></p>
         <p><button id="save-btn" type="button" onclick="save()">Save &raquo;</button> <a href="#">Where does this get saved?</a></p>
-        <p><button id="reload-btn" type="button" onclick="reload_salt()">Reload Stored Salt&raquo;</button> <a href="#">What does this do?</a></p>
-        <p><button id="show-btn" type="button" onclick="show()">Show Stored Salt &raquo;</button> <a href="#">What does this do?</a></p>
+        <p><button id="reload-btn" type="button" onclick="reload_salt()">Reload Stored &raquo;</button> <a href="#">What does this do?</a></p>
+        <p><button id="show-btn" type="button" onclick="show()">Show Stored &raquo;</button> <a href="#">What does this do?</a></p>
       </div>
 
-      <div class="span4">
+      <div class="span6">
         <h3>Hash Algorithm</h3>
-        <span class="hash">
-          <input type="radio" id="ripemd160" name="hash" value="ripemd160">
-          <label for="ripemd160">RIPEMD-160</label>
-        </span>
-        <span class="hash">
-          <input type="radio" id="sha1" name="hash" value="sha1">
-          <label for="sha1">SHA-1</label>
-        </span><span class="hash">
-          <input type="radio" id="sha256" name="hash" value="sha256">
-          <label for="sha256">SHA-256</label>
-        </span><span class="hash">
-          <input type="radio" id="whirlpool" name="hash" value="whirlpool">
-          <label for="whirlpool">Whirlpool</label>
-        </span>
+        <p><a href="#">What is a hash algorithm?</a>
+        <div class="container-fluid">
+          <div class="hash">
+            <input class="radio inline" type="radio" id="ripemd160" name="hash" value="ripemd160">
+            <label for="ripemd160">RIPEMD-160</label>
+            <a class="help right" href="#">What is this algorithm?</a>
+          </div>
+          <div class="hash">
+            <input type="radio" id="sha1" name="hash" value="sha1">
+            <label for="sha1">SHA-1</label>
+            <a class="help right" href="#">What is this algorithm?</a>
+          </div>
+          <div class="hash">
+            <input type="radio" id="sha256" name="hash" value="sha256">
+            <label for="sha256">SHA-256</label>
+            <a class="help right" href="#">What is this algorithm?</a>
+          </div>
+          <div class="hash">
+            <input type="radio" id="whirlpool" name="hash" value="whirlpool">
+            <label for="whirlpool">Whirlpool</label>
+            <a class="help right" href="#">What is this algorithm?</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,64 +1,10 @@
-/* body and page */
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  color: #000;
-  background-color: #eee;
+.help, label {
+  display: inline-block;
+  padding-top: 5px;
+  vertical-align: middle;
+  margin: 3px 0;
+  text-align: -webkit-auto;
 }
-input[type=text] {
-  width: 200px;
-}
-
-/* containers */
-.cont1,.cont2,.cont3 {
-  margin: 15px 0px 15px auto;
-  border-radius: 5px;
-  /* unforunately, adding padding here screws up the alignment of headings */
-}
-.cont1 {
-  width: 500px;
-  background-color: #ddd;
-  margin: 15px auto;
-}
-.cont2 {
-  width: 460px;
-  background-color: #ccc;
-}
-.cont3 {
-  width: 420px;
-  background-color: #bbb;
-}
-
-/* headings */
-h1,h2,h3 {
-  margin: 0px;
-  color: #fff;
-  padding: 2px 10px;
-  border-radius: 5px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  text-align: left;
-  font-weight: bold;
-}
-h1 {
-  font-size: 2em;
-  background-color: #000;
-  text-align: center;
-}
-h2 {
-  font-size: 1.66em;
-  background-color: #333;
-}
-h3 {
-  font-size: 1.33em;
-  background-color: #666;
-}
-
-/* demo */
-#demo {
-  text-align: center;
-}
-#demo input[type=password] {
-  font-size: 22px;
-  width: 250px;
+.right {
+  right: 0px;
 }
