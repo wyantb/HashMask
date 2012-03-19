@@ -55,12 +55,11 @@
         <p><a href="#">What does a salt do?</a></p>
         <p><textarea id="salt-value" ></textarea></p>
         <div class="btn-group">
-          <a class="btn btn-primary">Save</a>
+          <a class="btn btn-primary" onclick="save()">Save</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a id="save-btn" onclick="save()">Save</a></li>
             <li><a id="reload-btn" onclick="reload_salt()">Reload Stored</a></li>
             <li><a id="show-btn" onclick="show()">Show Stored</a></li>
             <li><div class="divider"></li>
@@ -127,6 +126,11 @@
     // Save the user's salt
     function save () {
       localStorage.salt = $('#salt-value').val();
+			$.hashmask.settings.salt = localStorage.salt;
+  
+			// Refresh the hashmask on the page
+      $(".hashmask-sparkline").remove();
+      $("input[type=password]").hashmask();
     }
 
     // Load the user's current salt into the salt input field
