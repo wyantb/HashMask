@@ -62,6 +62,7 @@
           <ul class="dropdown-menu">
             <li><a id="reload-btn" onclick="reload_salt()">Reload Stored</a></li>
             <li><a id="show-btn" onclick="show()">Show Stored</a></li>
+						<li><a id="rand-btn" onclick="rand_salt()">Randomize</a></li>
             <li><div class="divider"></li>
             <li><a id="salt-action-help">What do these buttons do?</a></li>
           </ul>
@@ -137,6 +138,12 @@
     function reload_salt () {
       $('#salt-value').val(localStorage.salt);
     }
+
+		//make a random salt and save it
+		function rand_salt () {
+			$('#salt-value').val(Math.floor(Math.random()*999999999));
+			save();
+		}
 
     // Load the user's current hash into a hash radio button
     function reload_hash () {
