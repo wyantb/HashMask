@@ -1,5 +1,0 @@
-
-glob:**.rej
-glob:**.swp
-glob:**~
-glob:**.orig
