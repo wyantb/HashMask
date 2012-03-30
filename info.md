@@ -10,29 +10,23 @@
 - JavaScript: scripting (making things interactive)
 
 #Stuff to learn
-- HTML, CSS, JavaScript
-	- HTML: http://w3schools.com/html
-	- CSS: http://w3schools.com/css
-	- JavaScript: http://w3schools.com/js
+- [HTML](http://w3schools.com/html), [CSS](http://w3schools.com/css), [JavaScript](http://w3schools.com/js)
 
-- HTML 5, CSS 3 (Learn these after you already know some HTML/CSS, as they're not full tutorials but information about changes in HTML 5 and CSS 3.)
-	- HTML 5: http://w3schools.com/html5
-	- CSS 3: http://w3schools.com/css3
-
-- jQuery
-	- http://docs.jquery.com
+- [HTML 5](http://w3schools.com/html5), [CSS 3](http://w3schools.com/css3)
+	- Learn these after you already know some HTML/CSS, as they're not full tutorials but information about changes in HTML 5 and CSS 3.
+- [jQuery](http://docs.jquery.com)
 
 - Extensions
-	- Chrome: http://code.google.com/chrome/extensions
-	- Firefox: https://addons.mozilla.org/en-US/developers/docs/sdk/1.3/dev-guide/addon-development/tutorials.html
+	- [Chrome](http://code.google.com/chrome/extensions)
+	- [Firefox](https://addons.mozilla.org/en-US/developers/docs/sdk/1.3/dev-guide/addon-development/tutorials.html)
 
-- Mercurial
-	- http://hginit.com
+- [Mercurial](http://hginit.com)
 
 - Validators
-	- This is more advanced stuff, for when you have a better understanding of HTML and CSS. Don't even worry about this until you have at least the basics down. These are software tools that will check to make sure your HTML and CSS files are standards compliant and do not have any issues. Please note that they are extremely picky, and will try to hurt your feelings. It's okay to get a ton of validation issues when you're starting off. Also, you should always use a (preferably HTML 5) doctype (http://www.w3schools.com/html5/tag_doctype.asp) in your HTML files. If it complains about you using the experimental HTML 5 validator, that's okay. Feel free to email me if you have any questions
-	- Official HTML Validator: http://validator.w3.org/#validate_by_upload
-	- Official CSS Validator: http://jigsaw.w3.org/css-validator/#validate_by_upload
+	- This is more advanced stuff, for when you have a better understanding of HTML and CSS. Don't even worry about this until you have at least the basics down. These are software tools that will check to make sure your HTML and CSS files are standards compliant and do not have any issues. Please note that they are extremely picky, and will try to hurt your feelings. It's okay to get a ton of validation issues when you're starting off. Also, you should always use an [HTML 5 doctype(]go
+ - http://www.w3schools.com/html5/tag_doctype.asp) in your HTML files. If it complains about you using the experimental HTML 5 validator, that's okay. Feel free to email me if you have any questions
+	- [Official HTML Validator](http://validator.w3.org/#validate_by_upload)
+	- [Official CSS Validator](http://jigsaw.w3.org/css-validator/#validate_by_upload)
 
 #About this document
 I (Nicolas McCurdy) wrote this, hoping it would be a helpful introduction for what we should learn. I might share a Google Doc with you guys that's more in depth, but for now I think this is a good starting point for what should be learned and what tutorials are handy. If you are confused, want to ask me something, want to leave a comment about this, or have a funny idea about how you could put <marquee> tags around all of our HTML documents, you can email me at thenickperson@gmail.com. Also, this will hopefully get updated in the future and/or be converted to a Google Doc.
