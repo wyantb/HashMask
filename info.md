@@ -5,24 +5,24 @@
 3. Some CSS, if you want to start making HTML pages look pretty (but don't worry about this much, since I can handle the more advanced stuff). However, since we will be dealing with editing CSS properties of the HTML DOM (document object model), it would be nice to know the basics so we can style generated graphs and learn the CSS selectors used for grabbing objects in jQuery.
 
 #The three core languages of web development
-- HTML: structure (making a document to work with)
-- CSS: styling (making things pretty)
-- JavaScript: scripting (making things interactive)
+- __HTML__: *structure* (making a document to work with)
+- __CSS__: *styling* (making things pretty)
+- __JavaScript__: *scripting* (making things interactive)
 
 #Stuff to learn
-- [HTML](http://w3schools.com/html), [CSS](http://w3schools.com/css), [JavaScript](http://w3schools.com/js)
+- [__HTML__](http://w3schools.com/html), [__CSS__](http://w3schools.com/css), [__JavaScript__](http://w3schools.com/js)
 
-- [HTML 5](http://w3schools.com/html5), [CSS 3](http://w3schools.com/css3)
+- [__HTML 5__](http://w3schools.com/html5), [__CSS 3__](http://w3schools.com/css3)
 	- Learn these after you already know some HTML/CSS, as they're not full tutorials but information about changes in HTML 5 and CSS 3.
-- [jQuery](http://docs.jquery.com)
+- [__jQuery__](http://docs.jquery.com)
 
-- Extensions
+- __Extensions__
 	- [Chrome](http://code.google.com/chrome/extensions)
 	- [Firefox](https://addons.mozilla.org/en-US/developers/docs/sdk/1.3/dev-guide/addon-development/tutorials.html)
 
-- [Mercurial](http://hginit.com)
+- [__Mercurial__](http://hginit.com)
 
-- Validators
+- __Validators__
 	- This is more advanced stuff, for when you have a better understanding of HTML and CSS. Don't even worry about this until you have at least the basics down. These are software tools that will check to make sure your HTML and CSS files are standards compliant and do not have any issues. Please note that they are extremely picky, and will try to hurt your feelings. It's okay to get a ton of validation issues when you're starting off. Also, you should always use an [HTML 5 doctype(]go
  - http://www.w3schools.com/html5/tag_doctype.asp) in your HTML files. If it complains about you using the experimental HTML 5 validator, that's okay. Feel free to email me if you have any questions
 	- [Official HTML Validator](http://validator.w3.org/#validate_by_upload)
