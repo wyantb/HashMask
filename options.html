@@ -31,7 +31,6 @@
         </a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><a href="">Home</a></li>
             <li>
               <a data-toggle="modal" data-target="#about-modal">About</a>
             </li>
@@ -154,14 +153,14 @@
         contact Brian Wyant - main developer - at wyantb@gmail.com.  
       </p>
       <p>
-        Or just file a bug for us right here!
+        Or just file a bug for us <a href="https://github.com/wyantb/HashMask/issues">right here</a>!
         Any notes of visual defects are welcome.
       </p>
       <p>
-        HashMask lives <a href="http://www.github.com/wyantb/HashMask">on Github.</a>
+        HashMask lives <a href="http://www.github.com/wyantb/HashMask">on Github</a>.
       </p>
       <p>
-        And is released under the <a href="http://www.opensource.org/licenses/bsd-license.php">BSD license.</a>
+        And is released under the <a href="http://www.opensource.org/licenses/bsd-license.php">BSD license</a>.
       </p>
       <p>
         Thanks for trying it out!
@@ -172,17 +171,34 @@
     </div>
   </div>
 
+  <div class="modal hide face" id="con-modal">
+    <div class="modal-header">
+      <a class="close" data-toggle="modal" data-target="#con-modal">×</a>
+      <h3>About HashMask</h3>
+    </div>
+    <div class="modal-body">
+      <p>
+				Please file any bugs that you encounter on github  
+        <a href="https://github.com/wyantb/HashMask/issues">here</a>.
+      </p>
+			<p>
+				Otherwise, it's likely best to contact the lead developer directly 
+				&lt;wyantb@gmail.com&gt;
+			</p>
+			<p>
+				Otherwise, visit the <a href="http://www.sse.se.rit.edu">Society of Software Engineers</a>.
+			</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" data-toggle="modal" data-target="#con-modal" class="btn">Close</a>
+    </div>
+  </div>
+
   <script>
 
 		$(document).ready(function () {
 			$(".pop").popSlides({});
 		});
-
-    // About HashMask type stuff
-    $("#about-modal").click(function (e) {
-      console.log("Showing");
-      $("#about-modal").modal('show');
-    });
 
     // Place initial salt value into salt input field once DOM is ready
     $(function () {

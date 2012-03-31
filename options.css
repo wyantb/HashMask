@@ -1,3 +1,8 @@
+body {
+	background-color: #EEE9E9;
+}
+body .container {
+}
 .help, label {
   display: inline-block;
   padding-top: 5px;
