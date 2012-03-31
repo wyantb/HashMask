@@ -1,6 +1,7 @@
 // Enter the defaults for salt and hash, if none exist
 if (localStorage.salt == undefined) localStorage.salt = "#e" + Math.random();
 if (localStorage.hash == undefined) localStorage.hash = "sha256";
+$.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[localStorage.hash];
 
 chrome.extension.onRequest.addListener(onReceiveEvent);
 
