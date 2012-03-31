@@ -1,5 +1,7 @@
 
-if (chrome && chrome.extension && chrome.extension.sendRequest) {
+if (typeof chrome !== "undefined" && 
+    typeof chrome.extension !== "undefined" && 
+    typeof chrome.extension.sendRequest !== "undefined") {
 
   // Send a request to our BG page for all settings before injecting hashmask
   chrome.extension.sendRequest({eventName: "settings"}, function (result) {
