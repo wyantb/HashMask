@@ -12,7 +12,7 @@
 	"content_scripts": [
 		{
 		"matches": ["<all_urls>"],
-		"js": ["util.js", "lib/jquery-1.7.1.js", "lib/jcade.js", "lib/jquery.sparkline.min.js", "hashmask.js", "inject.js"],
+		"js": ["src/util.js", "lib/jquery-1.7.1.js", "lib/jcade.js", "lib/jquery.sparkline.min.js", "src/hashmask.js", "src/inject.js"],
 		"all_frames": true
 		}
 	],
