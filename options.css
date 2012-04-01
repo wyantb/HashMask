@@ -1,6 +1,12 @@
+/* page */
 body {
   background-color: #EEE9E9;
 }
+nav {
+  padding-bottom: 40px;
+}
+
+/* labels */
 label {
   display: inline-block;
   padding-top: 5px;
@@ -10,12 +16,13 @@ label {
 a, label {
   cursor: pointer;
 }
-nav {
-  padding-bottom: 40px;
-}
+
+/* shortcuts */
 .inline {
   display: inline;
 }
+
+/* popSlides */
 .pop {
   margin: 0;
   padding: 0;
@@ -28,6 +35,6 @@ nav {
   float: left;
   list-style-type: none;
 }
-.after_floats {
+.after_pop {
   clear: left;
 }
