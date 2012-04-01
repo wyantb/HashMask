@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HashMask - Help</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="icons/16.png">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" type="text/css">
+  <link rel="stylesheet" href="options.css" type="text/css">
+  <script type="text/javascript" src="lib/jquery-1.7.1.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+  <!-- 
+    This script enables structural HTML5 elements in old IE.
+    http://code.google.com/p/html5shim/
+  -->
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <!-- NAV BAR -->
+
+  <nav class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <!-- Should be a link to public src page or something. -->
+        <h3><a class="brand" href="options.html">HashMask</a></h3>
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li>
+              <a href="options.html">Back to Options</a>
+            </li>
+            <li>
+              <a href="#intro">Back to Top</a>
+            </li>
+            <li>
+              <a href="http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/" target="_blank">Original HashMask Demo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE -->
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span8 offset2">
+        <h1>HashMask - Help</h1>
+        <article>
+          <h2><a name="intro" href="#intro">About HashMask</a></h2>
+          <p>
+            HashMask is a browser extension for your password fields.
+          </p>
+          <p>
+            It's meant to help you prevent some errors logging into various sites.
+            It does this by giving you a consistent sparkline representing your
+            passwords.  On any site you visit with a password field, start typing,
+            and a little colored sparkline will appear.  This is your clue -
+            try and remember something about the color, shape, or both, and before
+            you know it, your login error rate will drop immensely.
+          </p>
+          <p>
+            Of course, it's just an aid - if you can't remember all your hashes, 
+            don't worry about it!  It's just a visual aid.  Use it, or not, however
+            you want.  Perhaps only remembering one or two really important hashes
+            for a password you forget or mistype often would be useful, or perhaps
+            you can try to remember all of them.  Either way, it's up to you.
+          </p>
+        </article>
+        <article>
+          <h2><a name="faq" href="#faq">Frequently Asked Questions</a></h2>
+          <p>
+            We have here some questions you might be thinking.  As we notice more,
+            we'll go ahead and update this list.
+          </p>
+          <p>
+            <h3><a name="faq-1" href="#faq-1">Q1 - How could I possibly memorize all these sparklines?</a></h3>
+            Well, you don't have to, really.  As we said in 
+            <a href="#intro">the intro</a>, they're just meant to be aids.
+            Remember some of, or all of, your personal sparklines, whatever works for
+            you.  We don't store or change anything about passwords sent to the
+            website you're on, we only make a visible change in your browser.
+          </p>
+          <p>
+            <h3><a name="faq-2" href="#faq-2">Q2 - Couldn't someone guess my password from these sparklines?</a></h3>
+            Not really.  See, by default, we generate a random 
+            <a href="#salt">salt</a> for you.  Any password you type into any site
+            is combined with that random salt, then hashed, and then converted to a
+            visual sparkline.  So an attacker (that guy looking at the sparkline over
+            your shoulder) would have to have both a perfect replay of your visual
+            hashes and your salt to be able to reproduce your password.  There are much
+            easier methods to attack a victim, so HashMask really doesn't make you any
+            more vulnerable to any attacker.
+          </p>
+          <p>
+            <h3><a name="faq-3" href="#faq-3">Q3 - Is there a maximum number of attempts that I can make?</a></h3>
+            No, you're free to try any number of combinations with HashMask.  You 
+            press a key, and we'll update your sparkline.  That's it.  The security
+            comes from the random <a href="#salt">salt</a> that we generate for you
+            and <a href="http://code.google.com/chrome/extensions/content_scripts.html#execution-environment">
+            your browser keeping addons in an isolated world</a>.  Not to mention a 
+            few extra options to make it yet harder for an attacker to duplicate 
+            your HashMask settings.
+          </p>
+          <p>
+            <h3><a name="faq-4" href="#faq-4">Q4 - I found a problem!</a></h3>
+            Dang, guess our code's not perfect.  File an issue for us,
+            <a href="http://www.github.com/wyantb/HashMask/issues">right here on github</a>.
+            If you don't have a github account, you can contact the main developer
+            directly <a href="mailto:wyantb@gmail.com">wyantb@gmail.com</a>.
+          </p>
+          <p>
+            <h3><a name="faq-5" href="#faq-5">Q5 - I'm a web developer.  Can I include HashMask on my site?</a></h3>
+            Well, technically, you could.  We don't suggest it, however.  See, we want you to
+            remember the <a href="#salt">salt</a> that we generate for every user.
+            That's the key to the security of HashMask.  There's really no good way
+            for an individual site to generate a salt for each user, so we wouldn't
+            recommend trying it.  Furthermore, user choice - some people could just
+            find it irritating, maybe it slows down their browsing experience, or 
+            maybe they just use <a href="http://keepass.info/">KeePass</a> or other
+            similar software to manage their passwords already.
+          </p>
+        </article>
+        <section>
+          <h2><a name="help" href="#help">Other Help Articles</a></h2>
+          <article>
+            <h3><a name="help-salt" href="#help-salt">What does a salt do?</a></h3>
+            <p>
+              Text!
+            </p>
+          </article>
+        </section>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
