@@ -4,9 +4,17 @@ body {
 }
 nav {
 }
+.container {
+  margin-top: 45px;
+}
 .carousel-img {
   width: 100%;
   height: 100%;
+}
+
+/* shortcuts */
+.inline {
+  display: inline;
 }
 
 /* labels */
@@ -20,11 +28,6 @@ a, label {
   cursor: pointer;
 }
 
-/* shortcuts */
-.inline {
-  display: inline;
-}
-
 /* examples */
 .examples_small {
   margin: 0;
@@ -32,8 +35,4 @@ a, label {
 .examples_small img {
   height: 90px;
   cursor: pointer;
-}
-
-.container {
-  margin-top: 45px;
 }
