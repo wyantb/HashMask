@@ -10,6 +10,9 @@ body .container {
   margin: 3px 0;
   text-align: -webkit-auto;
 }
+a, label {
+  cursor: pointer;
+}
 .right {
   right: 0px;
 }
