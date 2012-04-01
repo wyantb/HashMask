@@ -5,6 +5,10 @@ body {
 nav {
   padding-bottom: 40px;
 }
+.carousel-img {
+  width: 100%;
+	height: 100%;
+}
 
 /* labels */
 label {
