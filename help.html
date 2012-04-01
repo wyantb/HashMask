@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>HashMask - Help</title>
+  <title>HashMask : Help</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="icons/16.png">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
@@ -24,7 +24,7 @@
 
   <!-- NAV BAR -->
 
-  <nav class="navbar navbar-fixed-top">
+  <nav class="navbar navbar-fixed-top" style="position: static;">
     <div class="navbar-inner">
       <div class="container-fluid">
         <!-- Should be a link to public src page or something. -->
@@ -40,7 +40,7 @@
               <a href="options.html">Back to Options</a>
             </li>
             <li>
-              <a href="#intro">Back to Top</a>
+              <a href="#top">Back to Top</a>
             </li>
             <li>
               <a href="http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/" target="_blank">Original HashMask Demo</a>
@@ -53,28 +53,28 @@
 
   <!-- PAGE -->
 
-  <div class="container">
+  <div id="top" class="container">
 
     <div class="row">
       <div class="span8 offset2">
-        <h1>HashMask - Help</h1>
-        <article>
-          <h2><a id="intro" href="#intro">About HashMask</a></h2>
+        <h1>HashMask : Help</h1>
+        <article id="intro">
+          <h2><a href="#intro">About HashMask</a></h2>
           <p>
             HashMask is a browser extension for your password fields.
           </p>
           <p>
-            It's meant to help you prevent some errors logging into various sites.
+            It's meant to help prevent some errors when logging into various websites.
             It does this by giving you a consistent sparkline representing your
             passwords.  On any site you visit with a password field, start typing,
             and a little colored sparkline will appear.  This is your clue -
-            try and remember something about the color, shape, or both, and before
+            try and remember something about the color, shape, or both.  Before
             you know it, your login error rate will drop immensely.
           </p>
           <p>
-            Of course, it's just an aid - if you can't remember all your hashes, 
+            Of course, it's just an aid - if you can't remember all your sparklines, 
             don't worry about it!  It's just a visual aid.  Use it, or not, however
-            you want.  Perhaps only remembering one or two really important hashes
+            you want.  Perhaps only remembering one or two really important sparklines 
             for a password you forget or mistype often would be useful, or perhaps
             you can try to remember all of them.  Either way, it's up to you.
           </p>
@@ -83,27 +83,27 @@
           <h2><a id="faq" href="#faq">Frequently Asked Questions</a></h2>
           We have here some questions you might be thinking.  As we notice more,
           we'll go ahead and update this list.
-          <section>
-            <h3><a id="faq-1" href="#faq-1">Q1 - How could I possibly memorize all these sparklines?</a></h3>
+          <section id="faq-1">
+            <h3><a href="#faq-1">Q1 - How could I possibly memorize all these sparklines?</a></h3>
             Well, you don't have to, really.  As we said in 
             <a href="#intro">the intro</a>, they're just meant to be aids.
             Remember some of, or all of, your personal sparklines, whatever works for
             you.  We don't store or change anything about passwords sent to the
             website you're on, we only make a visible change in your browser.
           </section>
-          <section>
-            <h3><a id="faq-2" href="#faq-2">Q2 - Couldn't someone guess my password from these sparklines?</a></h3>
+          <section id="faq-2">
+            <h3><a href="#faq-2">Q2 - Couldn't someone guess my password from these sparklines?</a></h3>
             Not really.  See, by default, we generate a random 
             <a href="#salt">salt</a> for you.  Any password you type into any site
-            is combined with that random salt, then hashed, and then converted to a
+            is combined with that random salt, then <a href="#help-hash">hashed</a>, and then converted to a
             visual sparkline.  So an attacker (that guy looking at the sparkline over
             your shoulder) would have to have both a perfect replay of your visual
             hashes and your salt to be able to reproduce your password.  There are much
             easier methods to attack a victim, so HashMask really doesn't make you any
             more vulnerable to any attacker.
           </section>
-          <section>
-            <h3><a id="faq-3" href="#faq-3">Q3 - Is there a maximum number of attempts that I can make?</a></h3>
+          <section id="faq-3">
+            <h3><a href="#faq-3">Q3 - Is there a maximum number of attempts that I can make?</a></h3>
             No, you're free to try any number of combinations with HashMask.  You 
             press a key, and we'll update your sparkline.  That's it.  The security
             comes from the random <a href="#salt">salt</a> that we generate for you
@@ -112,30 +112,100 @@
             few extra options to make it yet harder for an attacker to duplicate 
             your HashMask settings.
           </section>
-          <section>
-            <h3><a id="faq-4" href="#faq-4">Q4 - I found a problem!</a></h3>
+          <section id="faq-4">
+            <h3><a href="#faq-4">Q4 - I found a problem!</a></h3>
             Dang, guess our code's not perfect.  File an issue for us,
             <a href="http://www.github.com/wyantb/HashMask/issues">right here on github</a>.
             If you don't have a github account, you can contact the main developer
             directly <a href="mailto:wyantb@gmail.com">wyantb@gmail.com</a>.
           </section>
-          <section>
-            <h3><a id="faq-5" href="#faq-5">Q5 - I'm a web developer.  Can I include HashMask on my site?</a></h3>
+          <section id="faq-5">
+            <h3><a href="#faq-5">Q5 - I'm a web developer.  Can I include HashMask on my site?</a></h3>
             Well, technically, you could.  We don't suggest it, however.  See, we want you to
             remember the <a href="#salt">salt</a> that we generate for every user.
             That's the key to the security of HashMask.  There's really no good way
             for an individual site to generate a salt for each user, so we wouldn't
-            recommend trying it.  Furthermore, user choice - some people could just
+            recommend trying it.  Furthermore, consider user choice - some people could just
             find it irritating, maybe it slows down their browsing experience, or 
             maybe they just use <a href="http://keepass.info/">KeePass</a> or other
             similar software to manage their passwords already.
           </section>
         </article>
-        <section>
-          <h2><a id="help" href="#help">Other Help Articles</a></h2>
-          <article>
-            <h3><a id="help-salt" href="#help-salt">What does a salt do?</a></h3>
+        <section id="help">
+          <h2><a href="#help">Other Help Articles</a></h2>
+          <article id="help-salt">
+            <h3><a href="#help-salt">What does a salt do?</a></h3>
             <p>
+              As always, <a href="http://en.wikipedia.org/wiki/Salt_(cryptography)">Wikipedia</a>
+              has some pretty good information on salts.
+            </p>
+            <p>
+              In the case of HashMask, we use it to provide an attacker even more
+              difficulties in guessing your password.  Even if they can replay
+              each image of your sparkline, without the salt that we generate for
+              you by default, they can't get your password.
+            </p>
+            <p>
+              We should make special note that your salt will, by default, be different
+              on different machines.  Each time you download HashMask onto a different
+              browser, we will generate a new salt for you.  If you want to use HashMask
+              on different browsers or computers, we advise manually copying your salt
+              into those other browsers/machines.  This only needs to be done once,
+              so it's not too bad.
+            </p>
+          </article>
+          <article id="help-hash">
+            <h3><a href="#help-hash">What is a hash algorithm?</a></h3>
+            <p>
+              As always, <a href="http://en.wikipedia.org/wiki/Hash_function">Wikipedia</a>
+              has some pretty good information about hash algorithms.
+            </p>
+            <p>
+              In the case of HashMask, we use it to provide you more options.  If
+              you select a different hash algorithm than the default (SHA-256),
+              it's even harder for an attacker to guess your password, since they
+              can't even be sure of which algorithm you're using.
+            </p>
+            <p>
+              We make special note of one factor: SHA-1 is the fastest algorithm.  
+              If you're noticing speed problems on any website after installing 
+              HashMask, you might try switching to that algorithm (just click the SHA-1
+              radio button in the <a href="options.html">options page</a>).
+            </p>
+          </article>
+          <article id="help-ripemd">
+            <h3><a href="help-ripemd">About RIPEMD-160</a></h3>
+            <p>
+              I'm no cryptologist.  I'll bat this answer off to 
+              <a href="http://en.wikipedia.org/wiki/RIPEMD">Wikipedia</a>
+              and <a href="http://www.truecrypt.org/docs/?s=ripemd-160">TrueCrypt</a>.
+            </p>
+          </article>
+          <article id="help-sha1">
+            <h3><a href="help-sha1">About SHA-1</a></h3>
+            <p>
+              I'm still no cryptologist.  I'll bat this answer off to 
+              <a href="http://en.wikipedia.org/wiki/SHA-1">Wikipedia</a>.
+            </p>
+            <p>
+              We'll add a special note that if you're having performance problems
+              with HashMask, this is probably the best option for you.
+            </p>
+          </article>
+          <article id="help-sha256">
+            <h3><a href="help-sha256">About SHA-256</a></h3>
+            <p>
+              Still not a cryptologist.  I'll bat this answer off to 
+              <a href="http://en.wikipedia.org/wiki/SHA-2">Wikipedia</a>
+              and <a href="http://www.truecrypt.org/docs/?s=sha-512">TrueCrypt</a>.
+            </p>
+          </article>
+          <article id="help-whirlpool">
+            <h3><a href="help-whirlpool">About Whirlpool</a></h3>
+            <p>
+              Cryptologist?  Nope.  I'll bat this answer off to 
+              <a href="http://en.wikipedia.org/wiki/Whirlpool_(cryptography)">Wikipedia</a>
+              and <a href="http://www.truecrypt.org/docs/?s=whirlpool">TrueCrypt</a>.
             </p>
           </article>
         </section>

@@ -61,7 +61,7 @@
     <div class="hero-unit" id="demo">
       <h2>Your own password visualizer - that's HashMask!</h2>
 
-      <p>A few examples (click to zoom):</p>
+      <p>A few examples (click to view):</p>
 
       <p class="examples_small">
         <a data-toggle="modal" data-target="#example-modal">
@@ -78,40 +78,42 @@
         Don't worry - it's secure! Try it out now:
       </p>
       <p><input type="password" autofocus="autofocus" placeholder="password"></p>
-      <p>But we understand if you're still worried. Please check the settings below and tweak to your personal satisfaction.</p>
+      <p>
+        But we understand if you're still worried. Please check our 
+        <a href="help.html#faq">FAQ</a>, our <a href="help.html#help">Other
+        help topics</a>, and tweak the settings below to your personal satisfaction.
+      </p>
     </div>
     
     <div class="row">
       <div class="span6">
         <h3>Password Salt</h3>
-        <p><a href="help.html#salt">What does a salt do?</a></p>
+        <p><a href="help.html#help-salt">What does a salt do?</a></p>
         <p><textarea id="salt-value" ></textarea></p>
         <div class="btn-group">
-          <a class="btn btn-primary" onclick="save()">Save</a>
+          <a class="btn btn-primary" onclick="save()">Save This Salt</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a id="reload-btn" onclick="reload_salt()">Reload Stored</a></li>
-            <li><a id="show-btn" onclick="show()">Show Stored</a></li>
-            <li><a id="rand-btn" onclick="rand_salt()">Randomize</a></li>
-            <li><div class="divider"></div></li>
-            <li><a id="salt-action-help" target="_blank">What do these buttons do?</a></li>
+            <li><a id="reload-btn" onclick="reload_salt()">Reload My Stored Salt</a></li>
+            <li><a id="show-btn" onclick="show()">Show My Stored Salt</a></li>
+            <li><a id="rand-btn" onclick="rand_salt()">Randomize My Salt</a></li>
           </ul>
         </div>
       </div>
       <div class="span6">
         <h3>Hash Algorithm</h3>
-          <a href="#" target="_blank">What is a hash algorithm?</a>
+          <a href="help.html#help-hash" target="_blank">What is a hash algorithm?</a>
           <div class="inline btn-group">
             <a class="dropdown-toggle" data-toggle="dropdown">
               Other Help Topics &raquo;
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#" target="_blank">About RIPEMD-160</a></li>
-              <li><a href="#" target="_blank">About SHA-1</a></li>
-              <li><a href="#" target="_blank">About SHA-256</a></li>
-              <li><a href="#" target="_blank">About Whirlpool</a></li>
+              <li><a href="help.html#help-ripemd" target="_blank">About RIPEMD-160</a></li>
+              <li><a href="help.html#help-sha1" target="_blank">About SHA-1</a></li>
+              <li><a href="help.html#help-sha256" target="_blank">About SHA-256</a></li>
+              <li><a href="help.html#help-whirlpool" target="_blank">About Whirlpool</a></li>
             </ul>
           </div>
         <div class="container-fluid">
