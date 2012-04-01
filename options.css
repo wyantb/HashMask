@@ -23,13 +23,10 @@ a, label {
 }
 
 /* popSlides */
-.pop {
+.examples_small {
   margin: 0;
 }
-.pop li {
-  float: left;
-  list-style-type: none;
-}
-.after_pop {
-  clear: left;
+.examples_small img {
+  height: 90px;
+  cursor: pointer;
 }
