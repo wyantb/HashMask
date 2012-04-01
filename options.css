@@ -6,7 +6,6 @@ label {
   padding-top: 5px;
   vertical-align: middle;
   margin: 3px 0;
-  text-align: -webkit-auto;
 }
 a, label {
   cursor: pointer;
