@@ -10,12 +10,6 @@ label {
 a, label {
   cursor: pointer;
 }
-.right {
-  right: 0px;
-}
-.center {
-  margin: 0 auto;
-}
 nav {
   padding-bottom: 40px;
 }
