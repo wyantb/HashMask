@@ -59,7 +59,7 @@
       <div class="span8 offset2">
         <h1>HashMask - Help</h1>
         <article>
-          <h2><a name="intro" href="#intro">About HashMask</a></h2>
+          <h2><a id="intro" href="#intro">About HashMask</a></h2>
           <p>
             HashMask is a browser extension for your password fields.
           </p>
@@ -80,21 +80,19 @@
           </p>
         </article>
         <article>
-          <h2><a name="faq" href="#faq">Frequently Asked Questions</a></h2>
-          <p>
-            We have here some questions you might be thinking.  As we notice more,
-            we'll go ahead and update this list.
-          </p>
-          <p>
-            <h3><a name="faq-1" href="#faq-1">Q1 - How could I possibly memorize all these sparklines?</a></h3>
+          <h2><a id="faq" href="#faq">Frequently Asked Questions</a></h2>
+          We have here some questions you might be thinking.  As we notice more,
+          we'll go ahead and update this list.
+          <section>
+            <h3><a id="faq-1" href="#faq-1">Q1 - How could I possibly memorize all these sparklines?</a></h3>
             Well, you don't have to, really.  As we said in 
             <a href="#intro">the intro</a>, they're just meant to be aids.
             Remember some of, or all of, your personal sparklines, whatever works for
             you.  We don't store or change anything about passwords sent to the
             website you're on, we only make a visible change in your browser.
-          </p>
-          <p>
-            <h3><a name="faq-2" href="#faq-2">Q2 - Couldn't someone guess my password from these sparklines?</a></h3>
+          </section>
+          <section>
+            <h3><a id="faq-2" href="#faq-2">Q2 - Couldn't someone guess my password from these sparklines?</a></h3>
             Not really.  See, by default, we generate a random 
             <a href="#salt">salt</a> for you.  Any password you type into any site
             is combined with that random salt, then hashed, and then converted to a
@@ -103,9 +101,9 @@
             hashes and your salt to be able to reproduce your password.  There are much
             easier methods to attack a victim, so HashMask really doesn't make you any
             more vulnerable to any attacker.
-          </p>
-          <p>
-            <h3><a name="faq-3" href="#faq-3">Q3 - Is there a maximum number of attempts that I can make?</a></h3>
+          </section>
+          <section>
+            <h3><a id="faq-3" href="#faq-3">Q3 - Is there a maximum number of attempts that I can make?</a></h3>
             No, you're free to try any number of combinations with HashMask.  You 
             press a key, and we'll update your sparkline.  That's it.  The security
             comes from the random <a href="#salt">salt</a> that we generate for you
@@ -113,16 +111,16 @@
             your browser keeping addons in an isolated world</a>.  Not to mention a 
             few extra options to make it yet harder for an attacker to duplicate 
             your HashMask settings.
-          </p>
-          <p>
-            <h3><a name="faq-4" href="#faq-4">Q4 - I found a problem!</a></h3>
+          </section>
+          <section>
+            <h3><a id="faq-4" href="#faq-4">Q4 - I found a problem!</a></h3>
             Dang, guess our code's not perfect.  File an issue for us,
             <a href="http://www.github.com/wyantb/HashMask/issues">right here on github</a>.
             If you don't have a github account, you can contact the main developer
             directly <a href="mailto:wyantb@gmail.com">wyantb@gmail.com</a>.
-          </p>
-          <p>
-            <h3><a name="faq-5" href="#faq-5">Q5 - I'm a web developer.  Can I include HashMask on my site?</a></h3>
+          </section>
+          <section>
+            <h3><a id="faq-5" href="#faq-5">Q5 - I'm a web developer.  Can I include HashMask on my site?</a></h3>
             Well, technically, you could.  We don't suggest it, however.  See, we want you to
             remember the <a href="#salt">salt</a> that we generate for every user.
             That's the key to the security of HashMask.  There's really no good way
@@ -131,14 +129,13 @@
             find it irritating, maybe it slows down their browsing experience, or 
             maybe they just use <a href="http://keepass.info/">KeePass</a> or other
             similar software to manage their passwords already.
-          </p>
+          </section>
         </article>
         <section>
-          <h2><a name="help" href="#help">Other Help Articles</a></h2>
+          <h2><a id="help" href="#help">Other Help Articles</a></h2>
           <article>
-            <h3><a name="help-salt" href="#help-salt">What does a salt do?</a></h3>
+            <h3><a id="help-salt" href="#help-salt">What does a salt do?</a></h3>
             <p>
-              Text!
             </p>
           </article>
         </section>
