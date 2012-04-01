@@ -25,13 +25,8 @@ a, label {
 /* popSlides */
 .pop {
   margin: 0;
-  padding: 0;
-  float: left;
-  clear: right;
 }
 .pop li {
-  margin: 0;
-  padding: 0;
   float: left;
   list-style-type: none;
 }
