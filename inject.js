@@ -19,15 +19,14 @@ if (typeof chrome !== "undefined" &&
   });
 } 
 
-// Only occurs when inject isn't in Chrome extension
+// Should only occur when inject isn't in Chrome extension
 else {
-  // Enter the defaults for salt and hash, if none exist
   if (localStorage.salt == undefined) localStorage.salt = "#e" + Math.random();
   if (localStorage.hash == undefined) localStorage.hash = "sha256";
-  $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[localStorage.hash];
+  $.hashmask.settings.salt = localStorage.salt;
+  $.hashmask.settings.hashUsed = localStorage.hash;
+  $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms["sha256"];
   
-  $(document).create("input[type=password]", function (ev) {
-    $(ev.target).hashmask();
-  });
+  $("input[type=password]").hashmask();
 }
 
