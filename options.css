@@ -7,10 +7,6 @@ nav {
 .container {
   margin-top: 45px;
 }
-.carousel img {
-  width: 100%;
-  height: 100%;
-}
 
 /* shortcuts */
 .inline {
@@ -29,10 +25,13 @@ a, label {
 }
 
 /* examples */
+.example img {
+	width: 560px;
+}
 .examples_small {
   margin: 0;
 }
 .examples_small img {
-  height: 90px;
+  height: 100px;
   cursor: pointer;
 }
