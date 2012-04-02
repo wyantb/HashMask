@@ -5,19 +5,9 @@
   <title>HashMask : Help</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="icons/16.png">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" type="text/css">
   <link rel="stylesheet" href="options.css" type="text/css">
-  <script type="text/javascript" src="lib/jquery-1.7.1.js"></script>
-  <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-
-  <!-- 
-    This script enables structural HTML5 elements in old IE.
-    http://code.google.com/p/html5shim/
-  -->
-  <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
 </head>
 
 <body>
@@ -38,9 +28,6 @@
           <ul class="nav">
             <li>
               <a href="options.html">Back to Options</a>
-            </li>
-            <li>
-              <a href="#top">Back to Top</a>
             </li>
             <li>
               <a href="http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/" target="_blank">Original HashMask Demo</a>
@@ -107,7 +94,7 @@
             No, you're free to try any number of combinations with HashMask.  You 
             press a key, and we'll update your sparkline.  That's it.  The security
             comes from the random <a href="#salt">salt</a> that we generate for you
-            and <a href="http://code.google.com/chrome/extensions/content_scripts.html#execution-environment">
+            and <a href="http://code.google.com/chrome/extensions/content_scripts.html#execution-environment" target="_blank">
             your browser keeping addons in an isolated world</a>.  Not to mention a 
             few extra options to make it yet harder for an attacker to duplicate 
             your HashMask settings.
@@ -115,19 +102,19 @@
           <section id="faq-4">
             <h3><a href="#faq-4">Q4 - I found a problem!</a></h3>
             Dang, guess our code's not perfect.  File an issue for us,
-            <a href="http://www.github.com/wyantb/HashMask/issues">right here on github</a>.
+            <a href="http://www.github.com/wyantb/HashMask/issues" target="_blank">right here on github</a>.
             If you don't have a github account, you can contact the main developer
-            directly <a href="mailto:wyantb@gmail.com">wyantb@gmail.com</a>.
+            directly <a href="mailto:wyantb@gmail.com" target="_blank">wyantb@gmail.com</a>.
           </section>
           <section id="faq-5">
             <h3><a href="#faq-5">Q5 - I'm a web developer.  Can I include HashMask on my site?</a></h3>
             Well, technically, you could.  We don't suggest it, however.  See, we want you to
-            remember the <a href="#salt">salt</a> that we generate for every user.
+            recall the <a href="#salt">salt</a> that we generate for every user.
             That's the key to the security of HashMask.  There's really no good way
             for an individual site to generate a salt for each user, so we wouldn't
             recommend trying it.  Furthermore, consider user choice - some people could just
             find it irritating, maybe it slows down their browsing experience, or 
-            maybe they just use <a href="http://keepass.info/">KeePass</a> or other
+            maybe they just use <a href="http://keepass.info/" target="_blank">KeePass</a> or other
             similar software to manage their passwords already.
           </section>
         </article>
@@ -136,7 +123,7 @@
           <article id="help-salt">
             <h3><a href="#help-salt">What does a salt do?</a></h3>
             <p>
-              As always, <a href="http://en.wikipedia.org/wiki/Salt_(cryptography)">Wikipedia</a>
+              As always, <a href="http://en.wikipedia.org/wiki/Salt_(cryptography)" target="_blank">Wikipedia</a>
               has some pretty good information on salts.
             </p>
             <p>
@@ -157,7 +144,7 @@
           <article id="help-hash">
             <h3><a href="#help-hash">What is a hash algorithm?</a></h3>
             <p>
-              As always, <a href="http://en.wikipedia.org/wiki/Hash_function">Wikipedia</a>
+              As always, <a href="http://en.wikipedia.org/wiki/Hash_function" target="_blank">Wikipedia</a>
               has some pretty good information about hash algorithms.
             </p>
             <p>
@@ -177,15 +164,15 @@
             <h3><a href="help-ripemd">About RIPEMD-160</a></h3>
             <p>
               I'm no cryptologist.  I'll bat this answer off to 
-              <a href="http://en.wikipedia.org/wiki/RIPEMD">Wikipedia</a>
-              and <a href="http://www.truecrypt.org/docs/?s=ripemd-160">TrueCrypt</a>.
+              <a href="http://en.wikipedia.org/wiki/RIPEMD" target="_blank">Wikipedia</a>
+              and <a href="http://www.truecrypt.org/docs/?s=ripemd-160" target="_blank">TrueCrypt</a>.
             </p>
           </article>
           <article id="help-sha1">
             <h3><a href="help-sha1">About SHA-1</a></h3>
             <p>
               I'm still no cryptologist.  I'll bat this answer off to 
-              <a href="http://en.wikipedia.org/wiki/SHA-1">Wikipedia</a>.
+              <a href="http://en.wikipedia.org/wiki/SHA-1" target="_blank">Wikipedia</a>.
             </p>
             <p>
               We'll add a special note that if you're having performance problems
@@ -196,16 +183,16 @@
             <h3><a href="help-sha256">About SHA-256</a></h3>
             <p>
               Still not a cryptologist.  I'll bat this answer off to 
-              <a href="http://en.wikipedia.org/wiki/SHA-2">Wikipedia</a>
-              and <a href="http://www.truecrypt.org/docs/?s=sha-512">TrueCrypt</a>.
+              <a href="http://en.wikipedia.org/wiki/SHA-2" target="_blank">Wikipedia</a>
+              and <a href="http://www.truecrypt.org/docs/?s=sha-512" target="_blank">TrueCrypt</a>.
             </p>
           </article>
           <article id="help-whirlpool">
             <h3><a href="help-whirlpool">About Whirlpool</a></h3>
             <p>
               Cryptologist?  Nope.  I'll bat this answer off to 
-              <a href="http://en.wikipedia.org/wiki/Whirlpool_(cryptography)">Wikipedia</a>
-              and <a href="http://www.truecrypt.org/docs/?s=whirlpool">TrueCrypt</a>.
+              <a href="http://en.wikipedia.org/wiki/Whirlpool_(cryptography)" target="_blank">Wikipedia</a>
+              and <a href="http://www.truecrypt.org/docs/?s=whirlpool" target="_blank">TrueCrypt</a>.
             </p>
           </article>
         </section>
@@ -213,6 +200,17 @@
     </div>
 
   </div>
+
+  <script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- 
+    This script enables structural HTML5 elements in old IE.
+    http://code.google.com/p/html5shim/
+  -->
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
 </body>
 </html>

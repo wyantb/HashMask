@@ -6,18 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="icons/16.png">
   <!--<link rel="stylesheet" href="reset.css" type="text/css">-->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" type="text/css">
   <link rel="stylesheet" href="options.css" type="text/css">
-  <script type="text/javascript" src="lib/jquery-1.7.1.js"></script>
-
-  <!-- 
-    This script enables structural HTML5 elements in old IE.
-    http://code.google.com/p/html5shim/
-  -->
-  <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
 </head>
 
 <body>
@@ -61,11 +52,11 @@
     <div class="hero-unit" id="demo">
       <h2>Your own password visualizer - that's HashMask!</h2>
 
-      <p>A few examples (click to view):</p>
+      <p><a data-toggle="modal" data-target="#example-modal">A few examples</a>: <span style="color:#666;">(click to view)</span></p>
 
       <p class="examples_small">
         <a data-toggle="modal" data-target="#example-modal">
-          <img src="img/twitter.png" alt="screenshot of Twitter's login page">
+          <img src="img/facebook.png" alt="screenshot of Facebook's login page">
           <img src="img/reddit.png" alt="screenshot of Reddit's login page">
           <img src="img/tumblr.png" alt="screenshot of Tumblr's login page">
           <img src="img/gmail.png" alt="screenshot of Gmail's login page">
@@ -104,16 +95,16 @@
       </div>
       <div class="span6">
         <h3>Hash Algorithm</h3>
-          <a href="help.html#help-hash" target="_blank">What is a hash algorithm?</a>
+          <a href="help.html#help-hash">What is a hash algorithm?</a>
           <div class="inline btn-group">
             <a class="dropdown-toggle" data-toggle="dropdown">
               Other Help Topics &raquo;
             </a>
             <ul class="dropdown-menu">
-              <li><a href="help.html#help-ripemd" target="_blank">About RIPEMD-160</a></li>
-              <li><a href="help.html#help-sha1" target="_blank">About SHA-1</a></li>
-              <li><a href="help.html#help-sha256" target="_blank">About SHA-256</a></li>
-              <li><a href="help.html#help-whirlpool" target="_blank">About Whirlpool</a></li>
+              <li><a href="help.html#help-ripemd">About RIPEMD-160</a></li>
+              <li><a href="help.html#help-sha1">About SHA-1</a></li>
+              <li><a href="help.html#help-sha256">About SHA-256</a></li>
+              <li><a href="help.html#help-whirlpool">About Whirlpool</a></li>
             </ul>
           </div>
         <div class="container-fluid">
@@ -189,7 +180,7 @@
         at <a href="mailto:wyantb@gmail.com" target="_blank">wyantb@gmail.com</a>.
       </p>
       <p>
-        You can also visit the <a href="http://www.sse.se.rit.edu" target="_blank">Society of Software Engineers</a>.
+        You can also visit the <a href="http://sse.se.rit.edu" target="_blank">Society of Software Engineers</a>.
       </p>
     </div>
     <div class="modal-footer">
@@ -205,38 +196,33 @@
     <div id="example-carousel" class="carousel slide modal-body">
       <div class="carousel-inner">
         <div class="item active">
-          <img class="carousel-img" src="img/twitter.png" alt="screenshot of Twitter's login page">
+          <img src="img/facebook.png" alt="screenshot of Facebook's login page">
           <br>
-          <h4>Twitter</h4>
-          <br>
-          <p>Try out Twitter - no problems.</p>
+          <h4>Facebook</h4>
+          <p>Try out Facebook - no problems.</p>
         </div>
         <div class="item">
-          <img class="carousel-img" src="img/reddit.png" alt="screenshot of Reddit's login page">
+          <img src="img/reddit.png" alt="screenshot of Reddit's login page">
           <br>
           <h4>Reddit</h4>
-          <br>
-          <p>The hash is the same! Guess I shouldn't use 'asdf' everywhere.</p>
+          <p>The hash is different! Must be a different password.</p>
         </div>
         <div class="item">
-          <img class="carousel-img" src="img/tumblr.png" alt="screenshot of Tumblr's login page">
+          <img src="img/tumblr.png" alt="screenshot of Tumblr's login page">
           <br>
           <h4>Tumblr</h4>
-          <br>
-          <p>Yet more asdf. Still, no problem. Can you get my salt?</p>
+          <p>Oops, same password. Guess I shouldn't use asdf. Still, no problem. Can you get my salt?</p>
         </div>
         <div class="item">
-          <img class="carousel-img" src="img/gmail.png" alt="screenshot of Gmail's login page">
+          <img src="img/gmail.png" alt="screenshot of Gmail's login page">
           <br>
           <h4>Gmail</h4>
-          <br>
-          <p>Still asdf. Hint - it's autogenerated.</p>
+          <p>Still asdf. Hint - my salt is autogenerated.</p>
         </div>
         <div class="item">
-          <img class="carousel-img" src="img/github.png" alt="screenshot of GitHub's login page">
+          <img src="img/github.png" alt="screenshot of GitHub's login page">
           <br>
           <h4>GitHub</h4>
-          <br>
           <p>Oops, not asdf. Can you get this password?</p>
         </div>
       </div>
@@ -250,16 +236,25 @@
 
   <!-- JAVASCRIPT -->
 
+  <script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+
+  <!-- 
+    This script enables structural HTML5 elements in old IE.
+    http://code.google.com/p/html5shim/
+  -->
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <script type="text/javascript" src="lib/jquery.sparkline.min.js"></script>
   <script type="text/javascript" src="lib/jcade.js"></script>
   <script type="text/javascript" src="src/util.js"></script>
   <script type="text/javascript" src="src/hashmask.js"></script>
   <script type="text/javascript" src="src/inject.js"></script>
-  <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript">
 
     $(function () {
-    // Place initial salt value into salt input field once DOM is ready
+      // Place initial salt value into salt input field once DOM is ready
       reload_salt();
       reload_hash();
 
@@ -275,7 +270,7 @@
         $("input[type=password]").hashmask();
       });
 
-    // Carousel stuff
+      // Carousel stuff
       $("#example-carousel").carousel();
     });
 
