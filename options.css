@@ -35,3 +35,6 @@ a, label {
   height: 100px;
   cursor: pointer;
 }
+.example h4, .example p {
+  margin: 10px;
+}
