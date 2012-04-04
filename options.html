@@ -52,30 +52,35 @@
     <div class="hero-unit" id="demo">
       <h2>Your own password visualizer - that's HashMask!</h2>
 
-      <p><a data-toggle="modal" data-target="#example-modal">A few examples</a>: <span style="color:#666;">(click to view)</span></p>
+      <p>A few examples: <a data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">(click to view)</a></p>
 
       <p class="examples_small">
-        <a data-toggle="modal" data-target="#example-modal">
-          <img src="img/facebook.png" alt="screenshot of Facebook's login page">
-          <img src="img/reddit.png" alt="screenshot of Reddit's login page">
-          <img src="img/tumblr.png" alt="screenshot of Tumblr's login page">
-          <img src="img/gmail.png" alt="screenshot of Gmail's login page">
-          <img src="img/github.png" alt="screenshot of GitHub's login page">
-        </a>
+        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">
+          <img src="img/facebook.png" alt="screenshot of Facebook's login page"></a>
+        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(1)">
+          <img src="img/wikipedia.png" alt="screenshot of Wikipedia's login page"></a>
+        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(2)">
+          <img src="img/tumblr.png" alt="screenshot of Tumblr's login page"></a>
+        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(3)">
+          <img src="img/gmail.png" alt="screenshot of Gmail's login page"></a>
+        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(4)">
+          <img src="img/github.png" alt="screenshot of GitHub's login page"></a>
       </p>
 
+      <p><br>
+        This password field here is a little demo of what you'll now see on any password field on any website on the internet.
+      </p>
       <p>
-        This password field here is a little demo of what you'll now see on any password field on any website on the internet.<br>
-        Don't worry - it's secure! Try it out now:
+        Try it out now:
       </p>
       <p><input type="password" autofocus="autofocus" placeholder="password"></p>
       <p>
-        But we understand if you're still worried. Please check our 
+        And we understand if you're worried about your passwords. Please check our 
         <a href="help.html#faq">FAQ</a>, our <a href="help.html#help">Other
         help topics</a>, and tweak the settings below to your personal satisfaction.
       </p>
     </div>
-    
+
     <div class="row">
       <div class="span6">
         <h3>Password Salt</h3>
@@ -140,8 +145,8 @@
     <div class="modal-body">
       <p>
         This browser extension is basically a wrapper around someone
-        else's work - Chris Dary (<a href="mailto:umbrae@gmail.com" target="_blank">umbrae@gmail.com</a>).
-        So lots of credit to him.
+        else's work - <a href="http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/" target="_blank">which can be found here</a> - by Chris Dary.
+        So lots of credit goes to him.
       </p>
       <p>
         The extension part is us, a few guys from the Society of 
@@ -157,7 +162,14 @@
         and is released under the <a href="http://www.opensource.org/licenses/bsd-license.php" target="_blank">BSD license</a>.
       </p>
       <p>
-        Thanks for trying it out!
+        Cool projects are always built on the work of others.  In our case, that includes
+        <a href="http://twitter.github.com/bootstrap" target="_blank">Bootstrap</a> by @mdo and @fat, 
+        <a href="http://jquery.org" target="_blank">jQuery</a>, 
+        <a href="http://github.com/snesin/jcade" target="_blank">jcade</a>,
+        and a few existing hash algorithms (links can be found in the help section for each).
+      </p>
+      <p>
+        So, we hope you like HashMask.  Thanks for checking it out!
       </p>
     </div>
     <div class="modal-footer">
@@ -193,41 +205,34 @@
       <a class="close" data-toggle="modal" data-target="#example-modal">×</a>
       <h3>Examples</h3>
     </div>
-    <div id="example-carousel" class="carousel slide modal-body">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="img/facebook.png" alt="screenshot of Facebook's login page">
-          <br>
-          <h4>Facebook</h4>
-          <p>Try out Facebook - no problems.</p>
-        </div>
-        <div class="item">
-          <img src="img/reddit.png" alt="screenshot of Reddit's login page">
-          <br>
-          <h4>Reddit</h4>
-          <p>The hash is different! Must be a different password.</p>
-        </div>
-        <div class="item">
-          <img src="img/tumblr.png" alt="screenshot of Tumblr's login page">
-          <br>
-          <h4>Tumblr</h4>
-          <p>Oops, same password. Guess I shouldn't use asdf. Still, no problem. Can you get my salt?</p>
-        </div>
-        <div class="item">
-          <img src="img/gmail.png" alt="screenshot of Gmail's login page">
-          <br>
-          <h4>Gmail</h4>
-          <p>Still asdf. Hint - my salt is autogenerated.</p>
-        </div>
-        <div class="item">
-          <img src="img/github.png" alt="screenshot of GitHub's login page">
-          <br>
-          <h4>GitHub</h4>
-          <p>Oops, not asdf. Can you get this password?</p>
-        </div>
+    <div "modal-body">
+      <div id="example-0" class="example hide">
+        <img src="img/facebook.png" alt="screenshot of Facebook's login page"><br>
+        <h4>1) <a href="http://www.facebook.com" target="_blank">Facebook</a></h4>
+        <p>Try out Facebook - no problems.</p>
       </div>
-      <a class="carousel-control left" href="#example-carousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#example-carousel" data-slide="next">&rsaquo;</a>
+      <div id="example-1" class="example hide">
+        <img src="img/wikipedia.png" alt="screenshot of Wikipedia's login page"><br>
+        <h4>2) <a href="http://www.wikipedia.org" target="_blank">Wikipedia</a></h4>
+        <p>The hash is different! Must be a different password.</p>
+      </div>
+      <div id="example-2" class="example hide">
+        <img src="img/tumblr.png" alt="screenshot of Tumblr's login page"><br>
+        <h4>3) <a href="http://www.tumblr.com" target="_blank">Tumblr</a></h4>
+        <p>Maybe I shouldn't use short, bad passwords like 'asdf'.</p>
+      </div>
+      <div id="example-3" class="example hide">
+        <img src="img/gmail.png" alt="screenshot of Gmail's login page"><br>
+        <h4>4) <a href="http://www.gmail.com" target="_blank">Gmail</a></h4>
+        <p>Still asdf.  Still, can you guess my personal salt?</p>
+      </div>
+      <div id="example-4" class="example hide">
+        <img src="img/github.png" alt="screenshot of GitHub's login page"><br>
+        <h4>5) <a href="http://www.github.com" target="_blank">GitHub</a></h4>
+        <p>Oops, not asdf. Can you get this password?</p>
+      </div>
+      <a class="carousel-control left" onclick="showExample('prev')">&lsaquo;</a>
+      <a class="carousel-control right" onclick="showExample('next')">&rsaquo;</a>
     </div>
     <div class="modal-footer">
       <a href="#" data-toggle="modal" data-target="#example-modal" class="btn">Close</a>
@@ -269,10 +274,32 @@
         $(".hashmask-sparkline").remove();
         $("input[type=password]").hashmask();
       });
-
-      // Carousel stuff
-      $("#example-carousel").carousel();
     });
+
+    var curEx = 1;
+    var numEx = $(".example").length;
+    // Stuff for displaying and cycling between examples
+    function showExample (example) {
+      if (typeof(example) === "number") {
+        curEx = example;
+        $(".example").not("#example-"+example).slideUp(function() {
+          $("#example-"+example).slideDown();
+        });
+        }
+      else if (example=="prev") {
+        prev_id = $(".example").filter(":visible").attr("id");
+        prev_index = (curEx - 1 + numEx) % numEx;
+        showExample(prev_index);
+      }
+      else if (example=="next") {
+        next_id = $(".example").filter(":visible").attr("id");
+        next_index = (curEx + 1) % numEx;
+        showExample(next_index);
+      }
+      else {
+        showExample(0);
+      }
+    }
 
     // Save the user's salt
     function save () {
