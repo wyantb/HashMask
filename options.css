@@ -38,3 +38,9 @@ a, label {
 .example h4, .example p {
   margin: 10px;
 }
+
+@media screen and (max-width: 979px) {
+  .examples_small {
+    display: none;
+  }
+}
