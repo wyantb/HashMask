@@ -6,6 +6,8 @@
  * See http://pajhome.org.uk/crypt/md5 for details.
  * Also http://www.ocf.berkeley.edu/~jjlin/jsotp/
  *
+ * direct link: http://pajhome.org.uk/crypt/md5/ripemd160.html
+ *
  * Usage: rstr_rmd160("string");
  *
  */
@@ -95,6 +97,8 @@ function bit_rol(num,cnt)
 *  v3.0 ~ Sean Catchpole 
 *  Copyright 2009 Public Domain
 * 
+*  direct link: http://www.sunsean.com/Whirlpool.html
+*
 *  Usage: Whirlpool("string");
 *
 */
@@ -110,6 +114,8 @@ function bit_rol(num,cnt)
 *
 *  Minified, obviously
 *
+*  direct link: http://www.webtoolkit.info/javascript-sha256.html
+*
 *  Usage: SHA256("string")
 *
 **/
@@ -121,6 +127,8 @@ function SHA256(s){var chrsz=8;var hexcase=0;function safe_add(x,y){var lsw=(x&0
  * * http://www.webtoolkit.info/
  * *
  * * minified, obviously.
+ * *
+ * * direct link: http://www.webtoolkit.info/javascript-sha1.html
  * *
  * * Usage: SHA1("string")
  * *
