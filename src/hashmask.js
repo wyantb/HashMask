@@ -1,7 +1,7 @@
 /**
  * HashMask - an old approach to password masking, in the browser.
  *
- * Originally written by Chris Dary <umbrae@gmail.com>
+ * jQuery.hashmask.js originally written by Chris Dary <umbrae@gmail.com>
  * All credit for anything hard goes to him!
  * We just put it into a browser extension, really.
  *
@@ -13,6 +13,7 @@
  * util.js (hashing functions)
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
+ * @author    Brian Wyant <wyantb@gmail.com>
  * @license   http://www.opensource.org/licenses/bsd-license.php
  *
 **/
