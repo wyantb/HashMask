@@ -37,10 +37,10 @@ a, label {
 .example img {
   width: 560px;
 }
-.examples_small {
+#examples_small {
   margin: 0;
 }
-.examples_small img {
+#examples_small img {
   height: 100px;
   cursor: pointer;
 }
