@@ -2,8 +2,9 @@
  * HashMask - an old approach to password masking, in the browser.
  *
  * REQUIRES:
- * jquery-1.7.1.js
+ * jquery-1.7.2.js
  * jquery.sparkline.js
+ * jcade.js
  * hashmask.js
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
