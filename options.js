@@ -1,3 +1,17 @@
+/**
+ * HashMask - an old approach to password masking, in the browser.
+ *
+ * REQUIRES:
+ * jquery-1.7.1.js
+ * jquery.sparkline.js
+ * hashmask.js
+ *
+ * @author    Society of Software Engineers (http://sse.se.rit.edu)
+ * @author    Brian Wyant <wyantb@gmail.com>
+ * @license   http://www.opensource.org/licenses/bsd-license.php
+ *
+**/
+
 $(function () {
   // Place initial salt value into salt input field once DOM is ready
   reload_salt();
