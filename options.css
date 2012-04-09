@@ -34,22 +34,17 @@ a, label {
 }
 
 /* examples */
+#example-thumbnails {
+  /*margin: 0;*/
+  text-align: center;
+}
+#example-thumbnails img {
+  height: 90px;
+  cursor: pointer;
+}
 .example img {
   width: 560px;
 }
-.examples_small {
-  margin: 0;
-}
-.examples_small img {
-  height: 100px;
-  cursor: pointer;
-}
 .example h4, .example p {
   margin: 10px;
-}
-
-@media screen and (max-width: 979px) {
-  .examples_small {
-    display: none;
-  }
 }

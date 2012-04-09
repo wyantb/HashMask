@@ -61,28 +61,33 @@
     <div class="hero-unit" id="demo">
       <h2>Your own password visualizer - that's HashMask!</h2>
 
-      <p>A few examples: <a data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">(click to view)</a></p>
+      <hr>
 
-      <p class="examples_small">
-        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">
+      <p>A few examples: <a data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">(click to view)</a></p>
+      <p class="row" id="example-thumbnails">
+        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">
           <img src="img/facebook.png" alt="screenshot of Facebook's login page"></a>
-        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(1)">
+        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(1)">
           <img src="img/wikipedia.png" alt="screenshot of Wikipedia's login page"></a>
-        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(2)">
+        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(2)">
           <img src="img/tumblr.png" alt="screenshot of Tumblr's login page"></a>
-        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(3)">
+        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(3)">
           <img src="img/gmail.png" alt="screenshot of Gmail's login page"></a>
-        <a data-toggle="modal" data-target="#example-modal" onclick="showExample(4)">
+        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(4)">
           <img src="img/github.png" alt="screenshot of GitHub's login page"></a>
       </p>
 
-      <p><br>
+      <hr>
+
+      <p>
         This password field here is a little demo of what you'll now see on any password field on any website on the internet.
       </p>
       <p>
-        Try it out now:
+        Try it out now: <input type="password" autofocus="autofocus" placeholder="password">
       </p>
-      <p><input type="password" autofocus="autofocus" placeholder="password"></p>
+
+      <hr>
+
       <p>
         And we understand if you're worried about your passwords. Please check our 
         <a href="help.html#faq">FAQ</a>, our <a href="help.html#help">Other

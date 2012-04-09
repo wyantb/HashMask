@@ -2,9 +2,9 @@
  * HashMask - an old approach to password masking, in the browser.
  *
  * REQUIRES:
- * jquery-1.7.1.js
- * jquery.sparkline.js
- * hashmask.js
+ * jquery-1.7.2.js
+ * bootstrap.js
+ * src/inject.js (and its requirements)
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
  * @author    Brian Wyant <wyantb@gmail.com>
@@ -30,26 +30,31 @@ $(function () {
   });
 });
 
+// Stuff for displaying and cycling between examples
 var curEx = 1;
 var numEx = $(".example").length;
-// Stuff for displaying and cycling between examples
 function showExample (example) {
+  // Switch to a specific example
+  // (note that the other 3 cases are wrappers for this one)
   if (typeof(example) === "number") {
     curEx = example;
     $(".example").not("#example-"+example).slideUp(function() {
       $("#example-"+example).slideDown();
     });
     }
+  // Switch to the previous example
   else if (example=="prev") {
     prev_id = $(".example").filter(":visible").attr("id");
     prev_index = (curEx - 1 + numEx) % numEx;
     showExample(prev_index);
   }
+  // Switch to the next example
   else if (example=="next") {
     next_id = $(".example").filter(":visible").attr("id");
     next_index = (curEx + 1) % numEx;
     showExample(next_index);
   }
+  // Switch to the first example (fallback)
   else {
     showExample(0);
   }
