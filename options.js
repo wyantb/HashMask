@@ -18,6 +18,7 @@ $(function () {
   // Place initial salt value into salt input field once DOM is ready
   reload_salt();
   reload_hash();
+  reload_delay();
 
   $(".hash input").click(function (e) {
     var hash = localStorage.hash = e.target.value;
@@ -93,6 +94,23 @@ function reload_salt () {
 function rand_salt () {
   $('#salt-value').val("#e" + Math.random());
   save();
+}
+
+function save_delay () {
+  localStorage.delay = +($("#delay-value").val());
+  $.hashmask.settings.sparkInterval = localStorage.delay;
+
+  // Refresh the hashmask on the page
+  $(".hashmask-sparkline").remove();
+  $("input[type=password]").hashmask();
+}
+
+function reload_delay () {
+  $("#delay-value").val(localStorage.delay + "");
+}
+
+function show_delay () {
+  alert(localStorage.delay);
 }
 
 // Load the user's current hash into a hash radio button

@@ -102,7 +102,7 @@
     </div>
 
     <div class="row">
-      <div class="span6">
+      <div class="span4">
         <h3>Password Salt</h3>
         <p><a href="help.html#help-salt">What does a salt do?</a></p>
         <p><textarea id="salt-value" ></textarea></p>
@@ -118,7 +118,22 @@
           </ul>
         </div>
       </div>
-      <div class="span6">
+      <div class="span4">
+        <h3>Hash Delay</h3>
+        <p><a href="help.html#help-delay">What does a delay do?</a></p>
+        <p><input id="delay-value" type="text"></p>
+        <div class="btn-group">
+          <a class="btn btn-primary" onclick="save_delay()">Save</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a id="reload-btn" onclick="reload_delay()">Reload My Stored Delay</a></li>
+            <li><a id="show-btn" onclick="show_delay()">Show My Stored Delay</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="span4">
         <h3>Hash Algorithm</h3>
           <a href="help.html#help-hash">What is a hash algorithm?</a>
           <div class="inline btn-group">
