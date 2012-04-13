@@ -12,10 +12,13 @@
  *
 **/
 
+var exToShow = 0;
+
 $(function () {
   // Place initial salt value into salt input field once DOM is ready
   reload_salt();
   reload_hash();
+  reload_delay();
 
   $(".hash input").click(function (e) {
     var hash = localStorage.hash = e.target.value;
@@ -30,18 +33,30 @@ $(function () {
   });
 });
 
+function waitToShow(num) {
+  exToShow = num;
+}
+
+$("#example-modal").on("shown", function () {
+  showExample(exToShow);
+});
+
 // Stuff for displaying and cycling between examples
-var curEx = 1;
+var curEx = 0;
 var numEx = $(".example").length;
 function showExample (example) {
   // Switch to a specific example
   // (note that the other 3 cases are wrappers for this one)
   if (typeof(example) === "number") {
-    curEx = example;
-    $(".example").not("#example-"+example).slideUp(function() {
-      $("#example-"+example).slideDown();
+    console.log("Hiding: " + curEx);
+    $("#example-" + curEx).hide(200, function() {
+      console.log("Actually showing: " + example);
+      $("#example-" + example).slideDown(300);
     });
-    }
+    console.log("CurEx: " + curEx);
+    curEx = example;
+    console.log("CurEx: " + curEx);
+  }
   // Switch to the previous example
   else if (example=="prev") {
     prev_id = $(".example").filter(":visible").attr("id");
@@ -79,6 +94,23 @@ function reload_salt () {
 function rand_salt () {
   $('#salt-value').val("#e" + Math.random());
   save();
+}
+
+function save_delay () {
+  localStorage.delay = +($("#delay-value").val());
+  $.hashmask.settings.sparkInterval = localStorage.delay;
+
+  // Refresh the hashmask on the page
+  $(".hashmask-sparkline").remove();
+  $("input[type=password]").hashmask();
+}
+
+function reload_delay () {
+  $("#delay-value").val(localStorage.delay + "");
+}
+
+function show_delay () {
+  alert(localStorage.delay);
 }
 
 // Load the user's current hash into a hash radio button

@@ -61,23 +61,29 @@
     <div class="hero-unit" id="demo">
       <h2>Your own password visualizer - that's HashMask!</h2>
 
-      <hr>
+      <div class="examples-area">
+        <hr> 
 
-      <p>A few examples: <a data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">(click to view)</a></p>
-      <p class="row" id="example-thumbnails">
-        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(0)">
-          <img src="img/facebook.png" alt="screenshot of Facebook's login page"></a>
-        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(1)">
-          <img src="img/wikipedia.png" alt="screenshot of Wikipedia's login page"></a>
-        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(2)">
-          <img src="img/tumblr.png" alt="screenshot of Tumblr's login page"></a>
-        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(3)">
-          <img src="img/gmail.png" alt="screenshot of Gmail's login page"></a>
-        <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="showExample(4)">
-          <img src="img/github.png" alt="screenshot of GitHub's login page"></a>
-      </p>
+        <p>
+          A few examples: <a data-toggle="modal" data-target="#example-modal" onclick="waitToShow(0)">(click to view)</a>
+        </p>
+        <p class="row" id="example-thumbnails">
+          <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="waitToShow(0)">
+            <img src="img/facebook.png" alt="screenshot of Facebook's login page"></a>
+          <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="waitToShow(1)">
+            <img src="img/wikipedia.png" alt="screenshot of Wikipedia's login page"></a>
+          <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="waitToShow(2)">
+            <img src="img/tumblr.png" alt="screenshot of Tumblr's login page"></a>
+          <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="waitToShow(3)">
+            <img src="img/gmail.png" alt="screenshot of Gmail's login page"></a>
+          <a class="span2" data-toggle="modal" data-target="#example-modal" onclick="waitToShow(4)">
+            <img src="img/github.png" alt="screenshot of GitHub's login page"></a>
+        </p>
 
-      <hr>
+        <hr>
+
+      </div>
+
 
       <p>
         This password field here is a little demo of what you'll now see on any password field on any website on the internet.
@@ -96,7 +102,7 @@
     </div>
 
     <div class="row">
-      <div class="span6">
+      <div class="span4">
         <h3>Password Salt</h3>
         <p><a href="help.html#help-salt">What does a salt do?</a></p>
         <p><textarea id="salt-value" ></textarea></p>
@@ -112,7 +118,22 @@
           </ul>
         </div>
       </div>
-      <div class="span6">
+      <div class="span4">
+        <h3>Hash Delay</h3>
+        <p><a href="help.html#help-delay">What does a delay do?</a></p>
+        <p><input id="delay-value" type="text"></p>
+        <div class="btn-group">
+          <a class="btn btn-primary" onclick="save_delay()">Save</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a id="reload-btn" onclick="reload_delay()">Reload My Stored Delay</a></li>
+            <li><a id="show-btn" onclick="show_delay()">Show My Stored Delay</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="span4">
         <h3>Hash Algorithm</h3>
           <a href="help.html#help-hash">What is a hash algorithm?</a>
           <div class="inline btn-group">

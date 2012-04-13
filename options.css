@@ -48,3 +48,9 @@ a, label {
 .example h4, .example p {
   margin: 10px;
 }
+
+@media screen and (max-width: 600px) {
+  .examples-area {
+    display: none;
+  }
+}
