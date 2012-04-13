@@ -12,6 +12,8 @@
  *
 **/
 
+var exToShow = 0;
+
 $(function () {
   // Place initial salt value into salt input field once DOM is ready
   reload_salt();
@@ -30,18 +32,30 @@ $(function () {
   });
 });
 
+function waitToShow(num) {
+  exToShow = num;
+}
+
+$("#example-modal").on("shown", function () {
+  showExample(exToShow);
+});
+
 // Stuff for displaying and cycling between examples
-var curEx = 1;
+var curEx = 0;
 var numEx = $(".example").length;
 function showExample (example) {
   // Switch to a specific example
   // (note that the other 3 cases are wrappers for this one)
   if (typeof(example) === "number") {
-    curEx = example;
-    $(".example").not("#example-"+example).slideUp(function() {
-      $("#example-"+example).slideDown();
+    console.log("Hiding: " + curEx);
+    $("#example-" + curEx).hide(200, function() {
+      console.log("Actually showing: " + example);
+      $("#example-" + example).slideDown(300);
     });
-    }
+    console.log("CurEx: " + curEx);
+    curEx = example;
+    console.log("CurEx: " + curEx);
+  }
   // Switch to the previous example
   else if (example=="prev") {
     prev_id = $(".example").filter(":visible").attr("id");
