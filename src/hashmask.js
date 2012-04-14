@@ -67,6 +67,8 @@
 
     /** Function to make hashmask */
     makeHashDiv = function ($this, $sparkline) {
+      $sparkline.css("visibility", "hidden");
+
       window.clearTimeout(sparkTimeout);
 
       var inputVal = $this.val();
@@ -92,6 +94,7 @@
       var fillColor = '#' + hash.substr(0,6);
       
       sparkTimeout = window.setTimeout(function() {
+          $sparkline.css("visibility", "visible");
           var height = updateDivPos($this, $sparkline);
           $sparkline.sparkline(inputDecArr, 
             $.extend( settings.sparklineOptions, {
