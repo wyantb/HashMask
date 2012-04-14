@@ -12,8 +12,6 @@
  *
 **/
 
-var exToShow = 0;
-
 $(function () {
   // Place initial salt value into salt input field once DOM is ready
   reload_salt();
@@ -31,39 +29,42 @@ $(function () {
     $(".hashmask-sparkline").remove();
     $("input[type=password]").hashmask();
   });
+
+  $(".example").hide();
 });
 
+// Stuff for displaying and cycling between examples
+var exToShow = 0;
+var curEx = 0;
+var numEx = $(".example").length;
+
 function waitToShow(num) {
-  $("#example-" + curEx).hide(0);
-	$("#example-modal").modal('show');
   exToShow = num;
+  $("#example-" + curEx).css("display", "none");
+  $("#example-modal").modal('show');
 }
 
 $("#example-modal").on("shown", function () {
   showExample(exToShow);
 });
 
-// Stuff for displaying and cycling between examples
-var curEx = 0;
-var numEx = $(".example").length;
 function showExample (example) {
   // Switch to a specific example
   // (note that the other 3 cases are wrappers for this one)
   if (typeof(example) === "number") {
-    $("#example-" + curEx).hide(0);
-    $("#example-" + example).show(0);
+    $("#example-" + example).slideDown(300);
     curEx = example;
   }
   // Switch to the previous example
   else if (example=="prev") {
-    $("#example-" + curEx).hide(0);
+    $("#example-" + curEx).slideUp(300);
     prev_id = $(".example").filter(":visible").attr("id");
     prev_index = (curEx - 1 + numEx) % numEx;
     showExample(prev_index);
   }
   // Switch to the next example
   else if (example=="next") {
-    $("#example-" + curEx).hide(0);
+    $("#example-" + curEx).slideUp(300);
     next_id = $(".example").filter(":visible").attr("id");
     next_index = (curEx + 1) % numEx;
     showExample(next_index);
@@ -73,6 +74,7 @@ function showExample (example) {
     showExample(0);
   }
 }
+// End stuff to cycle between examples
 
 // Save the user's salt
 function save () {
