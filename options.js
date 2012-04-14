@@ -34,6 +34,8 @@ $(function () {
 });
 
 function waitToShow(num) {
+  $("#example-" + curEx).hide(0);
+	$("#example-modal").modal('show');
   exToShow = num;
 }
 
@@ -48,23 +50,20 @@ function showExample (example) {
   // Switch to a specific example
   // (note that the other 3 cases are wrappers for this one)
   if (typeof(example) === "number") {
-    console.log("Hiding: " + curEx);
-    $("#example-" + curEx).hide(200, function() {
-      console.log("Actually showing: " + example);
-      $("#example-" + example).slideDown(300);
-    });
-    console.log("CurEx: " + curEx);
+    $("#example-" + curEx).hide(0);
+    $("#example-" + example).show(0);
     curEx = example;
-    console.log("CurEx: " + curEx);
   }
   // Switch to the previous example
   else if (example=="prev") {
+    $("#example-" + curEx).hide(0);
     prev_id = $(".example").filter(":visible").attr("id");
     prev_index = (curEx - 1 + numEx) % numEx;
     showExample(prev_index);
   }
   // Switch to the next example
   else if (example=="next") {
+    $("#example-" + curEx).hide(0);
     next_id = $(".example").filter(":visible").attr("id");
     next_index = (curEx + 1) % numEx;
     showExample(next_index);
