@@ -63,8 +63,12 @@
     **/
     settings = $.extend({}, $.hashmask.settings, settings);
 
+    sparkTimeout = "";
+
     /** Function to make hashmask */
-    makeHashDiv = function ($this, $sparkline, sparkTimeout) {
+    makeHashDiv = function ($this, $sparkline) {
+      $sparkline.css("visibility", "hidden");
+
       window.clearTimeout(sparkTimeout);
 
       var inputVal = $this.val();
@@ -90,6 +94,7 @@
       var fillColor = '#' + hash.substr(0,6);
       
       sparkTimeout = window.setTimeout(function() {
+          $sparkline.css("visibility", "visible");
           var height = updateDivPos($this, $sparkline);
           $sparkline.sparkline(inputDecArr, 
             $.extend( settings.sparklineOptions, {
@@ -132,7 +137,7 @@
      * @return void
     **/
     return this.each(function() {
-      var $sparkline, sparkTimeout, i;
+      var $sparkline, i;
       var $this = $(this);
 
       // Add sparkline div to the page
@@ -141,12 +146,12 @@
 
       // If there's a password on the page already, make a sparkline for it
       if ($this.val() != undefined && $this.val != "") {
-        makeHashDiv($this, $sparkline, sparkTimeout);
+        makeHashDiv($this, $sparkline);
       }
 
       // Trigger sparkline refresh on user input
       $this.keyup(function (e) {
-        makeHashDiv($this, $sparkline, sparkTimeout);
+        makeHashDiv($this, $sparkline);
       });
 
       // Tie sparkline visibility to the focus of the input field
