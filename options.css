@@ -33,9 +33,23 @@ a, label {
   cursor: pointer;
 }
 
+/* vertical spacing tweaks */
+.hero-unit {
+  padding: 15px 60px;
+  margin-bottom: 15px;
+}
+hr {
+  margin: 9px 0px;
+}
+#salt-value {
+  height: 20px;
+}
+#delay-value {
+  width: 40px;
+}
+
 /* examples */
 #example-thumbnails {
-  /*margin: 0;*/
   text-align: center;
 }
 #example-thumbnails img {
