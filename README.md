@@ -1,5 +1,6 @@
 #HashMask
 Inspired by [this demo](http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/).
+You can install HashMask from the [Chrome Web Store](https://chrome.google.com/webstore/detail/iijmhgjmfjnibiehilcmbbjffcmgolhn).
 ##Target Audience
 HashMask is useful for anyone using the Chrome browser.  
 It's a tool to help you remember your passwords by giving you a visual hash of your passwords.
