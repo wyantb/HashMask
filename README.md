@@ -8,7 +8,7 @@ It's a tool to help you remember your passwords by giving you a visual hash of y
 If you want to try it before installing it, you can check out our demo 
 [here](http://wyantb.github.com/HashMask/options.html).
 ##Installing
-We advise everyone to simply install HashMask from the Chrome Web Store, once we upload it, [here](#).
+We advise everyone to simply install HashMask from the Chrome Web Store, [here](https://chrome.google.com/webstore/detail/iijmhgjmfjnibiehilcmbbjffcmgolhn).
 ##Contributing
 Fork away or file some issues.  Most of the important stuff you might want to change is in the src folder.
 Especially, check out those hash algorithms.
