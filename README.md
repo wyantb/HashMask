@@ -1,4 +1,4 @@
-#HashMask
+#HashMask (Chrome)
 Inspired by [this demo](http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/).
 
 
