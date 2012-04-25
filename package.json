@@ -1,20 +1,15 @@
 {
-	"name": "HashMask",
+	"name": "hashmask",
+	"fullName": "HashMask",
+	"description": "Secure password visualization for Firefox.",
+	"author": "Nicolas McCurdy (http://thenickperson.com)",
+	"contributors": ["Brian Wyant", "Daniel Wallach"],
+	"icon": "icons/48.png",
+	"icon64": "icons/64.png",
+	"license": "BSD License (http://www.opensource.org/licenses/bsd-license.php)",
+	"id": "hashmask@sse.se.rit.edu",
 	"version": "1.1",
-	"manifest_version": 2,
-
-	"description": "Secure password visualization for Chrome.",
-	"icons": { "16": "icons/16.png",
-	           "48": "icons/48.png",
-	           "128": "icons/128.png" },
-
-	"background": {
-		"scripts": ["src/bg.js"] },
-	"options_page": "options.html",
-	"content_scripts": [{
-		"matches": ["<all_urls>"],
-		"js": ["src/util.js", "lib/jquery-1.7.2.min.js", "lib/jcade.js", "lib/jquery.sparkline.min.js", "src/hashmask.js", "src/inject.js"],
-		"all_frames": true }],
-	"offline_enabled": true,
-	"permissions": []
+	"lib": "src",
+	"packages": "lib",
+	"main": "bg"
 }
