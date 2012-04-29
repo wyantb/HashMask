@@ -95,10 +95,11 @@
       
       sparkTimeout = window.setTimeout(function() {
           $sparkline.css("visibility", "visible");
-          var height = updateDivPos($this, $sparkline);
+          var dimension = updateDivPos($this, $sparkline);
           $sparkline.sparkline(inputDecArr, 
             $.extend( settings.sparklineOptions, {
-              height: height,
+              height: dimension[0],
+							width: dimension[1],
               fillColor: fillColor
             })
           );
@@ -109,7 +110,10 @@
       var height = $this.outerHeight() - 5 - 
         parseInt($this.css('borderBottomWidth'), 10) - 
         parseInt($this.css('borderTopWidth'), 10);
-      
+			var width = $this.outerWidth();
+        $this.css('borderLeftWidth'), 10;
+				$this.css('borderRightWidth'), 10;
+
       $sparkline.css({
         position:    'absolute',
         top:         $this.offset().top + 2.5 + 
@@ -120,12 +124,12 @@
                         parseInt($this.css('borderRightWidth'), 10) - 
                         parseInt(settings.sparklineOptions.width, 10),
 
-        width:       settings.sparklineOptions.width,
+        width:       Math.min(100, width/2),
         height:      height,
         'z-index':   9001
       });
 
-      return height;
+      return [height, Math.min(100, width/2)];
     };
 
     /**
