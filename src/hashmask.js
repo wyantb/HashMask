@@ -170,6 +170,13 @@
         // And anytime we come back into play, refresh the position
         updateDivPos($this, $sparkline);
       });
+      
+      // Also force sparkline to dissappear if clicked on
+      $sparkline.click(function (ev) {
+        $sparkline.css("visibility", "hidden");
+        $this.focus();
+        $sparkline.css("visibility", "hidden");
+      });
 
       // Finally, if the screen size changes, or the pw, we move
       $(window).resize(function (ev) {
