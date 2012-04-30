@@ -130,7 +130,7 @@
         left:        $this.offset().left + 
                         $this.outerWidth() - 
                         parseInt($this.css('borderRightWidth'), 10) - 
-                        parseInt(width, 10),
+                        width,
 
         width:       width,
         height:      height,
