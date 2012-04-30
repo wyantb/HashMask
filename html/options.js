@@ -13,9 +13,9 @@
 **/
 
 $(function () {
-  // Place initial values into input fields once DOM is ready
-  reload_hash();
-  reload_delay();
+  // Place initial values into input fields
+  $("#" + localStorage.hash).click();
+  $("#delay-value").val(localStorage.delay);
 
   // Except for the salt; not shown until user presses enter
   //reload_salt();
@@ -92,13 +92,6 @@ $(function () {
   $(".delay-show").click( function (ev) {
     alert(localStorage.delay);
   });
-
-  // Load the user's current hash into a hash radio button
-  function reload_hash () {
-    var hash = localStorage.hash;
-
-    $("#" + hash).click();
-  };
 });
 
 // Stuff for displaying and cycling between examples
