@@ -99,7 +99,7 @@
           $sparkline.sparkline(inputDecArr, 
             $.extend( settings.sparklineOptions, {
               height: dimension[0],
-							width: dimension[1],
+              width: dimension[1],
               fillColor: fillColor
             })
           );
@@ -110,9 +110,9 @@
       var height = $this.outerHeight() - 5 - 
         parseInt($this.css('borderBottomWidth'), 10) - 
         parseInt($this.css('borderTopWidth'), 10);
-			var width = $this.outerWidth();
+      var width = $this.outerWidth();
         $this.css('borderLeftWidth'), 10;
-				$this.css('borderRightWidth'), 10;
+        $this.css('borderRightWidth'), 10;
 
       $sparkline.css({
         position:    'absolute',
