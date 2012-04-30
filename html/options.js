@@ -13,10 +13,12 @@
 **/
 
 $(function () {
-  // Place initial salt value into salt input field once DOM is ready
-  reload_salt();
+  // Place initial values into input fields once DOM is ready
   reload_hash();
   reload_delay();
+
+  // Except for the salt; not shown until user presses enter
+  //reload_salt();
 
   $(".hash input").click(function (e) {
     var hash = localStorage.hash = e.target.value;
@@ -30,7 +32,73 @@ $(function () {
     $("input[type=password]").hashmask();
   });
 
-  $(".example").hide();
+  // Make the user's salt field editable
+  $(".salt-edit").click( function (ev) {
+    $('#salt-value').val(localStorage.salt);
+    $('#salt-value').prop("disabled", false);
+    $(".salt-edit-group").hide();
+    $(".salt-save-group").show();
+  });
+
+  // Randomize the user's salt field
+  $(".salt-rand").click( function (ev) {
+    var randomWords = sjcl.random.randomWords(6, 0);
+    var newSalt = sjcl.codec.base64.fromBits(randomWords);
+    $('#salt-value').val(newSalt);
+    $('#salt-value').prop("disabled", false);
+    $(".salt-edit-group").hide();
+    $(".salt-save-group").show();
+  });
+
+  // Save the user's salt
+  $(".salt-save").click( function (ev) {
+    localStorage.salt = $('#salt-value').val();
+    $('#salt-value').prop("disabled", true);
+    $('#salt-value').val("");
+    $(".salt-edit-group").show();
+    $(".salt-save-group").hide();
+    
+    $.hashmask.settings.salt = localStorage.salt;
+
+    // Refresh the hashmask on the page
+    $(".hashmask-sparkline").remove();
+    $("input[type=password]").hashmask();
+  });
+
+  // Cancel editing the user's salt
+  $(".salt-cancel").click( function (ev) {
+    $('#salt-value').prop("disabled", true);
+    $('#salt-value').val("");
+    $(".salt-edit-group").show();
+    $(".salt-save-group").hide();
+  });
+
+  // Save whatever delay the user has entered
+  $(".delay-save").click( function (ev) {
+    localStorage.delay = +($("#delay-value").val());
+    $.hashmask.settings.sparkInterval = localStorage.delay;
+
+    // Refresh the hashmask on the page
+    $(".hashmask-sparkline").remove();
+    $("input[type=password]").hashmask();
+  });
+
+  // Reload the stored delay
+  $(".delay-reload").click( function (ev) {
+    $("#delay-value").val(localStorage.delay + "");
+  });
+
+  // Show the stored delay
+  $(".delay-show").click( function (ev) {
+    alert(localStorage.delay);
+  });
+
+  // Load the user's current hash into a hash radio button
+  function reload_hash () {
+    var hash = localStorage.hash;
+
+    $("#" + hash).click();
+  };
 });
 
 // Stuff for displaying and cycling between examples
@@ -75,58 +143,3 @@ function showExample (example) {
   }
 }
 // End stuff to cycle between examples
-
-// Save the user's salt
-function save () {
-  localStorage.salt = $('#salt-value').val();
-  $.hashmask.settings.salt = localStorage.salt;
-
-  // Refresh the hashmask on the page
-  $(".hashmask-sparkline").remove();
-  $("input[type=password]").hashmask();
-}
-
-// Load the user's current salt into the salt input field
-function reload_salt () {
-  $('#salt-value').val(localStorage.salt);
-}
-
-//make a random salt and save it
-function rand_salt () {
-  $('#salt-value').val("#e" + Math.random());
-  save();
-}
-
-function save_delay () {
-  localStorage.delay = +($("#delay-value").val());
-  $.hashmask.settings.sparkInterval = localStorage.delay;
-
-  // Refresh the hashmask on the page
-  $(".hashmask-sparkline").remove();
-  $("input[type=password]").hashmask();
-}
-
-function reload_delay () {
-  $("#delay-value").val(localStorage.delay + "");
-}
-
-function show_delay () {
-  alert(localStorage.delay);
-}
-
-// Load the user's current hash into a hash radio button
-function reload_hash () {
-  var hash = localStorage.hash;
-
-  $("#" + hash).click();
-};
-
-// Anytime the user changes it, update salt (bad idea by default)
-//$('#salt-value').keyup(function (e) {
-//  localStorage.salt = $(this).val();
-//});
-
-// Show the user's current salt
-function show () {
-  alert("Stored value: " + localStorage.salt);
-}

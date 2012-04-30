@@ -107,16 +107,25 @@
       <div class="span4">
         <h3>Password Salt</h3>
         <p><a href="help.html#help-salt">What does a salt do?</a></p>
-        <p><textarea id="salt-value" ></textarea></p>
-        <div class="btn-group">
-          <a class="btn btn-primary" onclick="save()">Save</a>
+        <p><textarea id="salt-value" disabled></textarea></p>
+        <!-- Button group for editing -->
+        <div class="btn-group salt-edit-group">
+          <a class="btn btn-primary salt-edit">Edit</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a id="reload-btn" onclick="reload_salt()">Reload My Stored Salt</a></li>
-            <li><a id="show-btn" onclick="show()">Show My Stored Salt</a></li>
-            <li><a id="rand-btn" onclick="rand_salt()">Randomize My Salt</a></li>
+            <li><a class="salt-rand">Randomize</a></li>
+          </ul>
+        </div>
+        <!-- Button group for saving -->
+        <div class="btn-group salt-save-group hide">
+          <a class="btn btn-primary salt-save">Save</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="salt-cancel">Cancel</a></li>
           </ul>
         </div>
       </div>
@@ -125,13 +134,13 @@
         <p><a href="help.html#help-delay">What does a delay do?</a></p>
         <p><input id="delay-value" type="text"> milliseconds</p>
         <div class="btn-group">
-          <a class="btn btn-primary" onclick="save_delay()">Save</a>
+          <a class="btn btn-primary delay-save">Save</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a id="reload-btn" onclick="reload_delay()">Reload My Stored Delay</a></li>
-            <li><a id="show-btn" onclick="show_delay()">Show My Stored Delay</a></li>
+            <li><a class="delay-reload">Reload My Stored Delay</a></li>
+            <li><a class="delay-show">Show My Stored Delay</a></li>
           </ul>
         </div>
       </div>
