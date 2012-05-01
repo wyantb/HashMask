@@ -30,6 +30,12 @@
 		]
 	}],
 
+	"TODObrowser_actionTODO": {
+		"default_icon": "icons/19.png",
+		"default_title": "Enable/disable HashMask",
+		"default_popup": "html/popup.html"
+	},
+
 	"offline_enabled": true,
 	"permissions": []
 }
