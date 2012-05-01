@@ -107,7 +107,7 @@
       <div class="span4">
         <h3>Password Salt</h3>
         <p><a href="help.html#help-salt">What does a salt do?</a></p>
-        <p><textarea id="salt-value" disabled></textarea></p>
+        <textarea id="salt-value" disabled></textarea>
         <!-- Button group for editing -->
         <div class="btn-group salt-edit-group">
           <a class="btn btn-primary salt-edit">Edit</a>
@@ -132,7 +132,9 @@
       <div class="span4">
         <h3>Hash Delay</h3>
         <p><a href="help.html#help-delay">What does a delay do?</a></p>
-        <p><input id="delay-value" type="text"> milliseconds</p>
+        <div class="input-append">
+          <input id="delay-value" type="number"><span class="add-on">milliseconds</span>
+        </div>
         <div class="btn-group">
           <a class="btn btn-primary delay-save">Save</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -158,7 +160,7 @@
               <li><a href="help.html#help-whirlpool">About Whirlpool</a></li>
             </ul>
           </div>
-        <div class="container-fluid">
+        <div class="container-fluid hash-container">
           <div class="hash">
             <input class="radio inline" type="radio" id="ripemd160" name="hash" value="ripemd160">
             <label for="ripemd160">RIPEMD-160</label>
@@ -199,7 +201,7 @@
         Software Engineers</a> at <a href="http://www.rit.edu" target="_blank">RIT</a>. If you have any problems,
         please contact any of the three developers listed below.
       </p>
-			<p><h3>Developers:</h3></p>
+      <p><h3>Developers:</h3></p>
       <p><ul>
         <li>Daniel Wallach (Project Lead) - <a href="mailto:dywallach@dywallach.net" target="_blank">dywallach@dywallach.net</a></li>
         <li>Brian Wyant - <a href="mailto:wyantb@gmail.com" target="_blank">wyantb@gmail.com</a></li>
