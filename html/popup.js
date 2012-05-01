@@ -12,10 +12,10 @@
  *
 **/
 
-$("#enable").click(function (ev) {
-  console.log("Enable!");
+$("#btn-on").click(function (ev) {
+  console.log("HashMask Enabled");
 });
 
-$("#disable").click(function (ev) {
-  console.log("Disable!");
+$("#btn-off").click(function (ev) {
+  console.log("HashMask Disabled");
 });

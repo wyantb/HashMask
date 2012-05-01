@@ -12,15 +12,17 @@
 <head>
   <meta charset="utf-8">
   <title>HashMask - Enable/Disable</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
 </head>
 
 <body>
 
-  <input id="enable" name="enabled" type="radio">
-  <label for="enable">Enable HashMask</label>
+  <strong style="font-size: 18px;">HashMask:</strong>
 
-  <input id="disable" name="enabled" type="radio">
-  <label for="disable">Disable HashMask</label>
+  <div class="btn-group" data-toggle="buttons-radio">
+    <button class="btn active" id="btn-on">On</button>
+    <button class="btn" id="btn-off">Off</button>
+  </div>
 
   <!-- JAVASCRIPT -->
 
@@ -31,6 +33,7 @@
   <script type="text/javascript" src="../lib/sjcl.js"></script>
   <script type="text/javascript" src="../src/hashmask.js"></script>
   <script type="text/javascript" src="../src/inject.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="popup.js"></script>
 </body>
 </html>
