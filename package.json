@@ -4,6 +4,7 @@
 	"description": "Secure password visualization for Firefox.",
 	"author": "Nicolas McCurdy (http://thenickperson.com)",
 	"contributors": ["Brian Wyant", "Daniel Wallach"],
+	"homepage": "https://github.com/wyantb/HashMask"
 	"icon": "icons/48.png",
 	"icon64": "icons/64.png",
 	"license": "BSD License (http://www.opensource.org/licenses/bsd-license.php)",
