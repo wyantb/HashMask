@@ -37,7 +37,7 @@
 	},
 
 	"offline_enabled": true,
-	"permissions": []
+	"permissions": [],
 
-	"homepage_url": "http://www.github.com/wyantb/HashMask.git",
+	"homepage_url": "http://www.github.com/wyantb/HashMask.git"
 }
