@@ -5,7 +5,7 @@ if (localStorage.salt == undefined) {
   localStorage.salt = salt;
 }
 if (localStorage.hash == undefined) localStorage.hash = "sha256";
-if (localStorage.delay == undefined) localStorage.delay = 0;
+if (localStorage.delay == undefined) localStorage.delay = 200;
 
 chrome.extension.onRequest.addListener(onReceiveEvent);
 
