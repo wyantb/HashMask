@@ -65,18 +65,18 @@
         <hr> 
 
         <p>
-          A few examples: <a onclick="waitToShow(0)">(click to view)</a>
+          A few examples: <a id="example-display">(click to view)</a>
         </p>
-        <p class="row" id="example-thumbnails">
-          <a class="span2" onclick="waitToShow(0)">
+        <p class="row" id="example-thumbs">
+          <a class="span2 example-thumb">
             <img src="img/facebook.png" alt="screenshot of Facebook's login page"></a>
-          <a class="span2" onclick="waitToShow(1)">
+          <a class="span2 example-thumb">
             <img src="img/wikipedia.png" alt="screenshot of Wikipedia's login page"></a>
-          <a class="span2" onclick="waitToShow(2)">
+          <a class="span2 example-thumb">
             <img src="img/tumblr.png" alt="screenshot of Tumblr's login page"></a>
-          <a class="span2" onclick="waitToShow(3)">
+          <a class="span2 example-thumb">
             <img src="img/gmail.png" alt="screenshot of Gmail's login page"></a>
-          <a class="span2" onclick="waitToShow(4)">
+          <a class="span2 example-thumb">
             <img src="img/github.png" alt="screenshot of GitHub's login page"></a>
         </p>
 
@@ -107,31 +107,42 @@
       <div class="span4">
         <h3>Password Salt</h3>
         <p><a href="help.html#help-salt">What does a salt do?</a></p>
-        <p><textarea id="salt-value" ></textarea></p>
-        <div class="btn-group">
-          <a class="btn btn-primary" onclick="save()">Save</a>
+        <textarea id="salt-value" disabled></textarea>
+        <!-- Button group for editing -->
+        <div class="btn-group salt-edit-group">
+          <a class="btn btn-primary salt-edit">Edit</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a id="reload-btn" onclick="reload_salt()">Reload My Stored Salt</a></li>
-            <li><a id="show-btn" onclick="show()">Show My Stored Salt</a></li>
-            <li><a id="rand-btn" onclick="rand_salt()">Randomize My Salt</a></li>
+            <li><a class="salt-rand">Randomize</a></li>
+          </ul>
+        </div>
+        <!-- Button group for saving -->
+        <div class="btn-group salt-save-group hide">
+          <a class="btn btn-primary salt-save">Save</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="salt-cancel">Cancel</a></li>
           </ul>
         </div>
       </div>
       <div class="span4">
         <h3>Hash Delay</h3>
         <p><a href="help.html#help-delay">What does a delay do?</a></p>
-        <p><input id="delay-value" type="text"> milliseconds</p>
+        <div class="input-append">
+          <input id="delay-value" type="number"><span class="add-on">milliseconds</span>
+        </div>
         <div class="btn-group">
-          <a class="btn btn-primary" onclick="save_delay()">Save</a>
+          <a class="btn btn-primary delay-save">Save</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a id="reload-btn" onclick="reload_delay()">Reload My Stored Delay</a></li>
-            <li><a id="show-btn" onclick="show_delay()">Show My Stored Delay</a></li>
+            <li><a class="delay-reload">Reload My Stored Delay</a></li>
+            <li><a class="delay-show">Show My Stored Delay</a></li>
           </ul>
         </div>
       </div>
@@ -149,7 +160,7 @@
               <li><a href="help.html#help-whirlpool">About Whirlpool</a></li>
             </ul>
           </div>
-        <div class="container-fluid">
+        <div class="container-fluid hash-container">
           <div class="hash">
             <input class="radio inline" type="radio" id="ripemd160" name="hash" value="ripemd160">
             <label for="ripemd160">RIPEMD-160</label>
@@ -190,7 +201,7 @@
         Software Engineers</a> at <a href="http://www.rit.edu" target="_blank">RIT</a>. If you have any problems,
         please contact any of the three developers listed below.
       </p>
-			<p><h3>Developers:</h3></p>
+      <p><h3>Developers:</h3></p>
       <p><ul>
         <li>Daniel Wallach (Project Lead) - <a href="mailto:dywallach@dywallach.net" target="_blank">dywallach@dywallach.net</a></li>
         <li>Brian Wyant - <a href="mailto:wyantb@gmail.com" target="_blank">wyantb@gmail.com</a></li>
@@ -208,7 +219,8 @@
         Cool projects are always built on the work of others.  In our case, that includes
         <a href="http://twitter.github.com/bootstrap" target="_blank">Bootstrap</a> by @mdo and @fat, 
         <a href="http://jquery.org" target="_blank">jQuery</a>, 
-        <a href="http://github.com/snesin/jcade" target="_blank">jcade</a>,
+        <a href="http://github.com/snesin/jcade" target="_blank">jcade</a>, 
+				the <a href="https://github.com/bitwiseshiftleft/sjcl" target="_blank">Standard Javascript Crypto Library</a>, 
         and a few existing hash algorithms (links can be found in the help section for each).
       </p>
       <p>
@@ -274,8 +286,8 @@
         <h4>5) <a href="http://www.github.com" target="_blank">GitHub</a></h4>
         <p>Oops, not asdf. Can you get this password?</p>
       </div>
-      <a class="carousel-control left" onclick="showExample('prev')">&lsaquo;</a>
-      <a class="carousel-control right" onclick="showExample('next')">&rsaquo;</a>
+      <a class="carousel-control left">&lsaquo;</a>
+      <a class="carousel-control right">&rsaquo;</a>
     </div>
     <div class="modal-footer">
       <a href="#" data-toggle="modal" data-target="#example-modal" class="btn">Close</a>
@@ -296,6 +308,7 @@
   <script type="text/javascript" src="../lib/jquery.sparkline.min.js"></script>
   <script type="text/javascript" src="../lib/jcade.js"></script>
   <script type="text/javascript" src="../src/util.js"></script>
+  <script type="text/javascript" src="../lib/sjcl.js"></script>
   <script type="text/javascript" src="../src/hashmask.js"></script>
   <script type="text/javascript" src="../src/inject.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>

@@ -99,7 +99,7 @@
           $sparkline.sparkline(inputDecArr, 
             $.extend( settings.sparklineOptions, {
               height: dimension[0],
-							width: dimension[1],
+              width: dimension[1],
               fillColor: fillColor
             })
           );
@@ -107,13 +107,21 @@
     };
 
     updateDivPos = function ($this, $sparkline) {
+      // Compute the height
       var height = $this.outerHeight() - 5 - 
         parseInt($this.css('borderBottomWidth'), 10) - 
         parseInt($this.css('borderTopWidth'), 10);
-			var width = $this.outerWidth();
-        $this.css('borderLeftWidth'), 10;
-				$this.css('borderRightWidth'), 10;
 
+      // Compute the width
+      var width = $this.outerWidth();
+        $this.css('borderLeftWidth'), 10;
+        $this.css('borderRightWidth'), 10;
+
+      // But keep it in the range of 50-100
+      width = Math.min(100, width / 2);
+      width = Math.max(50, width);
+
+      // And configure the sparkline location accordingly
       $sparkline.css({
         position:    'absolute',
         top:         $this.offset().top + 2.5 + 
@@ -122,14 +130,14 @@
         left:        $this.offset().left + 
                         $this.outerWidth() - 
                         parseInt($this.css('borderRightWidth'), 10) - 
-                        parseInt(settings.sparklineOptions.width, 10),
+                        width,
 
-        width:       Math.min(100, width/2),
+        width:       width,
         height:      height,
         'z-index':   9001
       });
 
-      return [height, Math.min(100, width/2)];
+      return [height, width];
     };
 
     /**
@@ -169,6 +177,13 @@
 
         // And anytime we come back into play, refresh the position
         updateDivPos($this, $sparkline);
+      });
+      
+      // Also force sparkline to dissappear if clicked on
+      $sparkline.click(function (ev) {
+        $sparkline.css("visibility", "hidden");
+        $this.focus();
+        $sparkline.css("visibility", "hidden");
       });
 
       // Finally, if the screen size changes, or the pw, we move
