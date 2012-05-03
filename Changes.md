@@ -1,12 +1,11 @@
-
 ### v1.1 -- May 2, 2012
 
 #### ADDED:
 
-Use better salt generator by default, sjcl.
-Defaults to 200ms delay.
-Updating to Chrome addon version 2 manifest.
-Make a few more options prettier and more intuitive.
+Use better salt generator by default, sjcl.  
+Defaults to 200ms delay.  
+Updating to Chrome addon version 2 manifest.  
+Make a few more options prettier and more intuitive.  
 
 #### BUGFIX: 
 
