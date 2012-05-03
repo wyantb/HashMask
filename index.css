@@ -33,7 +33,7 @@ a, label {
   cursor: pointer;
 }
 
-/* vertical spacing tweaks */
+/* spacing tweaks */
 .hero-unit {
   padding: 15px 60px;
   margin-bottom: 15px;
@@ -44,15 +44,22 @@ hr {
 #salt-value {
   height: 20px;
 }
+.input-append {
+  margin-bottom: 9px;
+}
 #delay-value {
-  width: 40px;
+  width: 55px;
+  margin: 0px;
+}
+.hash-container {
+  padding: 0px;
 }
 
 /* examples */
-#example-thumbnails {
+#example-thumbs {
   text-align: center;
 }
-#example-thumbnails img {
+#example-thumbs img {
   height: 90px;
   cursor: pointer;
 }
