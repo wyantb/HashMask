@@ -20,6 +20,23 @@ $(function () {
   // Except for the salt; not shown until user presses enter
   //reload_salt();
 
+  // Example display
+  $(".example-thumb").each(function(index) {
+    $(this).click(function() {
+      waitToShow(index);
+    })
+  });
+  $("#example-display").click(function() {
+    waitToShow(0);
+  })
+  $(".carousel-control.left").click(function() {
+    showExample("prev");
+  });
+  $(".carousel-control.right").click(function() {
+    showExample("next");
+  });
+
+  // Change the user's hash
   $(".hash input").click(function (e) {
     var hash = localStorage.hash = e.target.value;
 

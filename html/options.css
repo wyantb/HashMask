@@ -56,10 +56,10 @@ hr {
 }
 
 /* examples */
-#example-thumbnails {
+#example-thumbs {
   text-align: center;
 }
-#example-thumbnails img {
+#example-thumbs img {
   height: 90px;
   cursor: pointer;
 }
