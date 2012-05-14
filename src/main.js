@@ -1,3 +1,6 @@
+// Imports
+var pageMod = require("page-mod");
+var data = require("self").data;
 var ss = require("simple-storage");
 
 // Enter the defaults for salt and hash, if none exist
@@ -8,3 +11,13 @@ if (ss.storage.salt == undefined) {
 }
 if (ss.storage.hash == undefined) ss.storage.hash = "sha256";
 if (ss.storage.delay == undefined) ss.storage.delay = 200;
+
+// Create page mods
+pageMod.PageMod({
+	include: "*",
+	contentScriptFile: "inject.js"
+});
+pageMod.PageMod({
+	include: "*",
+	contentScriptFile: data.url("jquery.min.js")
+});
