@@ -17,36 +17,32 @@ if (typeof chrome !== "undefined" &&
     typeof chrome.extension !== "undefined" && 
     typeof chrome.extension.sendRequest !== "undefined") {
 
-  // Send a request to our BG page for all settings before injecting hashmask
-  chrome.extension.sendRequest({eventName: "settings"}, function (result) {
-  
     // Update hash algorithm about to be used by hashmask
-    $.hashmask.settings.hashUsed = result.hash;
-    $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[result.hash];
-    $.hashmask.settings.salt = result.salt;
-    $.hashmask.settings.sparkInterval = result.delay;
+    $.hashmask.settings.hashUsed = ss.storage.hash;
+    $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[ss.storage.hash];
+    $.hashmask.settings.salt = ss.storage.salt;
+    $.hashmask.settings.sparkInterval = ss.storage.delay;
   
     // Alternative method to inject hashmask: use jcade, do it for current and future password fields
     $(document).create("input[type=password]", function (ev) {
       $(ev.target).hashmask();
     });
   
-  });
 } 
 
 // Should only occur when inject isn't in Chrome extension
 else {
-  if (localStorage.salt == undefined) {
+  if (ss.storage.salt == undefined) {
     var randomWords = sjcl.random.randomWords(6, 0);
     var salt = sjcl.codec.base64.fromBits(randomWords);
-    localStorage.salt = salt;
+    ss.storage.salt = salt;
   }
-  if (localStorage.hash == undefined) localStorage.hash = "sha256";
-  if (localStorage.delay == undefined) localStorage.delay = 200;
-  $.hashmask.settings.salt = localStorage.salt;
-  $.hashmask.settings.hashUsed = localStorage.hash;
+  if (ss.storage.hash == undefined) ss.storage.hash = "sha256";
+  if (ss.storage.delay == undefined) ss.storage.delay = 200;
+  $.hashmask.settings.salt = ss.storage.salt;
+  $.hashmask.settings.hashUsed = ss.storage.hash;
   $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms["sha256"];
-  $.hashmask.settings.sparkInterval = localStorage.delay;
+  $.hashmask.settings.sparkInterval = ss.storage.delay;
   
   $("input[type=password]").hashmask();
 }
