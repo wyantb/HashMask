@@ -2,6 +2,8 @@
 var pageMod = require("page-mod");
 var data = require("self").data;
 var ss = require("simple-storage");
+var self = require("self");
+var sjcl = require(self.data.url("sjcl.js"));
 
 // Enter the defaults for salt and hash, if none exist
 if (ss.storage.salt == undefined) {
