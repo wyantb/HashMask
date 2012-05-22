@@ -10,7 +10,7 @@ It's a tool that helps you remember your passwords by displaying visual hashes o
 HashMask's stable releases are on the Chrome Web Store, along with a video demonstration.
 The extension is free, and will work on recent versions of Chrome and Chromium.
 
-##[Demo](http://wyantb.github.com/HashMask/options.html)
+##[Demo](http://wyantb.github.com/HashMask/index.html)
 Check this out if you want to try HashMask before installing it.
 
 ##Firefox
