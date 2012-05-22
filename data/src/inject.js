@@ -16,7 +16,7 @@
 self.port.on("getSettings", function (settings) {
   // Update hash algorithm about to be used by hashmask
   $.hashmask.settings.hashUsed = settings.hash;
-  $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[ss.storage.hash];
+  $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[settings.hash];
   $.hashmask.settings.salt = settings.salt;
   $.hashmask.settings.sparkInterval = settings.delay;
 
