@@ -65,6 +65,16 @@
 
     sparkTimeout = "";
 
+    updateDivVis = function ($this, $sparkline) {
+        if ($this.is(":focus")) {
+            // TODO: parameterize this with args
+            $sparkline.css("visibility", "visible");
+        } else {
+            // TODO: parameterize this with args
+            $sparkline.css("visibility", "none");
+        }
+    };
+
     /** Function to make hashmask */
     makeHashDiv = function ($this, $sparkline) {
       $sparkline.css("visibility", "hidden");
@@ -94,7 +104,7 @@
       var fillColor = '#' + hash.substr(0,6);
       
       sparkTimeout = window.setTimeout(function() {
-          $sparkline.css("visibility", "visible");
+          updateDivVis($this, $sparkline);
           var dimension = updateDivPos($this, $sparkline);
           $sparkline.sparkline(inputDecArr, 
             $.extend( settings.sparklineOptions, {
