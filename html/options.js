@@ -13,40 +13,35 @@
 **/
 
 $(function () {
+
+  // Show HashMask
+  $("input[type=password]").hashmask({
+    alwaysShow: true
+  });
+
   // Place initial values into input fields
   $("#" + localStorage.hash).click();
   $("#delay-value").val(localStorage.delay);
 
-  // Except for the salt; not shown until user presses enter
+  // Except for the salt; not shown until user goes to edit
   //reload_salt();
-
-  // Example display
-  $(".example-thumb").each(function(index) {
-    $(this).click(function() {
-      waitToShow(index);
-    })
-  });
-  $("#example-display").click(function() {
-    waitToShow(0);
-  })
-  $(".carousel-control.left").click(function() {
-    showExample("prev");
-  });
-  $(".carousel-control.right").click(function() {
-    showExample("next");
-  });
 
   // Change the user's hash
   $(".hash input").click(function (e) {
     var hash = localStorage.hash = e.target.value;
 
     // Update hash algorithm about to be used by hashmask
-    $.hashmask.settings.hashUsed = hash;
-    $.hashmask.settings.hashFunction = $.hashmask.hashAlgorithms[hash];
-
+    var hashSettings = {
+      hashUsed: hash,
+      hashFunction: $.hashmask.hashAlgorithms[hash]
+    };
+    $.extend($.hashmask.settings, hashSettings);
+     
     // Refresh the hashmask on the page
     $(".hashmask-sparkline").remove();
-    $("input[type=password]").hashmask();
+    $("input[type=password]").hashmask({
+      alwaysShow: true
+    });
   });
 
   // Make the user's salt field editable
@@ -75,11 +70,16 @@ $(function () {
     $(".salt-edit-group").show();
     $(".salt-save-group").hide();
     
-    $.hashmask.settings.salt = localStorage.salt;
+    var hashSettings = {
+      salt: localStorage.salt
+    };
+    $.extend($.hashmask.settings, hashSettings);
 
     // Refresh the hashmask on the page
     $(".hashmask-sparkline").remove();
-    $("input[type=password]").hashmask();
+    $("input[type=password]").hashmask({
+      alwaysShow: true
+    });
   });
 
   // Cancel editing the user's salt
@@ -93,11 +93,17 @@ $(function () {
   // Save whatever delay the user has entered
   $(".delay-save").click( function (ev) {
     localStorage.delay = +($("#delay-value").val());
-    $.hashmask.settings.sparkInterval = localStorage.delay;
-
+    
+    var hashSettings = {
+      sparkInterval: localStorage.delay
+    };
+    $.extend($.hashmask.settings, hashSettings);
+    
     // Refresh the hashmask on the page
     $(".hashmask-sparkline").remove();
-    $("input[type=password]").hashmask();
+    $("input[type=password]").hashmask({
+      alwaysShow: true
+    });
   });
 
   // Reload the stored delay

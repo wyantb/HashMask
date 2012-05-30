@@ -44,6 +44,7 @@
       hashFunction:     SHA1,
       // ----------------------------------------------------
 
+      alwaysShow:       false,
       useColorAsHint:   true,
       sparkInterval:    0,
       sparklineOptions: {
@@ -67,11 +68,9 @@
 
     updateDivVis = function ($this, $sparkline) {
         if ($this.is(":focus")) {
-            // TODO: parameterize this with args
             $sparkline.css("visibility", "visible");
         } else {
-            // TODO: parameterize this with args
-            $sparkline.css("visibility", "none");
+            $sparkline.css("visibility", settings.alwaysShow ? "visible" : "none");
         }
     };
 
@@ -178,11 +177,9 @@
 
       // Tie sparkline visibility to the focus of the input field
       $this.focusout(function (ev) {
-        // TODO: parameterize this with args
-        $sparkline.css("visibility", "hidden");
+        $sparkline.css("visibility", settings.alwaysShow ? "visible" : "hidden");
       });
       $this.focusin(function (ev) {
-        // TODO: parameterize this with args
         $sparkline.css("visibility", "visible");
 
         // And anytime we come back into play, refresh the position
