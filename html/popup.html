@@ -13,26 +13,49 @@
   <meta charset="utf-8">
   <title>HashMask - Enable/Disable</title>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+
+  <!-- Inlining styles here; should be few of them. -->
+  <style type="text/css">
+    body {
+      min-width: 450px;
+      width: 450px;
+    }
+  </style>
 </head>
 
 <body>
 
-  <strong style="font-size: 18px;">HashMask:</strong>
+  <article>
+    <span>
+      HashMask is currently: 
+    </span>
+    <span class="btn-group" data-toggle="buttons-radio">
+      <button class="btn active" id="btn-on">On</button>
+      <button class="btn" id="btn-off">Off</button>
+    </span>
+  </article>
 
-  <div class="btn-group" data-toggle="buttons-radio">
-    <button class="btn active" id="btn-on">On</button>
-    <button class="btn" id="btn-off">Off</button>
-  </div>
+  <hr>
+
+  <article>
+    Warning!  HashMasks will appear differently on 
+    different installations of Chrome and different 
+    computers.  You will need to share the same salt 
+    between all of your different installations.   
+    <a href="help.html#help-salt" target="_blank">Read more about the salt value.  &raquo;</a>
+  </article>
+
+  <hr>
+
+  <article>
+    Want to help us translate HashMask text into
+    other languages?
+    <a href="https://github.com/wyantb/HashMask/issues/42" target="_blank">Let us know!</a>
+  </article>
 
   <!-- JAVASCRIPT -->
 
   <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
-  <script type="text/javascript" src="../lib/jquery.sparkline.min.js"></script>
-  <script type="text/javascript" src="../lib/jcade.js"></script>
-  <script type="text/javascript" src="../src/util.js"></script>
-  <script type="text/javascript" src="../lib/sjcl.js"></script>
-  <script type="text/javascript" src="../src/hashmask.js"></script>
-  <script type="text/javascript" src="../src/inject.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="popup.js"></script>
 </body>
