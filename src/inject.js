@@ -14,19 +14,33 @@
 **/
 
 // Send a request to our BG page for all settings before injecting hashmask
-chrome.extension.sendRequest({eventName: "settings"}, function (result) {
-
-  // Update hash algorithm about to be used by hashmask
-  var hashSettings = { 
-    hashUsed: result.hash,
-    hashFunction: $.hashmask.hashAlgorithms[result.hash],
-    salt: result.salt,
-    sparkInterval: result.delay
-  };
-
-  // Alternative method to inject hashmask: use jcade, do it for current and future password fields
-  $(document).create("input[type=password]", function (ev) {
-    $(ev.target).hashmask(hashSettings);
+var makeHashMask = function () {
+  chrome.extension.sendRequest({eventName: "settings"}, function (result) {
+  
+    // Update hash algorithm about to be used by hashmask
+    var hashSettings = { 
+      hashUsed: result.hash,
+      hashFunction: $.hashmask.hashAlgorithms[result.hash],
+      salt: result.salt,
+      sparkInterval: result.delay
+    };
+  
+    // Alternative method to inject hashmask: use jcade, do it for current and future password fields
+    $(document).create("input[type=password]", function (ev) {
+      $(ev.target).hashmask(hashSettings);
+    });
+  
   });
+};
 
+makeHashMask();
+
+chrome.extension.onRequest.addListener(function (data, sender, callback) {
+  console.log("HashMask received event");
+  console.log(data);
+  if (data.eventName === "disable") {
+    $(".hashmask-sparkline").remove();
+  } else if (data.eventName === "enable") {
+    makeHashMask();
+  }
 });

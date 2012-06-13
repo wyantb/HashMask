@@ -13,9 +13,15 @@
 **/
 
 $("#btn-on").click(function (ev) {
-  console.log("HashMask Enabled");
+  console.log("HashMask - Disabling");
+  $("#btn-on").hide();
+  $("#btn-off").show();
+  chrome.extension.sendRequest({eventName: "disable"});
 });
 
 $("#btn-off").click(function (ev) {
-  console.log("HashMask Disabled");
+  console.log("HashMask - Enabling");
+  $("#btn-on").show();
+  $("#btn-off").hide();
+  chrome.extension.sendRequest({eventName: "enable"});
 });
