@@ -37,7 +37,7 @@
 	},
 
 	"offline_enabled": true,
-	"permissions": [],
+	"permissions": ["tabs"],
 
 	"homepage_url": "https://github.com/wyantb/HashMask"
 }

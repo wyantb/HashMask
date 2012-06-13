@@ -14,19 +14,28 @@ function onReceiveEvent(data, sender, callback){
   console.log("Background page received event.");
   console.log(data);
 
+  // Handle enabling and disabling events
   if (data.eventName === "enable") {
-    localStorage.enabled = true;
+    localStorage.enabled = "true";
   } else if (data.eventName === "disable") {
-    localStorage.enabled = false;
+    localStorage.enabled = "false";
   }
 
   if (data.eventName == "settings") {
-
+    // Return the current settings to the caller
     callback({
       salt: localStorage.salt,
       hash: localStorage.hash,
       delay: localStorage.delay,
       enabled: localStorage.enabled
+    });
+
+  } else {
+    // Query for all tabs, send the request to each
+    chrome.tabs.query({}, function (tabs) {
+      for (var i = 0; i < tabs.length; i++) {
+        chrome.tabs.sendRequest(tabs[i].id, data);
+      };
     });
 
   }

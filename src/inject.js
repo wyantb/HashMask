@@ -26,9 +26,11 @@ var makeHashMask = function () {
     };
   
     // Alternative method to inject hashmask: use jcade, do it for current and future password fields
-    $(document).create("input[type=password]", function (ev) {
-      $(ev.target).hashmask(hashSettings);
-    });
+    if (result.enabled === "true") {
+      $(document).create("input[type=password]", function (ev) {
+        $(ev.target).hashmask(hashSettings);
+      });
+    }
   
   });
 };
