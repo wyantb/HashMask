@@ -13,36 +13,35 @@
  *
 **/
 
-// Send a request to our BG page for all settings before injecting hashmask
+var hashSettings = {};
+
+var port = chrome.extension.connect({name: "hashmask"});
+
 var makeHashMask = function () {
-  chrome.extension.sendRequest({eventName: "settings"}, function (result) {
-  
-    // Update hash algorithm about to be used by hashmask
-    var hashSettings = { 
-      hashUsed: result.hash,
-      hashFunction: $.hashmask.hashAlgorithms[result.hash],
-      salt: result.salt,
-      sparkInterval: result.delay
-    };
-  
-    // Alternative method to inject hashmask: use jcade, do it for current and future password fields
-    if (result.enabled === "true") {
-      $(document).create("input[type=password]", function (ev) {
-        $(ev.target).hashmask(hashSettings);
-      });
-    }
-  
+  // Alternative method to inject hashmask: use jcade, do it for current and future password fields
+  $(document).create("input[type=password]", function (ev) {
+    $(ev.target).hashmask(hashSettings);
   });
 };
 
-makeHashMask();
+port.onMessage.addListener(function (msg) {
+  console.log("HashMask received message");
+  console.log(msg);
 
-chrome.extension.onRequest.addListener(function (data, sender, callback) {
-  console.log("HashMask received event");
-  console.log(data);
-  if (data.eventName === "disable") {
-    $(".hashmask-sparkline").remove();
-  } else if (data.eventName === "enable") {
+  if (msg.eventName === "settings") {
+    // Update with new settings
+    hashSettings.hashUsed = msg.settings.hash;
+    hashSettings.hashFunction = $.hashmask.hashAlgorithms[msg.settings.hash];
+    hashSettings.salt = msg.settings.salt;
+    hashSettings.sparkInterval = msg.settings.delay;
+
+  } else if (msg.eventName === "enable") {
+    // Enable hashmask for this tab
     makeHashMask();
+
+  } else if (msg.eventName === "disable") {
+    // Disable hashmask for this page
+    $(".hashmask-sparkline").remove();
+
   }
 });

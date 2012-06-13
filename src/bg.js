@@ -1,3 +1,4 @@
+
 // Enter the defaults for salt and hash, if none exist
 if (localStorage.salt == undefined) {
   var randomWords = sjcl.random.randomWords(6, 0);
@@ -7,6 +8,32 @@ if (localStorage.salt == undefined) {
 if (localStorage.hash == undefined) localStorage.hash = "sha256";
 if (localStorage.delay == undefined) localStorage.delay = 200;
 if (localStorage.enabled == undefined) localStorage.enabled = true;
+
+var connections = [];
+
+chrome.extension.onConnect.addListener(function (port) {
+  console.log("HashMask received connection");
+
+  // Post initial settings batch to the new content script
+  port.postMessage({
+    eventName: "settings",
+    settings: {
+      salt: localStorage.salt,
+      hash: localStorage.hash,
+      delay: localStorage.delay,
+      enabled: localStorage.enabled
+    }
+  });
+  if (localStorage.enabled === "true") {
+    port.postMessage({eventName: "enable"});
+  }
+
+  connections.push(port);
+
+  port.onDisconnect.addListener(function () {
+    //connections.splice(index, index + 1);
+  });
+});
 
 chrome.extension.onRequest.addListener(onReceiveEvent);
 
@@ -31,12 +58,9 @@ function onReceiveEvent(data, sender, callback){
     });
 
   } else {
-    // Query for all tabs, send the request to each
-    chrome.tabs.query({}, function (tabs) {
-      for (var i = 0; i < tabs.length; i++) {
-        chrome.tabs.sendRequest(tabs[i].id, data);
-      };
-    });
+    for (var i = 0; i < connections.length; i++) {
+      connections[i].postMessage(data);
+    }
 
   }
 }
