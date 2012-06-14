@@ -1,3 +1,14 @@
+/**
+ * HashMask - an old approach to password masking, in the browser.
+ *
+ * REQUIRES:
+ * sjcl.js
+ *
+ * @author    Society of Software Engineers (http://sse.se.rit.edu)
+ * @author    Brian Wyant <wyantb@gmail.com>
+ * @license   http://www.opensource.org/licenses/bsd-license.php
+ *
+**/
 
 // Enter the defaults for salt and hash, if none exist
 if (localStorage.salt == undefined) {
@@ -69,6 +80,7 @@ chrome.extension.onConnect.addListener(function (port) {
   });
 });
 
+// Hook to receive notifications from settings page of changes
 chrome.extension.onRequest.addListener(function (data, sender, callback) {
   console.log("Background page received simple event.");
   console.log(data);
