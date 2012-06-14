@@ -19,6 +19,14 @@
     body {
       min-width: 450px;
       width: 450px;
+
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    .title {
+      display: inline-block;
     }
   </style>
 </head>
@@ -26,11 +34,11 @@
 <body>
 
   <article>
-    <span>
-      HashMask is currently: 
-    </span>
-    <button class="btn active green" id="btn-on">On</button>
-    <button class="btn red hide" id="btn-off">Off</button>
+    <h3 class="title">
+      HashMask is currently&nbsp;&nbsp;
+    </h3>
+    <button class="btn active btn-success" id="btn-on">On</button>
+    <button class="btn btn-warning hide" id="btn-off">Off</button>
   </article>
 
   <hr>
