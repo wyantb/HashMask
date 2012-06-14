@@ -15,7 +15,7 @@
 
 var hashSettings = {};
 
-var port = chrome.extension.connect({name: "hashmask"});
+var port = chrome.extension.connect({name: "hashmask-inject"});
 
 var makeHashMask = function () {
   // Alternative method to inject hashmask: use jcade, do it for current and future password fields
