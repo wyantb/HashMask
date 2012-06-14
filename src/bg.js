@@ -9,7 +9,21 @@ if (localStorage.hash == undefined) localStorage.hash = "sha256";
 if (localStorage.delay == undefined) localStorage.delay = 200;
 if (localStorage.enabled == undefined) localStorage.enabled = true;
 
+// A pool of all active, long-lived connections
 var connections = [];
+
+// A helper to send the current settings to a connection
+var postSettings = function (port) {
+  port.postMessage({
+    eventName: "settings",
+    settings: {
+      salt: localStorage.salt,
+      hash: localStorage.hash,
+      delay: localStorage.delay,
+      enabled: localStorage.enabled
+    }
+  });
+}
 
 // Setup long-lived connection listener
 // Handles logic for HashMask setup on pages and browser_actions
@@ -23,21 +37,7 @@ chrome.extension.onConnect.addListener(function (port) {
   console.log(connections);
 
   // Post initial settings batch to the new content script
-  port.postMessage({
-    eventName: "settings",
-    settings: {
-      salt: localStorage.salt,
-      hash: localStorage.hash,
-      delay: localStorage.delay,
-      enabled: localStorage.enabled
-    }
-  });
-
-  if (localStorage.enabled === "true") {
-    port.postMessage({eventName: "enable"});
-  } else {
-    port.postMessage({eventName: "disable"});
-  }
+  postSettings(port);
 
   port.onMessage.addListener(function (msg) {
     // Handle enabling and disabling events
@@ -73,5 +73,10 @@ chrome.extension.onRequest.addListener(function (data, sender, callback) {
   console.log("Background page received simple event.");
   console.log(data);
 
-  // TODO use for updating settings from options page?
-}
+  // Send updated settings to all attached ports
+  if (data.eventName === "settings") {
+    for (var i = 0; i < connections.length; i++) {
+      postSettings(connections[i]);
+    }
+  }
+});

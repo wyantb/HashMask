@@ -4,7 +4,7 @@
  * REQUIRES:
  * jquery-1.7.2.js
  * bootstrap.js
- * src/inject.js (and its requirements)
+ * src/hashmask.js (and its requirements)
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
  * @author    Brian Wyant <wyantb@gmail.com>
@@ -36,6 +36,7 @@ $(function () {
       hashFunction: $.hashmask.hashAlgorithms[hash]
     };
     $.extend($.hashmask.settings, hashSettings);
+    chrome.extension.sendRequest({eventName: "settings"});
      
     // Refresh the hashmask on the page
     $(".hashmask-sparkline").remove();
@@ -74,6 +75,7 @@ $(function () {
       salt: localStorage.salt
     };
     $.extend($.hashmask.settings, hashSettings);
+    chrome.extension.sendRequest({eventName: "settings"});
 
     // Refresh the hashmask on the page
     $(".hashmask-sparkline").remove();
@@ -98,6 +100,7 @@ $(function () {
       sparkInterval: localStorage.delay
     };
     $.extend($.hashmask.settings, hashSettings);
+    chrome.extension.sendRequest({eventName: "settings"});
     
     // Refresh the hashmask on the page
     $(".hashmask-sparkline").remove();

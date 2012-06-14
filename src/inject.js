@@ -35,6 +35,12 @@ port.onMessage.addListener(function (msg) {
     hashSettings.salt = msg.settings.salt;
     hashSettings.sparkInterval = msg.settings.delay;
 
+    // And (re?)-make hashmask, if necessary
+    $(".hashmask-sparkline").remove();
+    if (msg.settings.enabled === "true") {
+      makeHashMask();
+    }
+
   } else if (msg.eventName === "enable") {
     // Enable hashmask for this tab
     makeHashMask();
