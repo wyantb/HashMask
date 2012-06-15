@@ -25,9 +25,6 @@ var makeHashMask = function () {
 };
 
 port.onMessage.addListener(function (msg) {
-  console.log("HashMask received message");
-  console.log(msg);
-
   if (msg.eventName === "settings") {
     // Update with new settings
     hashSettings.hashUsed = msg.settings.hash;

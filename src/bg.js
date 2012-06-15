@@ -39,13 +39,7 @@ var postSettings = function (port) {
 // Setup long-lived connection listener
 // Handles logic for HashMask setup on pages and browser_actions
 chrome.extension.onConnect.addListener(function (port) {
-  console.log("HashMask received connection");
-  console.log(port);
-
   connections.push(port);
-
-  console.log("Current connections:");
-  console.log(connections);
 
   // Post initial settings batch to the new content script
   postSettings(port);
@@ -70,9 +64,6 @@ chrome.extension.onConnect.addListener(function (port) {
   });
 
   port.onDisconnect.addListener(function () {
-    console.log("Connection disconnected; removing");
-    console.log(port);
-
     var index = connections.indexOf(port);
     if (index !== -1) {
       connections.splice(index, index + 1);
@@ -82,9 +73,6 @@ chrome.extension.onConnect.addListener(function (port) {
 
 // Hook to receive notifications from settings page of changes
 chrome.extension.onRequest.addListener(function (data, sender, callback) {
-  console.log("Background page received simple event.");
-  console.log(data);
-
   // Send updated settings to all attached ports
   if (data.eventName === "settings") {
     for (var i = 0; i < connections.length; i++) {

@@ -15,21 +15,16 @@
 var port = chrome.extension.connect({name: "hashmask-popup"});
 
 var doDisable = function () {
-  console.log("HashMask - Disabling");
   $("#btn-on").hide();
   $("#btn-off").show();
 };
 
 var doEnable = function () {
-  console.log("HashMask - Enabling");
   $("#btn-on").show();
   $("#btn-off").hide();
 };
 
 port.onMessage.addListener(function (msg) {
-  console.log("HashMask received message");
-  console.log(msg);
-
   if (msg.eventName === "settings") {
     if (msg.settings.enabled === "true") {
       doEnable();
