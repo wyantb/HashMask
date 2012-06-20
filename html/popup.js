@@ -12,10 +12,39 @@
  *
 **/
 
+var port = chrome.extension.connect({name: "hashmask-popup"});
+
+var doDisable = function () {
+  $("#btn-on").hide();
+  $("#btn-off").show();
+};
+
+var doEnable = function () {
+  $("#btn-on").show();
+  $("#btn-off").hide();
+};
+
+port.onMessage.addListener(function (msg) {
+  if (msg.eventName === "settings") {
+    if (msg.settings.enabled === "true") {
+      doEnable();
+    } else {
+      doDisable();
+    }
+  } else if (msg.eventName === "enable") {
+    doEnable();
+  } else if (msg.eventName === "disable") {
+    doDisable();
+  }
+
+});
+
 $("#btn-on").click(function (ev) {
-  console.log("HashMask Enabled");
+  doDisable();
+  port.postMessage({eventName: "disable"});
 });
 
 $("#btn-off").click(function (ev) {
-  console.log("HashMask Disabled");
+  doEnable();
+  port.postMessage({eventName: "enable"});
 });

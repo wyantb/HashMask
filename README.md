@@ -10,7 +10,7 @@ If you'd like to help out with porting, please let us know (via GitHub issues or
 HashMask is a useful extension for anyone browsing the web with Firefox.  
 It's a tool that helps you remember your passwords by displaying visual hashes of them as you type.
 
-##[Demo](http://wyantb.github.com/HashMask/options.html)
+##[Demo](http://wyantb.github.com/HashMask/index.html)
 Check this out if you want to try HashMask before installing it.
 
 ##Contributing

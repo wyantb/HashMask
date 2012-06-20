@@ -3,3 +3,5 @@
 *.swp
 *~
 *.orig
+html/test.html
+builds/current
