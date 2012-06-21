@@ -9,7 +9,7 @@
  *
  * REQUIRES:
  * jquery.sparkline.js
- * jquery-1.7.1.js
+ * jquery-1.7.2.js
  * util.js (hashing functions)
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
@@ -44,6 +44,7 @@
       hashFunction:     SHA1,
       // ----------------------------------------------------
 
+      alwaysShow:       false,
       useColorAsHint:   true,
       sparkInterval:    0,
       sparklineOptions: {
@@ -61,12 +62,20 @@
     /**
      * @var object Contains an associative array of all settings for hashmask.
     **/
-    settings = $.extend({}, $.hashmask.settings, settings);
+    var settings = $.extend({}, $.hashmask.settings, settings);
 
-    sparkTimeout = "";
+    var sparkTimeout = "";
+
+    var updateDivVis = function ($this, $sparkline) {
+        if ($this.is(":focus")) {
+            $sparkline.css("visibility", "visible");
+        } else {
+            $sparkline.css("visibility", settings.alwaysShow ? "visible" : "none");
+        }
+    };
 
     /** Function to make hashmask */
-    makeHashDiv = function ($this, $sparkline) {
+    var makeHashDiv = function ($this, $sparkline) {
       $sparkline.css("visibility", "hidden");
 
       window.clearTimeout(sparkTimeout);
@@ -86,7 +95,7 @@
 
       /* Convert our hex string array into decimal numbers for sparkline consumption
          But select only the first 24 parts of the output */
-      for(i=0; i < 24 && i < inputHexArr.length; i++)
+      for(i = 0; i < 24 && i < inputHexArr.length; i++)
       {
         inputDecArr.push(parseInt(inputHexArr[i], 16));
       }
@@ -94,7 +103,7 @@
       var fillColor = '#' + hash.substr(0,6);
       
       sparkTimeout = window.setTimeout(function() {
-          $sparkline.css("visibility", "visible");
+          updateDivVis($this, $sparkline);
           var dimension = updateDivPos($this, $sparkline);
           $sparkline.sparkline(inputDecArr, 
             $.extend( settings.sparklineOptions, {
@@ -106,7 +115,7 @@
       }, settings.sparkInterval);
     };
 
-    updateDivPos = function ($this, $sparkline) {
+    var updateDivPos = function ($this, $sparkline) {
       // Compute the height
       var height = $this.outerHeight() - 5 - 
         parseInt($this.css('borderBottomWidth'), 10) - 
@@ -168,11 +177,9 @@
 
       // Tie sparkline visibility to the focus of the input field
       $this.focusout(function (ev) {
-        // TODO: parameterize this with args
-        $sparkline.css("visibility", "hidden");
+        $sparkline.css("visibility", settings.alwaysShow ? "visible" : "hidden");
       });
       $this.focusin(function (ev) {
-        // TODO: parameterize this with args
         $sparkline.css("visibility", "visible");
 
         // And anytime we come back into play, refresh the position
