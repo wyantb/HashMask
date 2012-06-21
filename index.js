@@ -26,6 +26,22 @@ $(function () {
   // Except for the salt; not shown until user goes to edit
   //reload_salt();
 
+  // Example display
+  $(".example-thumb").each(function(index) {
+    $(this).click(function() {
+      waitToShow(index);
+    })
+  });
+  $("#example-display").click(function() {
+    waitToShow(0);
+  })
+  $(".carousel-control.left").click(function() {
+    showExample("prev");
+  });
+  $(".carousel-control.right").click(function() {
+    showExample("next");
+  });
+
   // Change the user's hash
   $(".hash input").click(function (e) {
     var hash = localStorage.hash = e.target.value;
@@ -119,3 +135,46 @@ $(function () {
     alert(localStorage.delay);
   });
 });
+
+// Stuff for displaying and cycling between examples
+var exToShow = 0;
+var curEx = 0;
+var numEx = $(".example").length;
+
+function waitToShow(num) {
+  exToShow = num;
+  $("#example-" + curEx).css("display", "none");
+  $("#example-modal").modal('show');
+}
+
+$("#example-modal").on("shown", function () {
+  showExample(exToShow);
+});
+
+function showExample (example) {
+  // Switch to a specific example
+  // (note that the other 3 cases are wrappers for this one)
+  if (typeof(example) === "number") {
+    $("#example-" + example).slideDown(300);
+    curEx = example;
+  }
+  // Switch to the previous example
+  else if (example=="prev") {
+    $("#example-" + curEx).slideUp(300);
+    prev_id = $(".example").filter(":visible").attr("id");
+    prev_index = (curEx - 1 + numEx) % numEx;
+    showExample(prev_index);
+  }
+  // Switch to the next example
+  else if (example=="next") {
+    $("#example-" + curEx).slideUp(300);
+    next_id = $(".example").filter(":visible").attr("id");
+    next_index = (curEx + 1) % numEx;
+    showExample(next_index);
+  }
+  // Switch to the first example (fallback)
+  else {
+    showExample(0);
+  }
+}
+// End stuff to cycle between examples
