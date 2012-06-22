@@ -8,5 +8,29 @@
 	"icon64": "icons/64.png",
 	"license": "BSD License (http://www.opensource.org/licenses/bsd-license.php)",
 	"id": "hashmask@sse.se.rit.edu",
-	"version": "1.1"
+	"version": "1.1",
+
+	"preferences": [
+		{
+			"name": "salt",
+			"title": "Password Salt",
+			"description": "Used to provide an attacker even more difficulties in guessing your password. Even if they can replay each image of your sparkline, without the salt that we generate for you by default, they can't get your password.",
+			"type": "string",
+			"value": ""
+		},
+		{
+			"name": "delay",
+			"title": "Hash Delay",
+			"description": "Represents, in milliseconds, the amount of time lag that occurs before your hash appears.",
+			"type": "integer",
+			"value": 200
+		},
+		{
+			"name": "algorithm",
+			"title": "Hash Algorithm",
+			"description": "Enter a number for the hash algorithm you want to use: 1) RIPEMD-160 2) SHA-1 3) SHA-256 4) Whirlpool. Please see HashMask's help page for a more in depth explanation, including information on every algorithm listed here.",
+			"type": "integer",
+			"value": 3
+		}
+	]
 }
