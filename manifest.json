@@ -20,10 +20,9 @@
 		"matches": ["<all_urls>"],
 		"all_frames": true,
 		"js": [
-			"src/util.js",
+			"lib/hashes.js",
 			"lib/sjcl.js",
-			"lib/jquery-1.7.2.min.js",
-			"lib/jcade.js",
+			"lib/jquery.min.js",
 			"lib/jquery.sparkline.min.js",
 			"src/hashmask.js",
 			"src/inject.js"
