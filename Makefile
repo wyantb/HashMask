@@ -15,4 +15,4 @@ pack-all:
 	cp -rf ./README.md ./builds/current
 	cp -rf ./icons ./builds/current
 	cp -rf ./lib ./builds/current
-	rm -rf ./html/img/
+	rm -rf ./builds/current/html/img/

@@ -1,5 +1,4 @@
 
-// TODO remove, kinda unsafe?
 /*global $: true, chrome: true */
 
 /**
@@ -7,8 +6,7 @@
  *
  * REQUIRES:
  * jquery.js
- * jquery.sparkline.js
- * hashmask.js
+ * src/hashmask.js
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
  * @author    Brian Wyant <wyantb@gmail.com>
@@ -18,38 +16,26 @@
 
 'use strict';
 
-var hashSettings = {};
+(function () {
+  var hashSettings = {};
 
-var port = chrome.extension.connect({name: 'hashmask-inject'});
+  var port = chrome.extension.connect({name: 'hashmask-inject'});
 
-var makeHashMask = function () {
-  // Alternative method to inject hashmask: use jcade, do it for current and future password fields
-  $(document).create('input[type=password]', function (ev) {
-    $(ev.target).hashmask(hashSettings);
-  });
-};
+  port.onMessage.addListener(function (msg) {
+    if (msg.eventName === 'settings') {
+      $.hashmask.settings.hashUsed = msg.settings.hash;
+      $.hashmask.settings.salt = msg.settings.salt;
+      $.hashmask.settings.sparkInterval = msg.settings.delay;
 
-port.onMessage.addListener(function (msg) {
-  if (msg.eventName === 'settings') {
-    // Update with new settings
-    hashSettings.hashUsed = msg.settings.hash;
-    hashSettings.hashFunction = $.hashmask.hashAlgorithms[msg.settings.hash];
-    hashSettings.salt = msg.settings.salt;
-    hashSettings.sparkInterval = msg.settings.delay;
-
-    // And (re?)-make hashmask, if necessary
-    $('.hashmask-sparkline').remove();
-    if (msg.settings.enabled === 'true') {
-      makeHashMask();
+      $.hashmask.disable();
+      $.hashmask.start();
     }
+    else if (msg.eventName === 'enable') {
+      $.hashmask.start();
+    }
+    else if (msg.eventName === 'disable') {
+      $.hashmask.disable();
+    }
+  });
+}());
 
-  } else if (msg.eventName === 'enable') {
-    // Enable hashmask for this tab
-    makeHashMask();
-
-  } else if (msg.eventName === 'disable') {
-    // Disable hashmask for this page
-    $('.hashmask-sparkline').remove();
-
-  }
-});

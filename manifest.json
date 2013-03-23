@@ -9,11 +9,10 @@
     "48": "icons/48.png",
     "128": "icons/128.png"
   },
-  "default_locale": "en",
 
   "background": {
     "scripts": ["lib/sjcl.js", "src/bg.js"],
-    "persistent": true,
+    "persistent": true
   },
 
   "options_page": "html/options.html",

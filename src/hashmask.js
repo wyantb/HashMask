@@ -32,6 +32,8 @@
 (function ($) {
   'use strict';
 
+  var $body = $('body');
+
   $.hashmask = {
 
     hashAlgorithms: {
@@ -42,15 +44,12 @@
     },
 
     settings: {
-
-      // These are replaced when any page requests a hashmask
+      passwordSelector: 'input[type=password]',
       hashUsed:         'sha1',
-      hashFunction:     SHA1,
-      // ----------------------------------------------------
-
       alwaysShow:       false,
       useColorAsHint:   true,
       sparkInterval:    0,
+
       sparklineOptions: {
         width:          '100px',
         height:         'auto',
@@ -62,10 +61,10 @@
     }
   };
 
-  $.fn.hashmask = function (settings) {
+  $.hashmask.start = function (settings) {
     settings = $.extend({}, $.hashmask.settings, settings);
 
-    var sparkTimeout = '';
+    var hashFunction = $.hashmask.hashAlgorithms[settings.hashUsed];
 
     var updateDivVis = function ($node, $sparkline) {
       if ($node.is(':focus')) {
@@ -75,7 +74,7 @@
       }
     };
 
-    /** Function to make hashmask */
+    var sparkTimeout = '';
     var makeHashDiv = function ($node, $sparkline) {
       $sparkline.css('visibility', 'hidden');
 
@@ -89,7 +88,7 @@
 
       var input        = $node.val();
       var salt         = settings.salt;
-      var hash         = settings.hashFunction(salt + input);
+      var hash         = hashFunction(salt + input);
       var inputHexArr  = hash.split('');
       var inputDecArr  = [];
 
@@ -151,58 +150,63 @@
       return val != null && val !== '';
     }
 
-    /**
-     * Add hashmask hint to an input. The input must be of type password.
-     *
-     * @param selector string A jquery capable selector, as defined
-     *  here: http://docs.jquery.com/Selectors
-     *
-     * @return void
-    **/
-    return this.each(function () {
-      var $sparkline;
-      var $node = $(this);
+    function sparklineWrapper () {
+      return '<div class="hashmask-sparkline"></div>';
+    }
 
-      // Add sparkline div to the page
-      $sparkline = $('<div class="hashmask-sparkline"></div>');
-      $('body').append($sparkline);
+    function removeMask (ev, $node) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      $activeSparkline.remove();
+      $activeSparkline = false;
+    }
 
-      // If there's a password on the page already, make a sparkline for it
-      if (isDefined($node.val())) {
-        makeHashDiv($node, $sparkline);
+    var passwordSel = settings.passwordSelector;
+    var $activeSparkline = false;
+
+    $body.on('keyup.hashmask-keyup-listener', passwordSel, function (ev) {
+      if ($activeSparkline) {
+        var $node = $(this);
+        makeHashDiv($node, $activeSparkline);
       }
-
-      // Trigger sparkline refresh on user input
-      $node.keyup(function () {
-        makeHashDiv($node, $sparkline);
-      });
-
-      // Tie sparkline visibility to the focus of the input field
-      $node.focusout(function () {
-        $sparkline.css('visibility', settings.alwaysShow ? 'visible' : 'hidden');
-      });
-      $node.focusin(function () {
-        $sparkline.css('visibility', 'visible');
-
-        // And anytime we come back into play, refresh the position
-        updateDivPos($node, $sparkline);
-      });
-
-      // Also force sparkline to dissappear if clicked on
-      $sparkline.click(function () {
-        $sparkline.css('visibility', 'hidden');
-        $node.focus();
-        $sparkline.css('visibility', 'hidden');
-      });
-
-      // Finally, if the screen size changes, or the pw, we move
-      $(window).resize(function () {
-        updateDivPos($node, $sparkline);
-      });
-      $node.resize(function () {
-        updateDivPos($node, $sparkline);
-      });
     });
+
+    $body.on('focus.hashmask-focus-listener', passwordSel, function (ev) {
+      var $node = $(this);
+      $activeSparkline = $(sparklineWrapper());
+      $activeSparkline.data('parent', $node);
+
+      $activeSparkline.on('mousedown click focus', 'canvas', function (inEv) {
+        removeMask(inEv, $node, $activeSparkline);
+      });
+
+      $body.append($activeSparkline);
+
+      if (isDefined($node.val())) {
+        makeHashDiv($node, $activeSparkline);
+      }
+    });
+
+    $body.on('blur.hashmask-blur-listener', passwordSel, function (ev) {
+      if ($activeSparkline) {
+        $activeSparkline.remove();
+        $activeSparkline = false;
+      }
+    });
+
+    $(window).resize(function () {
+      if ($activeSparkline) {
+        updateDivPos($activeSparkline.data('parent'), $activeSparkline);
+      }
+    });
+  };
+
+  $.hashmask.disable = function () {
+    $body
+      .off('keyup.hashmask-keyup-listener')
+      .off('keyup.hashmask-focus-listener')
+      .off('keyup.hashmask-blur-listener')
+      .find('.hashmask-sparkline').remove();
   };
 
 })(jQuery);
