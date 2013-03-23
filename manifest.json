@@ -1,42 +1,44 @@
 {
-	"name": "HashMask",
-	"version": "1.2.1",
-	"manifest_version": 2,
+  "name": "HashMask",
+  "version": "1.2.2",
+  "manifest_version": 2,
 
-	"description": "Secure password visualization for Chrome.",
-	"icons": {
-		"16": "icons/16.png",
-		"48": "icons/48.png",
-		"128": "icons/128.png"
-	},
+  "description": "Secure password visualization for Chrome.",
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "default_locale": "en",
 
-	"background": {
-		"scripts": ["lib/sjcl.js", "src/bg.js"]
-	},
+  "background": {
+    "scripts": ["lib/sjcl.js", "src/bg.js"],
+    "persistent": true,
+  },
 
-	"options_page": "html/options.html",
+  "options_page": "html/options.html",
 
-	"content_scripts": [{
-		"matches": ["<all_urls>"],
-		"all_frames": true,
-		"js": [
-			"lib/hashes.js",
-			"lib/sjcl.js",
-			"lib/jquery.min.js",
-			"lib/jquery.sparkline.min.js",
-			"src/hashmask.js",
-			"src/inject.js"
-		]
-	}],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "all_frames": true,
+    "js": [
+      "lib/hashes.js",
+      "lib/sjcl.js",
+      "lib/jquery.min.js",
+      "lib/jquery.sparkline.min.js",
+      "src/hashmask.js",
+      "src/inject.js"
+    ]
+  }],
 
-	"browser_action": {
-		"default_icon": "icons/16.png",
-		"default_title": "Enable/Disable HashMask",
-		"default_popup": "html/popup.html"
-	},
+  "browser_action": {
+    "default_icon": "icons/16.png",
+    "default_title": "Enable/Disable HashMask",
+    "default_popup": "html/popup.html"
+  },
 
-	"offline_enabled": true,
-	"permissions": [],
+  "offline_enabled": true,
+  "permissions": [],
 
-	"homepage_url": "https://github.com/wyantb/HashMask"
+  "homepage_url": "https://github.com/wyantb/HashMask"
 }

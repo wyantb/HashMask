@@ -1,16 +1,18 @@
+
+/*jshint camelcase: false */
+/*global jQuery, SHA1, hex_rmd160, SHA256, Whirlpool */
+
 /**
  * HashMask - an old approach to password masking, in the browser.
  *
  * jQuery.hashmask.js originally written by Chris Dary <umbrae@gmail.com>
  * All credit for anything hard goes to him!
- * We just put it into a browser extension, really.
- *
  * His accredation can be seen below.
  *
  * REQUIRES:
+ * jquery.js
  * jquery.sparkline.js
- * jquery-1.7.2.js
- * util.js (hashing functions)
+ * lib/hashes.js
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
  * @author    Brian Wyant <wyantb@gmail.com>
@@ -27,20 +29,22 @@
  *
  */
 
-(function($) {
+(function ($) {
+  'use strict';
+
   $.hashmask = {
 
     hashAlgorithms: {
-      "sha1": SHA1,
-      "ripemd160": hex_rmd160,
-      "sha256": SHA256,
-      "whirlpool": Whirlpool 
+      'sha1': SHA1,
+      'ripemd160': hex_rmd160,
+      'sha256': SHA256,
+      'whirlpool': Whirlpool
     },
 
     settings: {
 
       // These are replaced when any page requests a hashmask
-      hashUsed:         "sha1",
+      hashUsed:         'sha1',
       hashFunction:     SHA1,
       // ----------------------------------------------------
 
@@ -58,36 +62,32 @@
     }
   };
 
-  $.fn.hashmask = function(settings) {
-    /**
-     * @var object Contains an associative array of all settings for hashmask.
-    **/
-    var settings = $.extend({}, $.hashmask.settings, settings);
+  $.fn.hashmask = function (settings) {
+    settings = $.extend({}, $.hashmask.settings, settings);
 
-    var sparkTimeout = "";
+    var sparkTimeout = '';
 
-    var updateDivVis = function ($this, $sparkline) {
-        if ($this.is(":focus")) {
-            $sparkline.css("visibility", "visible");
-        } else {
-            $sparkline.css("visibility", settings.alwaysShow ? "visible" : "none");
-        }
+    var updateDivVis = function ($node, $sparkline) {
+      if ($node.is(':focus')) {
+        $sparkline.css('visibility', 'visible');
+      } else {
+        $sparkline.css('visibility', settings.alwaysShow ? 'visible' : 'none');
+      }
     };
 
     /** Function to make hashmask */
-    var makeHashDiv = function ($this, $sparkline) {
-      $sparkline.css("visibility", "hidden");
+    var makeHashDiv = function ($node, $sparkline) {
+      $sparkline.css('visibility', 'hidden');
 
       window.clearTimeout(sparkTimeout);
 
-      var inputVal = $this.val();
-      if(inputVal === "")
-      {
-        $sparkline.html("");
+      var inputVal = $node.val();
+      if (inputVal === '') {
+        $sparkline.html('');
         return;
       }
 
-      var input        = $this.val();
+      var input        = $node.val();
       var salt         = settings.salt;
       var hash         = settings.hashFunction(salt + input);
       var inputHexArr  = hash.split('');
@@ -95,36 +95,34 @@
 
       /* Convert our hex string array into decimal numbers for sparkline consumption
          But select only the first 24 parts of the output */
-      for(i = 0; i < 24 && i < inputHexArr.length; i++)
-      {
+      for (var i = 0; i < 24 && i < inputHexArr.length; i++) {
         inputDecArr.push(parseInt(inputHexArr[i], 16));
       }
 
-      var fillColor = '#' + hash.substr(0,6);
-      
-      sparkTimeout = window.setTimeout(function() {
-          updateDivVis($this, $sparkline);
-          var dimension = updateDivPos($this, $sparkline);
-          $sparkline.sparkline(inputDecArr, 
-            $.extend( settings.sparklineOptions, {
+      var fillColor = '#' + hash.substr(0, 6);
+
+      sparkTimeout = window.setTimeout(function () {
+          updateDivVis($node, $sparkline);
+
+          var dimension = updateDivPos($node, $sparkline);
+          $sparkline.sparkline(inputDecArr,
+            $.extend(settings.sparklineOptions, {
               height: dimension[0],
               width: dimension[1],
               fillColor: fillColor
             })
           );
-      }, settings.sparkInterval);
+        }, settings.sparkInterval);
     };
 
-    var updateDivPos = function ($this, $sparkline) {
+    var updateDivPos = function ($node, $sparkline) {
       // Compute the height
-      var height = $this.outerHeight() - 5 - 
-        parseInt($this.css('borderBottomWidth'), 10) - 
-        parseInt($this.css('borderTopWidth'), 10);
+      var height = $node.outerHeight() - 5 -
+        parseInt($node.css('borderBottomWidth'), 10) -
+        parseInt($node.css('borderTopWidth'), 10);
 
       // Compute the width
-      var width = $this.outerWidth();
-        $this.css('borderLeftWidth'), 10;
-        $this.css('borderRightWidth'), 10;
+      var width = $node.outerWidth();
 
       // But keep it in the range of 50-100
       width = Math.min(100, width / 2);
@@ -133,12 +131,12 @@
       // And configure the sparkline location accordingly
       $sparkline.css({
         position:    'absolute',
-        top:         $this.offset().top + 2.5 + 
-                        parseInt($this.css('borderTopWidth'), 10),
+        top:         $node.offset().top + 2.5 +
+                        parseInt($node.css('borderTopWidth'), 10),
 
-        left:        $this.offset().left + 
-                        $this.outerWidth() - 
-                        parseInt($this.css('borderRightWidth'), 10) - 
+        left:        $node.offset().left +
+                        $node.outerWidth() -
+                        parseInt($node.css('borderRightWidth'), 10) -
                         width,
 
         width:       width,
@@ -149,58 +147,62 @@
       return [height, width];
     };
 
+    function isDefined (val) {
+      return val != null && val !== '';
+    }
+
     /**
      * Add hashmask hint to an input. The input must be of type password.
      *
-     * @param selector string A jquery capable selector, as defined 
+     * @param selector string A jquery capable selector, as defined
      *  here: http://docs.jquery.com/Selectors
      *
      * @return void
     **/
-    return this.each(function() {
-      var $sparkline, i;
-      var $this = $(this);
+    return this.each(function () {
+      var $sparkline;
+      var $node = $(this);
 
       // Add sparkline div to the page
       $sparkline = $('<div class="hashmask-sparkline"></div>');
       $('body').append($sparkline);
 
       // If there's a password on the page already, make a sparkline for it
-      if ($this.val() != undefined && $this.val != "") {
-        makeHashDiv($this, $sparkline);
+      if (isDefined($node.val())) {
+        makeHashDiv($node, $sparkline);
       }
 
       // Trigger sparkline refresh on user input
-      $this.keyup(function (e) {
-        makeHashDiv($this, $sparkline);
+      $node.keyup(function () {
+        makeHashDiv($node, $sparkline);
       });
 
       // Tie sparkline visibility to the focus of the input field
-      $this.focusout(function (ev) {
-        $sparkline.css("visibility", settings.alwaysShow ? "visible" : "hidden");
+      $node.focusout(function () {
+        $sparkline.css('visibility', settings.alwaysShow ? 'visible' : 'hidden');
       });
-      $this.focusin(function (ev) {
-        $sparkline.css("visibility", "visible");
+      $node.focusin(function () {
+        $sparkline.css('visibility', 'visible');
 
         // And anytime we come back into play, refresh the position
-        updateDivPos($this, $sparkline);
+        updateDivPos($node, $sparkline);
       });
-      
+
       // Also force sparkline to dissappear if clicked on
-      $sparkline.click(function (ev) {
-        $sparkline.css("visibility", "hidden");
-        $this.focus();
-        $sparkline.css("visibility", "hidden");
+      $sparkline.click(function () {
+        $sparkline.css('visibility', 'hidden');
+        $node.focus();
+        $sparkline.css('visibility', 'hidden');
       });
 
       // Finally, if the screen size changes, or the pw, we move
-      $(window).resize(function (ev) {
-        updateDivPos($this, $sparkline);
+      $(window).resize(function () {
+        updateDivPos($node, $sparkline);
       });
-      $this.resize(function (ev) {
-        updateDivPos($this, $sparkline);
+      $node.resize(function () {
+        updateDivPos($node, $sparkline);
       });
     });
   };
-  
+
 })(jQuery);
