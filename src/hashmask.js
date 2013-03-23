@@ -51,12 +51,15 @@
       sparkInterval:    0,
 
       sparklineOptions: {
-        width:          '100px',
-        height:         'auto',
-        lineColor:      '#69C',
-        spotColor:      false,
-        minSpotColor:   false,
-        maxSpotColor:   false
+        width:           '100px',
+        height:          'auto',
+        lineColor:       '#69C',
+        spotColor:       false,
+        minSpotColor:    false,
+        maxSpotColor:    false,
+        disableInteraction: true,
+        disableTooltips:    true,
+        disableHighlight:   true
       }
     }
   };
@@ -167,14 +170,21 @@
     $body.on('keyup.hashmask-keyup-listener', passwordSel, function (ev) {
       if ($activeSparkline) {
         var $node = $(this);
-        makeHashDiv($node, $activeSparkline);
+        var val = $node.val();
+
+        if (val !== $activeSparkline.data('val')) {
+          $activeSparkline.data('val', val);
+          makeHashDiv($node, $activeSparkline);
+        }
       }
     });
 
     $body.on('focus.hashmask-focus-listener', passwordSel, function (ev) {
       var $node = $(this);
+      $body.find('.hashmask-sparkline').remove();
       $activeSparkline = $(sparklineWrapper());
       $activeSparkline.data('parent', $node);
+      $activeSparkline.data('val', $node.val());
 
       $activeSparkline.on('mousedown click focus', 'canvas', function (inEv) {
         removeMask(inEv, $node, $activeSparkline);
