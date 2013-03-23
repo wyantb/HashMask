@@ -17,8 +17,6 @@
 'use strict';
 
 (function () {
-  var hashSettings = {};
-
   var port = chrome.extension.connect({name: 'hashmask-inject'});
 
   port.onMessage.addListener(function (msg) {
