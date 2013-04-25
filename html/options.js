@@ -6,7 +6,7 @@
  *
  * REQUIRES:
  * jquery.js
- * src/hashmask.js (and its requirements)
+ * src/hashmask.js
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
  * @author    Brian Wyant <wyantb@gmail.com>

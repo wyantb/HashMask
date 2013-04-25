@@ -153,10 +153,6 @@
       return val != null && val !== '';
     }
 
-    function sparklineWrapper () {
-      return '<div class="hashmask-sparkline"></div>';
-    }
-
     function removeMask (ev, $node) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -167,22 +163,8 @@
     var passwordSel = settings.passwordSelector;
     var $activeSparkline = false;
 
-    $body.on('keyup.hashmask-keyup-listener', passwordSel, function (ev) {
-      if ($activeSparkline) {
-        var $node = $(this);
-        var val = $node.val();
-
-        if (val !== $activeSparkline.data('val')) {
-          $activeSparkline.data('val', val);
-          makeHashDiv($node, $activeSparkline);
-        }
-      }
-    });
-
-    $body.on('focus.hashmask-focus-listener', passwordSel, function (ev) {
-      var $node = $(this);
-      $body.find('.hashmask-sparkline').remove();
-      $activeSparkline = $(sparklineWrapper());
+    function makeSparkline($node) {
+      $activeSparkline = $('<div class="hashmask-sparkline"></div>');
       $activeSparkline.data('parent', $node);
       $activeSparkline.data('val', $node.val());
 
@@ -195,10 +177,31 @@
       if (isDefined($node.val())) {
         makeHashDiv($node, $activeSparkline);
       }
+    }
+
+    $body.on('keyup.hashmask-keyup-listener', passwordSel, function (ev) {
+      var $node = $(this);
+
+      if ($activeSparkline) {
+        var val = $node.val();
+
+        if (val !== $activeSparkline.data('val')) {
+          $activeSparkline.data('val', val);
+          makeHashDiv($node, $activeSparkline);
+        }
+      }
+      else {
+        makeSparkline($node);
+      }
+    });
+
+    $body.on('focus.hashmask-focus-listener', passwordSel, function (ev) {
+      $body.find('.hashmask-sparkline').remove();
+      makeSparkline($(this));
     });
 
     $body.on('blur.hashmask-blur-listener', passwordSel, function (ev) {
-      if ($activeSparkline) {
+      if (!settings.alwaysShow && $activeSparkline) {
         $activeSparkline.remove();
         $activeSparkline = false;
       }
