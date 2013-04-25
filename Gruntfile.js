@@ -31,7 +31,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        'src/**/*.js'
+        'src/**/*.js',
+        'html/options.js'
       ]
     },
   });
