@@ -27,7 +27,7 @@
 
       $.hashmask.disable();
 
-      if (msg.settings.enabled) {
+      if (msg.settings.enabled === 'true') {
         $.hashmask.start();
       }
     }

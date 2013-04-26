@@ -29,7 +29,7 @@
     localStorage.delay = 200;
   }
   if (localStorage.enabled == null) {
-    localStorage.enabled = true;
+    localStorage.enabled = 'true';
   }
 
   // A pool of all active, long-lived connections

@@ -33,6 +33,7 @@
   'use strict';
 
   var $body = $('body');
+  var passwordSel = 'input[type=password]';
 
   $.hashmask = {
 
@@ -44,7 +45,6 @@
     },
 
     settings: {
-      passwordSelector: 'input[type=password]',
       hashUsed:         'sha1',
       alwaysShow:       false,
       useColorAsHint:   true,
@@ -160,7 +160,6 @@
       $activeSparkline = false;
     }
 
-    var passwordSel = settings.passwordSelector;
     var $activeSparkline = false;
 
     function makeSparkline($node) {
@@ -179,7 +178,7 @@
       }
     }
 
-    $body.on('keyup.hashmask-keyup-listener', passwordSel, function (ev) {
+    $body.on('keyup.hashmask', passwordSel, function (ev) {
       var $node = $(this);
 
       if ($activeSparkline) {
@@ -195,12 +194,12 @@
       }
     });
 
-    $body.on('focus.hashmask-focus-listener', passwordSel, function (ev) {
+    $body.on('focus.hashmask', passwordSel, function (ev) {
       $body.find('.hashmask-sparkline').remove();
       makeSparkline($(this));
     });
 
-    $body.on('blur.hashmask-blur-listener', passwordSel, function (ev) {
+    $body.on('blur.hashmask', passwordSel, function (ev) {
       if (!settings.alwaysShow && $activeSparkline) {
         $activeSparkline.remove();
         $activeSparkline = false;
@@ -216,9 +215,9 @@
 
   $.hashmask.disable = function () {
     $body
-      .off('keyup.hashmask-keyup-listener')
-      .off('keyup.hashmask-focus-listener')
-      .off('keyup.hashmask-blur-listener')
+      .off('keyup.hashmask', passwordSel)
+      .off('focus.hashmask', passwordSel)
+      .off('blur.hashmask', passwordSel)
       .find('.hashmask-sparkline').remove();
   };
 
