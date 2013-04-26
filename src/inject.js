@@ -1,5 +1,5 @@
 
-/*global $: true, chrome: true */
+/*global $, chrome */
 
 /**
  * HashMask - an old approach to password masking, in the browser.
@@ -26,7 +26,10 @@
       $.hashmask.settings.sparkInterval = msg.settings.delay;
 
       $.hashmask.disable();
-      $.hashmask.start();
+
+      if (msg.settings.enabled) {
+        $.hashmask.start();
+      }
     }
     else if (msg.eventName === 'enable') {
       $.hashmask.start();

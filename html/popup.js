@@ -1,10 +1,12 @@
+
+/*global jQuery, chrome */
+
 /**
  * HashMask - an old approach to password masking, in the browser.
  *
  * REQUIRES:
- * jquery-1.7.2.js
- * bootstrap.js
- * src/inject.js (and its requirements)
+ * jquery.js
+ * src/inject.js
  *
  * @author    Society of Software Engineers (http://sse.se.rit.edu)
  * @author    Brian Wyant <wyantb@gmail.com>
@@ -12,39 +14,46 @@
  *
 **/
 
-var port = chrome.extension.connect({name: "hashmask-popup"});
+(function ($) {
+  'use strict';
 
-var doDisable = function () {
-  $("#btn-on").hide();
-  $("#btn-off").show();
-};
+  var port = chrome.extension.connect({name: 'hashmask-popup'});
+  var $onButton = $('#btn-on');
+  var $offButton = $('#btn-off');
 
-var doEnable = function () {
-  $("#btn-on").show();
-  $("#btn-off").hide();
-};
+  var doDisable = function () {
+    $onButton.hide();
+    $offButton.show();
+  };
 
-port.onMessage.addListener(function (msg) {
-  if (msg.eventName === "settings") {
-    if (msg.settings.enabled === "true") {
+  var doEnable = function () {
+    $onButton.show();
+    $offButton.hide();
+  };
+
+  port.onMessage.addListener(function (msg) {
+    if (msg.eventName === 'settings') {
+      if (msg.settings.enabled === 'true') {
+        doEnable();
+      } else {
+        doDisable();
+      }
+    } else if (msg.eventName === 'enable') {
       doEnable();
-    } else {
+    } else if (msg.eventName === 'disable') {
       doDisable();
     }
-  } else if (msg.eventName === "enable") {
-    doEnable();
-  } else if (msg.eventName === "disable") {
+
+  });
+
+  $onButton.click(function (ev) {
     doDisable();
-  }
+    port.postMessage({eventName: 'disable'});
+  });
 
-});
+  $offButton.click(function (ev) {
+    doEnable();
+    port.postMessage({eventName: 'enable'});
+  });
 
-$("#btn-on").click(function (ev) {
-  doDisable();
-  port.postMessage({eventName: "disable"});
-});
-
-$("#btn-off").click(function (ev) {
-  doEnable();
-  port.postMessage({eventName: "enable"});
-});
+}( jQuery ));
