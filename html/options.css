@@ -7,10 +7,6 @@
  *
 **/
 
-/* page */
-body {
-  background-color: #EEE9E9;
-}
 nav {
 }
 .container {
@@ -38,6 +34,20 @@ a, label {
   padding: 15px 60px;
   margin-bottom: 15px;
 }
+.hero-title {
+    vertical-align: middle;
+}
+
+input[type=password].hero-password {
+    height: auto;
+    padding: 0 5px;
+    margin: 0;
+
+    /* extending Bootstrap h2, effectively */
+    font-size: 31.5px;
+    line-height: 40px;
+}
+
 hr {
   margin: 9px 0px;
 }
@@ -68,6 +78,15 @@ hr {
 }
 .example h4, .example p {
   margin: 10px;
+}
+
+.row .span4 {
+    padding: 0 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+
+    margin-bottom: 15px;
+    background: #eee;
 }
 
 @media screen and (max-width: 600px) {
